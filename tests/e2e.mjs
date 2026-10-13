@@ -67,14 +67,14 @@ assert.equal(rows.length, 3); assert.equal(rows.find(r => r[0] === 'Testco Beta'
 // open record, check description exactly, no preselection, order
 await page.click('tr:has-text("Testco Alpha")'); await page.waitForSelector('#jd');
 assert.equal(await page.textContent('#jd'), FIX[0].desc); ok('row opens the correct complete description (bullets preserved)');
-assert.equal(await page.$$eval('.sc.on', e => e.length), 0); assert.equal(await page.isDisabled('#save'), true);
+assert.equal(await page.$$eval('.sc.on', e => e.length), 0); assert.equal(await page.$$eval('.scale', e => e.length), 3); assert.equal(await page.isDisabled('#save'), true);
 const order = await page.evaluate(() => { const r = document.querySelector('article.record'); return [...r.children].map(c => c.tagName + '.' + c.className); });
 assert.match(order.join('|'), /HEADER.*desc.*rating/); ok('header, description, then rating controls; none preselected; save disabled');
 assert.match(await page.textContent('.facts'), /NASDAQ/); assert.match(await page.textContent('.facts'), /as of 2026-10-01/);
 assert.doesNotMatch(await page.textContent('article.record'), /predicted|recommended|suggested rating/i);
 
 // timing: hide page, idle, resume
-await page.click('#i-9'); assert.equal(await page.isDisabled('#save'), true); await page.click('#q-4'); assert.equal(await page.isDisabled('#save'), false);
+await page.click('#r-9'); await page.click('#q-4'); assert.equal(await page.isDisabled('#save'), true, 'company interest still required'); await page.click('#c-3'); assert.equal(await page.isDisabled('#save'), false);
 await page.waitForTimeout(2200);
 await page.evaluate(() => { Object.defineProperty(document, 'hidden', { value: true, configurable: true }); document.dispatchEvent(new Event('visibilitychange')); });
 const t1 = await page.textContent('#timer'); await page.waitForTimeout(1800); assert.equal(await page.textContent('#timer'), t1); ok('timer pauses while page hidden');
@@ -86,7 +86,7 @@ await page.fill('#note', 'Test note');
 await page.click('#save'); await page.waitForSelector('text=Original (');
 let jobs = await dbGet('jobs'), revs = await dbGet('reviews'); const aid = Object.keys(jobs).find(k => jobs[k].company === 'Testco Alpha');
 assert.equal(jobs[aid].status, 'reviewed'); assert.ok(jobs[aid].reviewedAt);
-assert.equal(revs[aid].ratings.length, 1); assert.equal(revs[aid].ratings[0].interest, 9); assert.equal(revs[aid].ratings[0].qualification, 4);
+assert.equal(revs[aid].ratings.length, 1); assert.equal(revs[aid].ratings[0].roleInterest, 9); assert.equal(revs[aid].ratings[0].companyInterest, 3); assert.equal(revs[aid].ratings[0].qualification, 4);
 assert.ok(revs[aid].active_s >= 2 && revs[aid].active_s <= 8, 'active_s=' + revs[aid].active_s); assert.ok(revs[aid].sessions[0].elapsed_s >= revs[aid].sessions[0].active_s);
 assert.ok(revs[aid].sessions[0].pauses.includes('hidden') && revs[aid].sessions[0].pauses.includes('manual')); ok('ratings saved together; active/elapsed seconds, pauses and method stored');
 
@@ -98,15 +98,15 @@ await page.click('tr:has-text("Testco Alpha")'); await page.waitForSelector('tex
 assert.equal(await page.textContent('#jd'), FIX[0].desc);
 
 // revision keeps original
-await page.click('#revise'); await page.click('#i-5'); await page.click('#q-6'); await page.waitForTimeout(1200); await page.click('#save'); await page.waitForSelector('ol.hist li:nth-child(2)');
-revs = await dbGet('reviews'); assert.equal(revs[aid].ratings.length, 2); assert.equal(revs[aid].ratings[0].interest, 9); assert.equal(revs[aid].ratings[1].kind, 'revision'); assert.equal(revs[aid].ratings[1].interest, 5);
-jobs = await dbGet('jobs'); assert.equal(jobs[aid].ratingOriginal.interest, 9); assert.equal(jobs[aid].ratingLatest.interest, 5);
+await page.click('#revise'); await page.click('#r-5'); await page.click('#c-8'); await page.click('#q-6'); await page.waitForTimeout(1200); await page.click('#save'); await page.waitForSelector('ol.hist li:nth-child(2)');
+revs = await dbGet('reviews'); assert.equal(revs[aid].ratings.length, 2); assert.equal(revs[aid].ratings[0].roleInterest, 9); assert.equal(revs[aid].ratings[1].kind, 'revision'); assert.equal(revs[aid].ratings[1].roleInterest, 5); assert.equal(revs[aid].ratings[1].companyInterest, 8);
+jobs = await dbGet('jobs'); assert.equal(jobs[aid].ratingOriginal.roleInterest, 9); assert.equal(jobs[aid].ratingLatest.roleInterest, 5);
 assert.ok(revs[aid].extra_active_s >= 1 && revs[aid].extra_active_s < 6); ok('revision appended; original and initial duration preserved; extra time separate');
 
 // review next 10 + save and next + skip
-await page.click('#nav >> text=Roles'); await page.click('text=Review next 10'); await page.waitForSelector('#i-1');
+await page.click('#nav >> text=Roles'); await page.click('text=Review next 10'); await page.waitForSelector('#r-1');
 assert.match(await page.textContent('article.record'), /Testco Beta/);
-await page.click('#i-2'); await page.click('#q-8'); await page.click('#savenext'); await page.waitForFunction(() => /Testco Gamma/.test(document.querySelector('article.record')?.textContent || ''));
+await page.click('#r-2'); await page.click('#c-6'); await page.click('#q-8'); await page.click('#savenext'); await page.waitForFunction(() => /Testco Gamma/.test(document.querySelector('article.record')?.textContent || ''));
 assert.match(await page.textContent('article.record'), /Incomplete description/); ok('Save and next advances queue; missing description flagged incomplete');
 await page.fill('#missingtext', 'Pasted full text for Gamma.'); await page.click('text=Save description'); await page.waitForSelector('#jd');
 assert.equal(await page.textContent('#jd'), 'Pasted full text for Gamma.'); ok('missing description can be imported');
@@ -116,7 +116,7 @@ assert.match(await page.textContent('#progress'), /2 reviewed/); ok('skip is not
 
 // filters
 await page.selectOption('#fstatus', 'reviewed'); assert.equal((await page.$$('#rows tr')).length, 2);
-await page.click('text=Rating filters'); await page.fill('#f_imin', '8'); assert.equal((await page.$$('#rows tr')).length, 0, 'latest ratings: alpha=5, beta=2');
+await page.click('text=Rating filters'); await page.fill('#f_rmin', '8'); assert.equal((await page.$$('#rows tr')).length, 0, 'latest ratings: alpha=5, beta=2');
 await page.selectOption('#fmode', 'original'); assert.equal((await page.$$('#rows tr')).length, 1); ok('search/filter by status and original vs latest rating');
 
 // analysis + exports
@@ -132,6 +132,25 @@ const backup = JSON.stringify(json);
 await page.evaluate(() => localStorage.removeItem('mockdb')); await reload(); await page.click('#nav >> text=Settings');
 await page.setInputFiles('#restorefile', { name: 'b.json', mimeType: 'application/json', buffer: Buffer.from(backup) }); await page.click('#x_restore'); await page.waitForTimeout(800);
 jobs = await dbGet('jobs'); assert.equal(Object.keys(jobs).length, 3); revs = await dbGet('reviews'); assert.equal(revs[aid].ratings.length, 2); ok('restore from JSON backup');
+
+// legacy (single combined interest) ratings: preserved, flagged, re-rated as a revision with Q carried forward
+const bid = Object.keys(jobs).find(k => jobs[k].company === 'Testco Beta');
+await page.evaluate(({ bid }) => { const d = JSON.parse(localStorage.getItem('mockdb')); d.reviews[bid].ratings = [{ at: '2026-10-13T12:00:00Z', interest: 7, qualification: 5, note: 'old', kind: 'original', review_s: 30 }]; d.reviews[bid].active_s = 30;
+  d.jobs[bid].ratingLatest = { interest: 7, qualification: 5 }; d.jobs[bid].ratingOriginal = { interest: 7, qualification: 5 }; localStorage.setItem('mockdb', JSON.stringify(d)); }, { bid });
+await reload(); await page.click('#nav >> text=Analysis');
+assert.match(await page.textContent('#main'), /earlier combined-interest score in this view and are excluded/); assert.match(await page.textContent('#progress'), /1 to re-rate/);
+await page.click('#nav >> text=Roles'); await page.click('#rerate'); await page.waitForSelector('#r-1');
+assert.match(await page.textContent('article.record'), /Testco Beta/); assert.equal(await page.getAttribute('#q-5', 'aria-checked'), 'true'); assert.match(await page.textContent('#qhint'), /Carried forward/);
+assert.equal(await page.isDisabled('#save'), true); await page.click('#r-8'); await page.click('#c-3'); assert.equal(await page.isDisabled('#save'), false); await page.click('#save'); await page.waitForSelector('text=Original (');
+revs = await dbGet('reviews'); assert.equal(revs[bid].ratings.length, 2); assert.equal(revs[bid].ratings[0].interest, 7); assert.equal(revs[bid].ratings[1].kind, 'revision');
+assert.equal(revs[bid].ratings[1].roleInterest, 8); assert.equal(revs[bid].ratings[1].companyInterest, 3); assert.equal(revs[bid].ratings[1].qualificationCarried, true); assert.ok(revs[bid].extra_active_s >= 0 && revs[bid].active_s === 30);
+assert.match(await page.textContent('.rating'), /combined interest 7 \(earlier single-score scheme\)/); ok('legacy combined rating preserved; re-rate appends split revision with qualification carried forward');
+await page.click('#nav >> text=Add roles'); await page.fill('#batchjson', JSON.stringify([{ company: 'Testco Delta', title: 'Marketing Research Director', location: 'Chicago, IL', reqId: 'T-4', sourceUrl: 'https://example.test/jobs/4', roleFamily: ['Marketing Research'], desc: 'Own research programs.', companyData: { industry: 'Software', model: 'B2B', ownership: 'Private' } }]));
+await page.click('#runbatch'); await page.waitForSelector('#importout .card'); await page.click('#nav >> text=Roles'); await page.click('text=Review next 10'); await page.waitForSelector('#r-1');
+await page.click('#r-7'); await page.click('#c-9'); await page.click('#q-6'); await page.click('#save'); await page.waitForSelector('text=Original (');
+await page.click('#nav >> text=Analysis'); assert.match(await page.textContent('#main'), /Role interest vs company interest/); assert.match(await page.textContent('#main'), /Mean company interest by Industry/); ok('analysis reports role and company interest separately');
+await page.click('#nav >> text=Settings'); await page.click('#x_csv'); await page.waitForTimeout(150);
+const csv2 = (await page.evaluate(() => window.__downloads)).filter(d => d.filename.endsWith('.csv')).pop().data; assert.match(csv2.split('\r\n')[0], /original_combined_interest_legacy/); assert.match(csv2, /latest_company_interest/); ok('CSV has role, company and legacy columns');
 
 // interrupted session recovery
 await page.evaluate(({ id }) => { localStorage.setItem('dj_draft', JSON.stringify({ id, revising: false, start: Date.now() - 90000, active_s: 41, at: Date.now() - 50000 })); }, { id: gid });

@@ -21,7 +21,7 @@ A workflow for discovering which marketing jobs you want, separate from which yo
 - **Export my data** – Settings: CSV (standardized) and JSON (full descriptions, sessions, rating history). Claude can also commit a backup to `data/backups/`.
 
 ## Rules the system follows
-- Interest and Qualification are separate, neither preselected, saved together, and both required before a role counts as reviewed.
+- Role Interest, Company Interest and Qualification are three separate 1–10 ratings, none preselected, saved together, and all three required before a role counts as reviewed (a re-rate may carry the earlier Qualification forward, clearly labeled).
 - Ratings are append-only: revisions add a dated entry; the original ratings, date and review time stay intact. Reports state whether they use original or latest ratings.
 - Skip is not a rating. Skipped roles are excluded from counts and from interest analysis.
 - Active review time starts when an unreviewed role opens; pauses on tab hidden, leaving the record, manual pause, or inactivity (default 120 s, configurable; trailing idle time is not counted); resumes on activity; stops at submit. It approximates reading time and is never treated as interest. An interrupted session is recovered from a local checkpoint on the next load.

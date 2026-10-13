@@ -19,14 +19,17 @@ TERMS = {
 
 def load(path, mode):
     d = json.load(open(path, encoding="utf8"))
-    rows = []
+    rows = []; skipped_legacy = []
     for jid, j in d.get("jobs", {}).items():
         r = d.get("reviews", {}).get(jid) or {}
         rt = r.get("ratings") or []
         if j.get("status") != "reviewed" or not rt:
             continue
         x = rt[0] if mode == "original" else rt[-1]
-        rows.append({"id": jid, "company": j.get("company"), "title": j.get("title"), "interest": x["interest"], "qual": x["qualification"], "text": j.get("desc") or "", "family": j.get("roleFamily") or []})
+        if x.get("roleInterest") is None:      # schema 1: one combined interest score; cannot be split into role vs company
+            skipped_legacy.append(jid); continue
+        rows.append({"id": jid, "company": j.get("company"), "title": j.get("title"), "interest": x["roleInterest"], "company_interest": x["companyInterest"], "qual": x["qualification"], "text": j.get("desc") or "", "family": j.get("roleFamily") or []})
+    if skipped_legacy: print(f"Excluded {len(skipped_legacy)} reviewed job(s) that only have the earlier combined-interest score")
     return d, rows
 
 
@@ -39,8 +42,8 @@ def main():
     a = ap.parse_args(); d, rows = load(a.backup, a.mode)
     n = len(rows); print(f"Completed unique jobs: {n} ({a.mode} ratings){'  [PRELIMINARY: <100]' if n < 100 else ''}")
     if not n: return
-    I = [r["interest"] for r in rows]; print(f"Mean interest {statistics.mean(I):.2f}; mean qualification {statistics.mean(r['qual'] for r in rows):.2f}")
-    hi = [r for r in rows if r["interest"] >= 8]; lo = [r for r in rows if r["interest"] <= 3]; print(f"High (8-10): {len(hi)}   Low (1-3): {len(lo)}")
+    I = [r["interest"] for r in rows]; print(f"Mean role interest {statistics.mean(I):.2f}; mean company interest {statistics.mean(r['company_interest'] for r in rows):.2f}; mean qualification {statistics.mean(r['qual'] for r in rows):.2f}")
+    hi = [r for r in rows if r["interest"] >= 8]; lo = [r for r in rows if r["interest"] <= 3]; print(f"High role interest (8-10): {len(hi)}   Low (1-3): {len(lo)}")
     print("\nTerm share of postings (high vs low) -- flag when fewer than 5 postings contain it")
     out = []
     for t, p in TERMS.items():

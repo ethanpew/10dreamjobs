@@ -81,13 +81,21 @@ var DJ = (function () {
     return mode === 'original' ? review.ratings[0] : review.ratings[review.ratings.length - 1];
   }
 
-  /* Rating history append. Never mutates earlier entries. */
-  function appendRating(review, interest, qual, note, nowIso, activeSecThisOpen) {
-    var r = review ? JSON.parse(JSON.stringify(review)) : { ratings: [], sessions: [], active_s: 0, extra_active_s: 0, elapsed_s: 0 };
-    var first = r.ratings.length === 0;
-    r.ratings.push({ at: nowIso, interest: interest, qualification: qual, note: note || '', kind: first ? 'original' : 'revision',
-      review_s: first ? Math.round(r.active_s || 0) : Math.round(activeSecThisOpen || 0) });
-    return r;
+  /* Normalize a stored rating entry. Schema 1 (legacy) held one combined "interest"; schema 2 splits role and company interest. */
+  function norm(e) {
+    if (!e) return null;
+    var legacy = e.roleInterest == null && e.interest != null;
+    return { role: legacy ? e.interest : e.roleInterest, company: legacy ? null : (e.companyInterest == null ? null : e.companyInterest), qual: e.qualification, legacy: legacy, at: e.at, kind: e.kind, note: e.note };
+  }
+  /* Rating history append. Never mutates earlier entries. r = {roleInterest, companyInterest, qualification, qualificationCarried?} */
+  function appendRating(review, r, note, nowIso, activeSecThisOpen) {
+    var rv = review ? JSON.parse(JSON.stringify(review)) : { ratings: [], sessions: [], active_s: 0, extra_active_s: 0, elapsed_s: 0 };
+    var first = rv.ratings.length === 0;
+    var e = { at: nowIso, roleInterest: r.roleInterest, companyInterest: r.companyInterest, qualification: r.qualification, note: note || '', kind: first ? 'original' : 'revision',
+      review_s: first ? Math.round(rv.active_s || 0) : Math.round(activeSecThisOpen || 0), schema: 2 };
+    if (r.qualificationCarried) e.qualificationCarried = true;
+    rv.ratings.push(e);
+    return rv;
   }
 
   /* ---- statistics ---- */
@@ -104,22 +112,29 @@ var DJ = (function () {
     return dx && dy ? num / Math.sqrt(dx * dy) : null;
   }
   /* rows: [{interest, ...}] ; keysFn returns array of group keys (multi-tag allowed) */
-  function groupMeans(rows, keysFn, minN) {
+  function groupMeans(rows, keysFn, minN, field) {
+    field = field || 'interest';
     var g = {}, missing = 0;
     rows.forEach(function (r) {
+      if (r[field] == null) return;
       var ks = keysFn(r).filter(function (k) { return k && k !== 'Unknown'; });
       if (!ks.length) { missing++; return; }
-      ks.forEach(function (k) { (g[k] = g[k] || []).push(r.interest); });
+      ks.forEach(function (k) { (g[k] = g[k] || []).push(r[field]); });
     });
     var out = Object.keys(g).map(function (k) {
       var v = g[k]; return { key: k, n: v.length, mean: mean(v), high: v.filter(function (x) { return x >= HIGH_INTEREST; }).length, low: v.filter(function (x) { return x <= LOW_INTEREST; }).length, tentative: v.length < (minN || 5) };
     }).sort(function (a, b) { return b.mean - a.mean; });
-    return { groups: out, missing: missing, total: rows.length };
+    return { groups: out, missing: missing, total: rows.filter(function (r) { return r[field] != null; }).length };
   }
   function quadrant(i, q) {
     var hi = i >= QUAD_INTEREST, hq = q >= QUAD_QUAL;
     return hi && hq ? 'High interest / high qualification' : hi ? 'High interest / lower qualification'
       : hq ? 'Lower interest / high qualification' : 'Lower interest / lower qualification';
+  }
+
+  function quadrant2(role, company) {
+    var hr = role >= QUAD_INTEREST, hc = company >= QUAD_INTEREST;
+    return hr && hc ? 'High role / high company' : hr ? 'High role / lower company' : hc ? 'Lower role / high company' : 'Lower role / lower company';
   }
 
   /* Synonym-grouped description themes. Proportion of jobs containing a theme, not raw word counts. */
@@ -195,7 +210,7 @@ var DJ = (function () {
     return t;
   }
 
-  return { ReviewTimer: ReviewTimer, ROLE_FAMILIES: ROLE_FAMILIES, SENIORITY: SENIORITY, HIGH_INTEREST: HIGH_INTEREST, LOW_INTEREST: LOW_INTEREST, normKey: normKey, canonUrl: canonUrl,
+  return { ReviewTimer: ReviewTimer, norm: norm, quadrant2: quadrant2, ROLE_FAMILIES: ROLE_FAMILIES, SENIORITY: SENIORITY, HIGH_INTEREST: HIGH_INTEREST, LOW_INTEREST: LOW_INTEREST, normKey: normKey, canonUrl: canonUrl,
     companyId: companyId, jobId: jobId, findDuplicate: findDuplicate, fmtSalary: fmtSalary, annualMid: annualMid, fmtDate: fmtDate, fmtDur: fmtDur,
     ratingOf: ratingOf, appendRating: appendRating, mean: mean, spearman: spearman, groupMeans: groupMeans, quadrant: quadrant, themesOf: themesOf,
     themeContrast: themeContrast, sensitivity: sensitivity, toCsv: toCsv, THEMES: THEMES };

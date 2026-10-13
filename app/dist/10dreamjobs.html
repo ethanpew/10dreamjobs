@@ -166,13 +166,21 @@ var DJ = (function () {
     return mode === 'original' ? review.ratings[0] : review.ratings[review.ratings.length - 1];
   }
 
-  /* Rating history append. Never mutates earlier entries. */
-  function appendRating(review, interest, qual, note, nowIso, activeSecThisOpen) {
-    var r = review ? JSON.parse(JSON.stringify(review)) : { ratings: [], sessions: [], active_s: 0, extra_active_s: 0, elapsed_s: 0 };
-    var first = r.ratings.length === 0;
-    r.ratings.push({ at: nowIso, interest: interest, qualification: qual, note: note || '', kind: first ? 'original' : 'revision',
-      review_s: first ? Math.round(r.active_s || 0) : Math.round(activeSecThisOpen || 0) });
-    return r;
+  /* Normalize a stored rating entry. Schema 1 (legacy) held one combined "interest"; schema 2 splits role and company interest. */
+  function norm(e) {
+    if (!e) return null;
+    var legacy = e.roleInterest == null && e.interest != null;
+    return { role: legacy ? e.interest : e.roleInterest, company: legacy ? null : (e.companyInterest == null ? null : e.companyInterest), qual: e.qualification, legacy: legacy, at: e.at, kind: e.kind, note: e.note };
+  }
+  /* Rating history append. Never mutates earlier entries. r = {roleInterest, companyInterest, qualification, qualificationCarried?} */
+  function appendRating(review, r, note, nowIso, activeSecThisOpen) {
+    var rv = review ? JSON.parse(JSON.stringify(review)) : { ratings: [], sessions: [], active_s: 0, extra_active_s: 0, elapsed_s: 0 };
+    var first = rv.ratings.length === 0;
+    var e = { at: nowIso, roleInterest: r.roleInterest, companyInterest: r.companyInterest, qualification: r.qualification, note: note || '', kind: first ? 'original' : 'revision',
+      review_s: first ? Math.round(rv.active_s || 0) : Math.round(activeSecThisOpen || 0), schema: 2 };
+    if (r.qualificationCarried) e.qualificationCarried = true;
+    rv.ratings.push(e);
+    return rv;
   }
 
   /* ---- statistics ---- */
@@ -189,22 +197,29 @@ var DJ = (function () {
     return dx && dy ? num / Math.sqrt(dx * dy) : null;
   }
   /* rows: [{interest, ...}] ; keysFn returns array of group keys (multi-tag allowed) */
-  function groupMeans(rows, keysFn, minN) {
+  function groupMeans(rows, keysFn, minN, field) {
+    field = field || 'interest';
     var g = {}, missing = 0;
     rows.forEach(function (r) {
+      if (r[field] == null) return;
       var ks = keysFn(r).filter(function (k) { return k && k !== 'Unknown'; });
       if (!ks.length) { missing++; return; }
-      ks.forEach(function (k) { (g[k] = g[k] || []).push(r.interest); });
+      ks.forEach(function (k) { (g[k] = g[k] || []).push(r[field]); });
     });
     var out = Object.keys(g).map(function (k) {
       var v = g[k]; return { key: k, n: v.length, mean: mean(v), high: v.filter(function (x) { return x >= HIGH_INTEREST; }).length, low: v.filter(function (x) { return x <= LOW_INTEREST; }).length, tentative: v.length < (minN || 5) };
     }).sort(function (a, b) { return b.mean - a.mean; });
-    return { groups: out, missing: missing, total: rows.length };
+    return { groups: out, missing: missing, total: rows.filter(function (r) { return r[field] != null; }).length };
   }
   function quadrant(i, q) {
     var hi = i >= QUAD_INTEREST, hq = q >= QUAD_QUAL;
     return hi && hq ? 'High interest / high qualification' : hi ? 'High interest / lower qualification'
       : hq ? 'Lower interest / high qualification' : 'Lower interest / lower qualification';
+  }
+
+  function quadrant2(role, company) {
+    var hr = role >= QUAD_INTEREST, hc = company >= QUAD_INTEREST;
+    return hr && hc ? 'High role / high company' : hr ? 'High role / lower company' : hc ? 'Lower role / high company' : 'Lower role / lower company';
   }
 
   /* Synonym-grouped description themes. Proportion of jobs containing a theme, not raw word counts. */
@@ -280,7 +295,7 @@ var DJ = (function () {
     return t;
   }
 
-  return { ReviewTimer: ReviewTimer, ROLE_FAMILIES: ROLE_FAMILIES, SENIORITY: SENIORITY, HIGH_INTEREST: HIGH_INTEREST, LOW_INTEREST: LOW_INTEREST, normKey: normKey, canonUrl: canonUrl,
+  return { ReviewTimer: ReviewTimer, norm: norm, quadrant2: quadrant2, ROLE_FAMILIES: ROLE_FAMILIES, SENIORITY: SENIORITY, HIGH_INTEREST: HIGH_INTEREST, LOW_INTEREST: LOW_INTEREST, normKey: normKey, canonUrl: canonUrl,
     companyId: companyId, jobId: jobId, findDuplicate: findDuplicate, fmtSalary: fmtSalary, annualMid: annualMid, fmtDate: fmtDate, fmtDur: fmtDur,
     ratingOf: ratingOf, appendRating: appendRating, mean: mean, spearman: spearman, groupMeans: groupMeans, quadrant: quadrant, themesOf: themesOf,
     themeContrast: themeContrast, sensitivity: sensitivity, toCsv: toCsv, THEMES: THEMES };
@@ -294,8 +309,8 @@ if (typeof module !== 'undefined') module.exports = DJ;
   'use strict';
   var COLS = ['jobs', 'companies', 'reviews', 'batches', 'policies', 'reports', 'targets', 'settings'];
   var S = { jobs: {}, companies: {}, reviews: {}, batches: {}, policies: {}, reports: {}, targets: {}, settings: {} };
-  var db = null, dl = null, ready = {}, view = 'table', cur = null, queue = [], tick = null;
-  var ui = { sort: { k: 'company', dir: 1 }, q: '', status: 'all', imin: '', imax: '', qmin: '', qmax: '', mode: 'latest', filtersOpen: false };
+  var db = null, dl = null, ready = {}, view = 'table', cur = null, queue = [], qkind = 'review', tick = null;
+  var ui = { sort: { k: 'company', dir: 1 }, q: '', status: 'all', rmin: '', rmax: '', cmin: '', cmax: '', qmin: '', qmax: '', mode: 'latest', filtersOpen: false };
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var main = $('#main');
 
@@ -326,7 +341,11 @@ if (typeof module !== 'undefined') module.exports = DJ;
     return p.catch(function (e) { toast('Save failed: ' + ((e && e.message) || e), true); throw e; });
   }
   function put(col, id, data) { if (!db) { toast('Storage is unavailable; nothing was saved.', true); return Promise.reject(new Error('no db')); } return write(col + '/' + id, function () { return db.doc(col + '/' + id).set(data); }); }
-  function completed() { return Object.keys(S.jobs).filter(function (id) { return S.jobs[id].status === 'reviewed' && DJ.ratingOf(S.reviews[id], 'latest'); }); }
+  function latestNorm(id) { return DJ.norm(DJ.ratingOf(S.reviews[id], 'latest')); }
+  /* Completed = reviewed with the current rating scheme (role interest, company interest, qualification). */
+  function completed() { return Object.keys(S.jobs).filter(function (id) { var n = S.jobs[id].status === 'reviewed' && latestNorm(id); return n && !n.legacy; }); }
+  /* Reviewed under the earlier single-interest scheme and not yet re-rated. */
+  function legacyJobs() { return Object.keys(S.jobs).filter(function (id) { var n = S.jobs[id].status === 'reviewed' && latestNorm(id); return n && n.legacy; }).map(function (id) { return S.jobs[id]; }).sort(function (a, b) { return (a.sourcedAt || '').localeCompare(b.sourcedAt || '') || (a.seq || 0) - (b.seq || 0); }); }
 
   /* ---------- derived rows ---------- */
   function jobsList() { return Object.keys(S.jobs).map(function (k) { return S.jobs[k]; }); }
@@ -338,9 +357,10 @@ if (typeof module !== 'undefined') module.exports = DJ;
   }
   function dataset(mode) {   // completed unique jobs with merged attributes for analysis
     return completed().map(function (id) {
-      var j = S.jobs[id], c = co(j), r = DJ.ratingOf(S.reviews[id], mode);
-      return { id: id, job: j, co: c, interest: r.interest, qual: r.qualification, at: (S.reviews[id].ratings[0] || {}).at, text: j.desc || '' };
-    });
+      var j = S.jobs[id], c = co(j), r = DJ.norm(DJ.ratingOf(S.reviews[id], mode));
+      if (!r || r.legacy) return null;    // combined legacy scores cannot be split into role vs company
+      return { id: id, job: j, co: c, interest: r.role, companyInterest: r.company, qual: r.qual, at: (S.reviews[id].ratings[0] || {}).at, text: j.desc || '' };
+    }).filter(Boolean);
   }
 
   /* ---------- header / progress ---------- */
@@ -348,7 +368,8 @@ if (typeof module !== 'undefined') module.exports = DJ;
     var n = completed().length, total = Object.keys(S.jobs).length, unrev = unreviewedOrdered().length;
     var el = $('#progress'); clear(el);
     var bar = function (target) { return h('div', { class: 'pbar', title: n + ' of ' + target }, h('div', { class: 'pfill', style: 'width:' + Math.min(100, n / target * 100) + '%' }), h('span', { text: Math.min(n, target) + ' / ' + target })); };
-    el.appendChild(h('div', { class: 'pgrp' }, h('b', { text: n + ' reviewed' }), h('span', { class: 'muted', text: ' · ' + unrev + ' waiting · ' + total + ' total' })));
+    var lg = legacyJobs().length;
+    el.appendChild(h('div', { class: 'pgrp' }, h('b', { text: n + ' reviewed' }), h('span', { class: 'muted', text: ' · ' + unrev + ' waiting' + (lg ? ' · ' + lg + ' to re-rate' : '') + ' · ' + total + ' total' })));
     el.appendChild(h('div', { class: 'pbars' }, bar(100), bar(200)));
     $('#storage').textContent = db ? 'Saved to this artifact’s database' : 'Storage unavailable: changes will not be saved';
     $('#storage').className = db ? 'ok' : 'bad';
@@ -374,14 +395,17 @@ if (typeof module !== 'undefined') module.exports = DJ;
   }
   function filtered() {
     var q = ui.q.trim().toLowerCase(), num = function (v) { return v === '' ? null : Number(v); };
-    var imin = num(ui.imin), imax = num(ui.imax), qmin = num(ui.qmin), qmax = num(ui.qmax);
+    var rmin = num(ui.rmin), rmax = num(ui.rmax), cmin = num(ui.cmin), cmax = num(ui.cmax), qmin = num(ui.qmin), qmax = num(ui.qmax);
     return jobsList().filter(function (j) {
-      if (ui.status !== 'all' && (j.status || 'unreviewed') !== ui.status) return false;
+      if (ui.status === 'rerate') { var ln = j.status === 'reviewed' && latestNorm(j.id); if (!(ln && ln.legacy)) return false; }
+      else if (ui.status !== 'all' && (j.status || 'unreviewed') !== ui.status) return false;
       if (q) { var c = co(j); var hay = [j.company, j.title, j.location, j.division, (j.roleFamily || []).join(' '), c.industry, j.desc].join(' ').toLowerCase(); if (hay.indexOf(q) < 0) return false; }
-      if (imin != null || imax != null || qmin != null || qmax != null) {
-        var r = rating(j); if (!r) return false;
-        if (imin != null && r.interest < imin) return false; if (imax != null && r.interest > imax) return false;
-        if (qmin != null && r.qualification < qmin) return false; if (qmax != null && r.qualification > qmax) return false;
+      if (rmin != null || rmax != null || cmin != null || cmax != null || qmin != null || qmax != null) {
+        var r = DJ.norm(rating(j)); if (!r) return false;
+        if ((rmin != null || rmax != null) && r.legacy) return false;    // combined legacy score is not a role score
+        if (rmin != null && !(r.role >= rmin)) return false; if (rmax != null && !(r.role <= rmax)) return false;
+        if (cmin != null && !(r.company >= cmin)) return false; if (cmax != null && !(r.company <= cmax)) return false;
+        if (qmin != null && r.qual < qmin) return false; if (qmax != null && r.qual > qmax) return false;
       }
       return true;
     }).sort(function (a, b) { var x = sortVal(a, ui.sort.k), y = sortVal(b, ui.sort.k); return (x < y ? -1 : x > y ? 1 : 0) * ui.sort.dir; });
@@ -390,9 +414,10 @@ if (typeof module !== 'undefined') module.exports = DJ;
     var all = jobsList();
     var bar = h('div', { class: 'toolbar' },
       h('button', { class: 'primary', onclick: function () { startQueue(10); } }, 'Review next 10'),
+      legacyJobs().length ? h('button', { id: 'rerate', class: 'primary', onclick: function () { startQueue(10, 'rerate'); } }, 'Re-rate ' + Math.min(10, legacyJobs().length) + ' (split interest)') : null,
       h('input', { id: 'q', type: 'search', placeholder: 'Search company, title, location, description…', value: ui.q, 'aria-label': 'Search', oninput: function (e) { ui.q = e.target.value; refreshRows(); } }),
       h('select', { id: 'fstatus', 'aria-label': 'Status', onchange: function (e) { ui.status = e.target.value; refreshRows(); } },
-        [['all', 'All roles'], ['unreviewed', 'Unreviewed'], ['reviewed', 'Reviewed'], ['skipped', 'Skipped']].map(function (o) { return h('option', { value: o[0], selected: ui.status === o[0] }, o[1]); })),
+        [['all', 'All roles'], ['unreviewed', 'Unreviewed'], ['reviewed', 'Reviewed'], ['rerate', 'Needs re-rating'], ['skipped', 'Skipped']].map(function (o) { return h('option', { value: o[0], selected: ui.status === o[0] }, o[1]); })),
       h('button', { onclick: function () { ui.filtersOpen = !ui.filtersOpen; render(); } }, ui.filtersOpen ? 'Hide rating filters' : 'Rating filters'));
     main.appendChild(bar);
     if (ui.filtersOpen) {
@@ -400,7 +425,7 @@ if (typeof module !== 'undefined') module.exports = DJ;
       main.appendChild(h('div', { class: 'toolbar sub' },
         h('select', { id: 'fmode', 'aria-label': 'Rating version', onchange: function (e) { ui.mode = e.target.value; refreshRows(); } },
           [['latest', 'Latest ratings'], ['original', 'Original ratings']].map(function (o) { return h('option', { value: o[0], selected: ui.mode === o[0] }, o[1]); })),
-        inp('imin', 'Interest ≥'), inp('imax', 'Interest ≤'), inp('qmin', 'Qualification ≥'), inp('qmax', 'Qualification ≤')));
+        inp('rmin', 'Role interest ≥'), inp('rmax', 'Role interest ≤'), inp('cmin', 'Company interest ≥'), inp('cmax', 'Company interest ≤'), inp('qmin', 'Qualification ≥'), inp('qmax', 'Qualification ≤')));
     }
     if (!all.length) {
       main.appendChild(h('div', { class: 'empty' }, h('h2', { text: 'No roles yet' }),
@@ -430,17 +455,19 @@ if (typeof module !== 'undefined') module.exports = DJ;
   }
 
   /* ---------- review queue + record ---------- */
-  function startQueue(n) {
-    var u = unreviewedOrdered().slice(0, n);
-    if (!u.length) { toast('No unreviewed roles. Ask Claude for “10 more”.'); return; }
-    queue = u.map(function (j) { return j.id; }); openJob(queue[0]);
+  function startQueue(n, kind) {
+    kind = kind || 'review'; qkind = kind;
+    var u = (kind === 'rerate' ? legacyJobs() : unreviewedOrdered()).slice(0, n);
+    if (!u.length) { toast(kind === 'rerate' ? 'Nothing left to re-rate.' : 'No unreviewed roles. Ask Claude for “10 more”.'); return; }
+    queue = u.map(function (j) { return j.id; }); openJob(queue[0], kind === 'rerate');
   }
-  function openJob(id) {
+  function openJob(id, rerate) {
     leaveRecord('switched-record');
     var j = S.jobs[id]; if (!j) return;
-    cur = { id: id, revising: false, manual: false, timer: null, base: 0, ratingI: null, ratingQ: null };
+    cur = { id: id, revising: false, manual: false, timer: null, base: 0, ratingR: null, ratingC: null, ratingQ: null, qCarried: false };
     view = 'record';
     if (j.status !== 'reviewed') beginTiming(false);
+    else if (rerate) startRevision(j);
     render(); window.scrollTo(0, 0);
   }
   function beginTiming(revising) {
@@ -537,33 +564,49 @@ if (typeof module !== 'undefined') module.exports = DJ;
     if (j.desc) wrap.appendChild(h('div', { class: 'jd', id: 'jd', text: j.desc }));
     return wrap;
   }
-  function scale(name, label, anchors, get, set) {
+  function scale(name, label, anchors, get, set, sub) {
     var g = h('div', { class: 'scale', role: 'radiogroup', 'aria-label': label });
     for (var i = 1; i <= 10; i++) (function (n) {
       g.appendChild(h('button', { type: 'button', role: 'radio', id: name + '-' + n, class: 'sc' + (get() === n ? ' on' : ''), 'aria-checked': get() === n ? 'true' : 'false', onclick: function () { set(n); [].forEach.call(g.children, function (b, k) { b.className = 'sc' + (k + 1 === n ? ' on' : ''); b.setAttribute('aria-checked', k + 1 === n ? 'true' : 'false'); }); updSave(); } }, String(n)));
     })(i);
-    return h('div', { class: 'ratingrow' }, h('h3', { text: label }), g, h('div', { class: 'anchors' }, anchors.map(function (a) { return h('span', { text: a }); })));
+    return h('div', { class: 'ratingrow' }, h('h3', { text: label }), sub ? h('p', { class: 'muted sub', text: sub }) : null, g, h('div', { class: 'anchors' }, anchors.map(function (a) { return h('span', { text: a }); })));
   }
   var updSave = function () { };
+  var describe = function (x) {
+    var n = DJ.norm(x);
+    return n.legacy ? 'combined interest ' + n.role + ' (earlier single-score scheme), qualification ' + n.qual
+      : 'role interest ' + n.role + ', company interest ' + n.company + ', qualification ' + n.qual + (x.qualificationCarried ? ' (carried forward)' : '');
+  };
+  function startRevision(j) {
+    var ln = latestNorm(j.id);
+    cur.ratingR = null; cur.ratingC = null;
+    if (ln && ln.legacy) { cur.ratingQ = ln.qual; cur.qCarried = true; } else { cur.ratingQ = null; cur.qCarried = false; }
+    beginTiming(true);
+  }
   function ratingBlock(j, r) {
     var sec = h('section', { class: 'rating' }, h('h2', { text: 'Your ratings' }));
     var reviewed = j.status === 'reviewed';
     if (reviewed && !cur.revising) {
-      var orig = DJ.ratingOf(r, 'original'), last = DJ.ratingOf(r, 'latest');
-      sec.appendChild(h('p', null, 'Original (' + date(orig.at) + '): Interest ', h('b', { text: orig.interest }), ' · Qualification ', h('b', { text: orig.qualification }), ' · initial review time ' + DJ.fmtDur(r.active_s)));
-      if (r.ratings.length > 1) sec.appendChild(h('p', null, 'Latest (' + date(last.at) + '): Interest ', h('b', { text: last.interest }), ' · Qualification ', h('b', { text: last.qualification })));
-      sec.appendChild(h('ol', { class: 'hist' }, r.ratings.map(function (x) { return h('li', { text: date(x.at) + ' · ' + x.kind + ' · interest ' + x.interest + ', qualification ' + x.qualification + (x.note ? ' · “' + x.note + '”' : '') + ' · ' + DJ.fmtDur(x.review_s) + ' reviewing' }); })));
-      sec.appendChild(h('button', { id: 'revise', onclick: function () { cur.revising = true; cur.ratingI = null; cur.ratingQ = null; beginTiming(true); render(); } }, 'Revise ratings'));
+      var orig = DJ.ratingOf(r, 'original'), last = DJ.ratingOf(r, 'latest'), ln = DJ.norm(last);
+      sec.appendChild(h('p', null, 'Original (' + date(orig.at) + '): ' + describe(orig) + ' · initial review time ' + DJ.fmtDur(r.active_s)));
+      if (r.ratings.length > 1) sec.appendChild(h('p', null, 'Latest (' + date(last.at) + '): ' + describe(last)));
+      sec.appendChild(h('ol', { class: 'hist' }, r.ratings.map(function (x) { return h('li', { text: date(x.at) + ' · ' + x.kind + ' · ' + describe(x) + (x.note ? ' · “' + x.note + '”' : '') + ' · ' + DJ.fmtDur(x.review_s) + ' reviewing' }); })));
+      if (ln.legacy) sec.appendChild(h('p', { class: 'warn', text: 'This role has one combined interest score. Re-rate to record role interest and company interest separately. Your original score stays in the history.' }));
+      sec.appendChild(h('button', { id: 'revise', class: ln.legacy ? 'primary' : '', onclick: function () { cur.revising = true; startRevision(j); render(); } }, ln.legacy ? 'Re-rate: role + company interest' : 'Revise ratings'));
       return sec;
     }
     if (j.status === 'skipped') sec.appendChild(h('p', { class: 'muted', text: 'Skipped on ' + date(j.skippedAt) + '. A skip is not a low-interest rating.' }));
-    sec.appendChild(scale('i', 'Interest Level', ['1 = I would not want this job', '5 = Moderately interesting', '10 = I would be highly excited to pursue this'], function () { return cur.ratingI; }, function (n) { cur.ratingI = n; }));
-    sec.appendChild(scale('q', 'Qualification Level', ['1 = I meet almost none of the requirements', '5 = I meet roughly half / could grow into it', '10 = I am exceptionally well qualified'], function () { return cur.ratingQ; }, function (n) { cur.ratingQ = n; }));
-    var note = h('textarea', { id: 'note', rows: 3, placeholder: 'Optional: why this reaction?' });
+    sec.appendChild(scale('r', 'Role Interest', ['1 = I would not want to do this work', '5 = Moderately interesting', '10 = I would be highly excited by this work'], function () { return cur.ratingR; }, function (n) { cur.ratingR = n; },
+      'The job itself: responsibilities, scope, seniority, day-to-day work.'));
+    sec.appendChild(scale('c', 'Company Interest', ['1 = I would not want to work for this company', '5 = Moderately interesting', '10 = I would be highly excited to work here'], function () { return cur.ratingC; }, function (n) { cur.ratingC = n; },
+      'The employer: mission, products, industry, culture, stage.'));
+    sec.appendChild(scale('q', 'Qualification Level', ['1 = I meet almost none of the requirements', '5 = I meet roughly half / could grow into it', '10 = I am exceptionally well qualified'], function () { return cur.ratingQ; }, function (n) { cur.ratingQ = n; cur.qCarried = false; var hnt = $('#qhint'); if (hnt) hnt.textContent = ''; }));
+    sec.appendChild(h('p', { class: 'muted', id: 'qhint', text: cur.qCarried ? 'Carried forward from your earlier rating. Click a different number to change it.' : '' }));
+    var note = h('textarea', { id: 'note', rows: 3, placeholder: 'Optional: why this reaction? (role, company, or both)' });
     sec.appendChild(h('label', { class: 'notel' }, 'Note (optional)', note));
     var save = h('button', { id: 'save', class: 'primary', disabled: true, onclick: function () { submit(note.value, false); } }, cur.revising ? 'Save revision' : 'Save ratings');
     var saveNext = h('button', { id: 'savenext', class: 'primary', disabled: true, onclick: function () { submit(note.value, true); } }, 'Save and next');
-    updSave = function () { var ok = cur.ratingI != null && cur.ratingQ != null; save.disabled = !ok; saveNext.disabled = !ok; };
+    updSave = function () { var ok = cur.ratingR != null && cur.ratingC != null && cur.ratingQ != null; save.disabled = !ok; saveNext.disabled = !ok; };
     var acts = h('div', { class: 'actions' }, save, saveNext);
     if (!reviewed) acts.appendChild(h('button', { id: 'skip', onclick: function () { skip(j); } }, j.status === 'skipped' ? 'Keep skipped' : 'Skip this role'));
     if (j.status === 'skipped') acts.appendChild(h('button', { onclick: function () { var nj = Object.assign({}, j, { status: 'unreviewed' }); delete nj.skippedAt; put('jobs', j.id, nj).then(function () { S.jobs[j.id] = nj; render(); }); } }, 'Return to queue'));
@@ -571,20 +614,26 @@ if (typeof module !== 'undefined') module.exports = DJ;
     sec.appendChild(acts); updSave();
     return sec;
   }
+  function pendingNext() {
+    var ok = function (x) { var jj = S.jobs[x]; if (!jj) return false; if (qkind === 'rerate') { var n = jj.status === 'reviewed' && latestNorm(x); return !!(n && n.legacy); } return (jj.status || 'unreviewed') === 'unreviewed'; };
+    var q = queue.filter(ok)[0]; if (q) return q;
+    var any = qkind === 'rerate' ? legacyJobs()[0] : unreviewedOrdered()[0]; return any ? any.id : null;
+  }
   function submit(note, next) {
-    var id = cur.id, j = S.jobs[id], I = cur.ratingI, Q = cur.ratingQ, revising = cur.revising;
-    if (I == null || Q == null) return;
+    var id = cur.id, j = S.jobs[id], R = cur.ratingR, C = cur.ratingC, Q = cur.ratingQ, carried = cur.qCarried, revising = cur.revising;
+    if (R == null || C == null || Q == null) return;
     var f = foldSession('submit'), t = nowIso();
-    var rev = DJ.appendRating(f.review, I, Q, note, t, revising ? f.sec : 0); delete rev.open_session;
+    var entry = { roleInterest: R, companyInterest: C, qualification: Q, qualificationCarried: carried };
+    var rev = DJ.appendRating(f.review, entry, note, t, revising ? f.sec : 0); delete rev.open_session;
     var nj = Object.assign({}, j, { status: 'reviewed' });
-    if (!revising || !j.reviewedAt) { nj.reviewedAt = t; nj.ratingOriginal = { interest: I, qualification: Q }; }
-    nj.ratingLatest = { interest: I, qualification: Q };
+    if (!revising || !j.reviewedAt) { nj.reviewedAt = t; nj.ratingOriginal = { roleInterest: R, companyInterest: C, qualification: Q }; }
+    nj.ratingLatest = { roleInterest: R, companyInterest: C, qualification: Q };
     clearInterval(tick); tick = null;
     S.reviews[id] = rev; S.jobs[id] = nj;
     put('reviews', id, rev).then(function () { return put('jobs', id, nj); }).then(function () {
       toast(revising ? 'Revision appended. Original ratings kept.' : 'Ratings saved.');
       cur = null;
-      if (next) { var q = queue.filter(function (x) { return S.jobs[x] && S.jobs[x].status !== 'reviewed' && S.jobs[x].status !== 'skipped'; }); var n = q[0] || (unreviewedOrdered()[0] || {}).id; if (n) return openJob(n); toast('Queue finished. No unreviewed roles left.'); }
+      if (next) { var n = pendingNext(); if (n) return openJob(n, qkind === 'rerate'); toast(qkind === 'rerate' ? 'All roles re-rated.' : 'Queue finished. No unreviewed roles left.'); }
       view = next ? 'table' : 'record'; if (!next) { cur = { id: id, revising: false, timer: null }; } render();
     }).catch(function () { });
   }
@@ -679,24 +728,32 @@ if (typeof module !== 'undefined') module.exports = DJ;
 
   /* ---------- analysis ---------- */
   function summarize(rows, keysFn) { return DJ.groupMeans(rows, keysFn, 5); }
-  function groupTable(title, g, total) {
+  function groupTable(title, g, metric) {
+    metric = metric || 'Mean role interest';
     var sec = h('section', { class: 'rep' }, h('h3', { text: title }));
     if (!g.groups.length) { sec.appendChild(h('p', { class: 'muted', text: 'No usable data (' + g.missing + ' of ' + g.total + ' missing/Unknown).' })); return sec; }
-    sec.appendChild(h('div', { class: 'tablewrap' }, h('table', { class: 'small' }, h('thead', null, h('tr', null, ['Group', 'n', 'Mean interest', 'Rated 8–10', 'Rated 1–3', 'Signal'].map(function (x) { return h('th', { text: x }); }))),
+    sec.appendChild(h('div', { class: 'tablewrap' }, h('table', { class: 'small' }, h('thead', null, h('tr', null, ['Group', 'n', metric, 'Rated 8–10', 'Rated 1–3', 'Signal'].map(function (x) { return h('th', { text: x }); }))),
       h('tbody', null, g.groups.map(function (x) { return h('tr', null, h('td', { text: x.key }), h('td', { class: 'num', text: x.n }), h('td', { class: 'num', text: x.mean.toFixed(1) }), h('td', { class: 'num', text: x.high }), h('td', { class: 'num', text: x.low }), h('td', { text: x.tentative ? 'tentative (n<5)' : 'n≥5' })); })))));
     sec.appendChild(h('p', { class: 'muted', text: 'Missing/Unknown: ' + g.missing + ' of ' + g.total + '. Descriptive means only; groups overlap and are not causal.' }));
     return sec;
   }
   function analysisData() {
-    var rows = dataset(ui.mode), n = rows.length, out = { mode: ui.mode, n: n, preliminary: n < 100, generatedAt: nowIso(), policyVersions: Object.keys(S.policies), cutoff: rows.reduce(function (m, r) { return r.at > m ? r.at : m; }, '') };
+    var rows = dataset(ui.mode), n = rows.length, out = { mode: ui.mode, n: n, legacyExcluded: Object.keys(S.jobs).filter(function (id) { return S.jobs[id].status === 'reviewed'; }).length - n, preliminary: n < 100, generatedAt: nowIso(), policyVersions: Object.keys(S.policies), cutoff: rows.reduce(function (m, r) { return r.at > m ? r.at : m; }, '') };
     out.groups = {
       'Role family': DJ.groupMeans(rows, function (r) { return r.job.roleFamily || []; }, 5), 'Seniority': DJ.groupMeans(rows, function (r) { return [r.job.seniority]; }, 5),
       'Industry': DJ.groupMeans(rows, function (r) { return [r.co.industry]; }, 5), 'Business model (B2B/B2C)': DJ.groupMeans(rows, function (r) { return [r.co.model]; }, 5),
       'Ownership': DJ.groupMeans(rows, function (r) { return [r.co.ownership]; }, 5), 'Company stage': DJ.groupMeans(rows, function (r) { return [r.co.stage]; }, 5),
       'Work arrangement': DJ.groupMeans(rows, function (r) { return [r.job.arrangement]; }, 5), 'Location': DJ.groupMeans(rows, function (r) { return [r.job.location]; }, 5)
     };
-    var I = rows.map(function (r) { return r.interest; }), Q = rows.map(function (r) { return r.qual; });
-    out.corrIQ = DJ.spearman(I, Q);
+    out.companyGroups = {
+      'Industry': DJ.groupMeans(rows, function (r) { return [r.co.industry]; }, 5, 'companyInterest'), 'Business model (B2B/B2C)': DJ.groupMeans(rows, function (r) { return [r.co.model]; }, 5, 'companyInterest'),
+      'Ownership': DJ.groupMeans(rows, function (r) { return [r.co.ownership]; }, 5, 'companyInterest'), 'Company stage': DJ.groupMeans(rows, function (r) { return [r.co.stage]; }, 5, 'companyInterest'),
+      'Company': DJ.groupMeans(rows, function (r) { return [r.job.company]; }, 2, 'companyInterest')
+    };
+    var I = rows.map(function (r) { return r.interest; }), Q = rows.map(function (r) { return r.qual; }), CI = rows.map(function (r) { return r.companyInterest; });
+    out.corrIQ = DJ.spearman(I, Q); out.corrRC = DJ.spearman(I, CI); out.corrCQ = DJ.spearman(CI, Q);
+    out.quad2 = {}; rows.forEach(function (r) { var k = DJ.quadrant2(r.interest, r.companyInterest); (out.quad2[k] = out.quad2[k] || []).push(r); });
+    out.gap = DJ.mean(rows.map(function (r) { return r.interest - r.companyInterest; }));
     out.quad = {}; rows.forEach(function (r) { var q = DJ.quadrant(r.interest, r.qual); (out.quad[q] = out.quad[q] || []).push(r); });
     var sal = rows.filter(function (r) { return r.job.salary && /usd|\$/i.test((r.job.salary.currency || '') + (r.job.salary.text || '')) && DJ.annualMid(r.job.salary) != null; });
     out.salary = { usableN: sal.length, disclosedAny: rows.filter(function (r) { return DJ.fmtSalary(r.job.salary) !== 'Not disclosed'; }).length, corr: DJ.spearman(sal.map(function (r) { return DJ.annualMid(r.job.salary); }), sal.map(function (r) { return r.interest; })),
@@ -715,32 +772,38 @@ if (typeof module !== 'undefined') module.exports = DJ;
     main.appendChild(h('div', { class: 'toolbar' }, h('h2', { text: 'Analysis' }),
       h('select', { id: 'amode', 'aria-label': 'Rating version', onchange: function (e) { ui.mode = e.target.value; render(); } }, [['latest', 'Latest ratings'], ['original', 'Original ratings']].map(function (o) { return h('option', { value: o[0], selected: ui.mode === o[0] }, o[1]); })),
       h('button', { id: 'snap', onclick: function () { saveSnapshot(d); } }, 'Save report snapshot')));
-    main.appendChild(h('p', { class: d.preliminary ? 'warn' : 'okmsg', text: (d.preliminary ? 'Preliminary: ' : 'Full report: ') + d.n + ' completed unique roles (' + ui.mode + ' ratings). ' + (d.preliminary ? 'The first full report unlocks at 100.' : '') }));
-    if (d.n < 3) { main.appendChild(h('p', { class: 'muted', text: 'Rate a few roles to see patterns. Interest is the primary outcome; qualification is analyzed separately.' })); return; }
+    main.appendChild(h('p', { class: d.preliminary ? 'warn' : 'okmsg', text: (d.preliminary ? 'Preliminary: ' : 'Full report: ') + d.n + ' completed unique roles (' + ui.mode + ' ratings). ' + (d.preliminary ? 'The first full report unlocks at 100.' : '') + (d.legacyExcluded > 0 ? ' ' + d.legacyExcluded + ' reviewed role(s) have only the earlier combined-interest score in this view and are excluded; re-rate them to include them.' : '') }));
+    if (d.n < 3) { main.appendChild(h('p', { class: 'muted', text: 'Rate a few roles to see patterns. Role interest and company interest are the primary outcomes; qualification is analyzed separately.' })); return; }
     var mx = Math.max.apply(null, d.dist.concat([1]));
-    main.appendChild(h('section', { class: 'rep' }, h('h3', { text: 'Interest distribution (1–10)' }), h('div', { class: 'dist' }, d.dist.map(function (c, i) { return h('div', { class: 'dcol' }, h('div', { class: 'dbar', style: 'height:' + (c / mx * 80) + 'px', title: c + ' roles' }), h('span', { text: String(i + 1) }), h('small', { text: String(c) })); }))));
-    Object.keys(d.groups).forEach(function (k) { main.appendChild(groupTable('Mean interest by ' + k, d.groups[k])); });
+    main.appendChild(h('section', { class: 'rep' }, h('h3', { text: 'Role interest distribution (1–10)' }), h('div', { class: 'dist' }, d.dist.map(function (c, i) { return h('div', { class: 'dcol' }, h('div', { class: 'dbar', style: 'height:' + (c / mx * 80) + 'px', title: c + ' roles' }), h('span', { text: String(i + 1) }), h('small', { text: String(c) })); }))));
+    Object.keys(d.groups).forEach(function (k) { main.appendChild(groupTable('Mean role interest by ' + k, d.groups[k])); });
+    Object.keys(d.companyGroups).forEach(function (k) { main.appendChild(groupTable('Mean company interest by ' + k, d.companyGroups[k], 'Mean company interest')); });
+    var q2 = d.quad2;
+    main.appendChild(h('section', { class: 'rep' }, h('h3', { text: 'Role interest vs company interest' }),
+      h('p', { text: 'Spearman correlation (role, company): ' + (d.corrRC == null ? 'n/a (need ≥ 5)' : d.corrRC.toFixed(2)) + '. Mean role minus company interest: ' + (d.gap == null ? 'n/a' : d.gap.toFixed(1)) + '. Cut points: ≥ 7. Company interest repeats for roles at the same employer, so treat company patterns as tentative until more employers are rated.' }),
+      h('div', { class: 'quads' }, ['High role / high company', 'High role / lower company', 'Lower role / high company', 'Lower role / lower company'].map(function (k) {
+        var a = q2[k] || []; return h('div', { class: 'quad' }, h('b', { text: k }), h('div', { class: 'big', text: a.length }), h('small', { text: a.slice(0, 3).map(function (r) { return r.job.company + ': ' + r.job.title; }).join(' · ') || 'none' })); }))));
     var q = d.quad;
-    main.appendChild(h('section', { class: 'rep' }, h('h3', { text: 'Interest vs qualification' }),
-      h('p', { text: 'Spearman correlation (interest, qualification): ' + (d.corrIQ == null ? 'n/a (need ≥ 5)' : d.corrIQ.toFixed(2)) + '. Quadrant cut points: interest ≥ 7, qualification ≥ 7.' }),
+    main.appendChild(h('section', { class: 'rep' }, h('h3', { text: 'Role interest vs qualification' }),
+      h('p', { text: 'Spearman correlation (role interest, qualification): ' + (d.corrIQ == null ? 'n/a (need ≥ 5)' : d.corrIQ.toFixed(2)) + '. Quadrant cut points: role interest ≥ 7, qualification ≥ 7. Company interest vs qualification: ' + (d.corrCQ == null ? 'n/a' : d.corrCQ.toFixed(2)) + '.' }),
       h('div', { class: 'quads' }, ['High interest / high qualification', 'High interest / lower qualification', 'Lower interest / high qualification', 'Lower interest / lower qualification'].map(function (k) {
         var a = q[k] || []; return h('div', { class: 'quad' }, h('b', { text: k }), h('div', { class: 'big', text: a.length }), h('small', { text: a.slice(0, 3).map(function (r) { return r.job.company + ': ' + r.job.title; }).join(' · ') || 'none' })); }))));
     main.appendChild(h('section', { class: 'rep' }, h('h3', { text: 'Compensation' }),
-      h('p', { text: 'Published salary present on ' + d.salary.disclosedAny + ' of ' + d.n + ' roles; ' + d.salary.usableN + ' have a USD annualizable range. Rank correlation with interest: ' + (d.salary.corr == null ? 'n/a' : d.salary.corr.toFixed(2)) + '. Mean interest when salary disclosed ' + (d.salary.meanDisclosed == null ? 'n/a' : d.salary.meanDisclosed.toFixed(1)) + ' vs not disclosed ' + (d.salary.meanUndisclosed == null ? 'n/a' : d.salary.meanUndisclosed.toFixed(1)) + '. Undisclosed salaries are never imputed; disclosure itself varies by employer and location and can bias this.' })));
+      h('p', { text: 'Published salary present on ' + d.salary.disclosedAny + ' of ' + d.n + ' roles; ' + d.salary.usableN + ' have a USD annualizable range. Rank correlation with role interest: ' + (d.salary.corr == null ? 'n/a' : d.salary.corr.toFixed(2)) + '. Mean role interest when salary disclosed ' + (d.salary.meanDisclosed == null ? 'n/a' : d.salary.meanDisclosed.toFixed(1)) + ' vs not disclosed ' + (d.salary.meanUndisclosed == null ? 'n/a' : d.salary.meanUndisclosed.toFixed(1)) + '. Undisclosed salaries are never imputed; disclosure itself varies by employer and location and can bias this.' })));
     var hi = d.themes.highGroup, lo = d.themes.lowGroup;
-    main.appendChild(h('section', { class: 'rep' }, h('h3', { text: 'High (8–10) vs low (1–3) interest' }),
+    main.appendChild(h('section', { class: 'rep' }, h('h3', { text: 'High (8–10) vs low (1–3) role interest' }),
       h('p', { text: 'Group sizes: ' + hi + ' high, ' + lo + ' low. Sensitivity: ' + d.sens.map(function (s) { return s.high + ' vs ' + s.low + ' → ' + s.highN + '/' + s.lowN; }).join('; ') + '.' }),
       hi && lo ? h('div', { class: 'tablewrap' }, h('table', { class: 'small' }, h('thead', null, h('tr', null, ['Theme in description', '% of high', '% of low', 'Gap', 'Signal'].map(function (x) { return h('th', { text: x }); }))),
         h('tbody', null, d.themes.themes.filter(function (t) { return t.highN + t.lowN > 0; }).map(function (t) { return h('tr', null, h('td', { text: t.theme }), h('td', { class: 'num', text: pct(t.highPct) + ' (' + t.highN + ')' }), h('td', { class: 'num', text: pct(t.lowPct) + ' (' + t.lowN + ')' }), h('td', { class: 'num', text: t.diff == null ? 'n/a' : Math.round(t.diff * 100) + ' pts' }), h('td', { text: t.tentative ? 'tentative (<5 postings)' : 'supported' })); })))) : h('p', { class: 'muted', text: 'Need both a high and a low group to compare themes.' })));
     main.appendChild(h('section', { class: 'rep' }, h('h3', { text: 'Early vs recent, and sourcing cohorts' }),
       h('p', { text: 'First half of reviews: mean ' + (d.early.mean == null ? 'n/a' : d.early.mean.toFixed(1)) + ' (n=' + d.early.n + '); second half: ' + (d.recent.mean == null ? 'n/a' : d.recent.mean.toFixed(1)) + ' (n=' + d.recent.n + '). A change may reflect which jobs were sourced under each policy version rather than a shift in your preferences.' })));
-    main.appendChild(groupTable('Mean interest by sourcing-policy version', d.cohorts));
+    main.appendChild(groupTable('Mean role interest by sourcing-policy version', d.cohorts));
     main.appendChild(h('p', { class: 'muted', text: 'Resume versions, skill priorities, role clusters and the narrative report are produced by Claude on request (“Analyze my ratings”) from this same dataset and saved under Saved reports. Review duration is context only, not a measure of interest.' }));
   }
   function saveSnapshot(d) {
     var id = 'r_' + nowIso().replace(/[-:T.Z]/g, '').slice(0, 14);
     var lite = JSON.parse(JSON.stringify(d, function (k, v) { return typeof v === 'function' ? undefined : (k === 'job' || k === 'co') ? undefined : v; }));
-    ['quad'].forEach(function (k) { var o = {}; Object.keys(d[k]).forEach(function (q) { o[q] = d[k][q].map(function (r) { return r.id; }); }); lite[k] = o; });
+    ['quad', 'quad2'].forEach(function (k) { var o = {}; Object.keys(d[k]).forEach(function (q) { o[q] = d[k][q].map(function (r) { return r.id; }); }); lite[k] = o; });
     put('reports', id, { id: id, kind: 'auto-snapshot', createdAt: nowIso(), mode: d.mode, n: d.n, preliminary: d.preliminary, cutoff: d.cutoff, policyVersions: d.policyVersions, data: lite }).then(function () { toast('Snapshot saved.'); });
   }
   function renderReports() {
@@ -768,12 +831,12 @@ if (typeof module !== 'undefined') module.exports = DJ;
   function allData() { var o = { app: '10 Dream Jobs', exportedAt: nowIso(), version: 1 }; ['companies', 'jobs', 'batches', 'reviews', 'policies', 'reports', 'targets', 'settings'].forEach(function (k) { o[k] = S[k]; }); return o; }
   function csvRows() {
     return jobsList().map(function (j) {
-      var c = co(j), r = S.reviews[j.id], o = DJ.ratingOf(r, 'original'), l = DJ.ratingOf(r, 'latest'), s = j.salary || {};
+      var c = co(j), r = S.reviews[j.id], on = DJ.norm(DJ.ratingOf(r, 'original')), ln = DJ.norm(DJ.ratingOf(r, 'latest')), s = j.salary || {};
       return { job_id: j.id, company: j.company, division: j.division || '', title: j.title, role_family: (j.roleFamily || []).join('; '), seniority: j.seniority || 'Unknown', employment_type: j.employmentType || 'Unknown',
         location: j.location || 'Unknown', arrangement: j.arrangement || 'Unknown', salary_display: DJ.fmtSalary(j.salary), salary_min: s.min == null ? '' : s.min, salary_max: s.max == null ? '' : s.max, salary_currency: s.currency || '', salary_period: s.period || '', salary_basis: s.basis || '',
         industry: c.industry || 'Unknown', business_model: c.model || 'Unknown', ownership: c.ownership || 'Unknown', hq: c.hq || 'Unknown', ticker: c.ticker || '', exchange: c.exchange || '', market_cap: c.marketCap ? c.marketCap.value : '', market_cap_currency: c.marketCap ? c.marketCap.currency : '', market_cap_as_of: c.marketCap ? c.marketCap.asOf : '',
         source_url: j.sourceUrl || '', req_id: j.reqId || '', posted: j.postedDate || '', sourced: j.sourcedAt || '', verified: j.verifiedAt || '', posting_status: j.postingStatus || '', batch_id: j.batchId || '', policy_version: j.policyVersion || '',
-        status: j.status || 'unreviewed', date_reviewed: j.status === 'reviewed' ? date(j.reviewedAt) : '', original_interest: o ? o.interest : '', original_qualification: o ? o.qualification : '', latest_interest: l ? l.interest : '', latest_qualification: l ? l.qualification : '', revisions: r && r.ratings ? Math.max(0, r.ratings.length - 1) : 0, initial_active_seconds: r ? r.active_s || 0 : '', extra_active_seconds: r ? r.extra_active_s || 0 : '' };
+        status: j.status || 'unreviewed', date_reviewed: j.status === 'reviewed' ? date(j.reviewedAt) : '', original_role_interest: on && !on.legacy ? on.role : '', original_company_interest: on && !on.legacy ? on.company : '', original_combined_interest_legacy: on && on.legacy ? on.role : '', original_qualification: on ? on.qual : '', latest_role_interest: ln && !ln.legacy ? ln.role : '', latest_company_interest: ln && !ln.legacy ? ln.company : '', latest_combined_interest_legacy: ln && ln.legacy ? ln.role : '', latest_qualification: ln ? ln.qual : '', revisions: r && r.ratings ? Math.max(0, r.ratings.length - 1) : 0, initial_active_seconds: r ? r.active_s || 0 : '', extra_active_seconds: r ? r.extra_active_s || 0 : '' };
     });
   }
   function saveFile(filename, text) {

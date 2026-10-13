@@ -1,0 +1,1080 @@
+{
+ "app": "10 Dream Jobs",
+ "note": "Live snapshot before the role/company interest split. Ratings use schema 1 (one combined interest score).",
+ "version": 1,
+ "jobs": {
+  "j_148x9s81u3fnvs": {
+   "arrangement": "Remote",
+   "atsPlatform": "Greenhouse",
+   "batchId": "b001",
+   "company": "Twilio",
+   "companyId": "c_twilio",
+   "desc": "Who we are\n\nAt Twilio, we’re shaping the future of communications, all from the comfort of our homes. We deliver innovative solutions to hundreds of thousands of businesses and empower millions of developers worldwide to craft personalized customer experiences.\n\nOur dedication to remote-first work, and strong culture of connection and global inclusion means that no matter your location, you’re part of a vibrant team with diverse experiences making a global impact each day. As we continue to revolutionize how the world interacts, we’re acquiring new skills and experiences that make work feel truly rewarding. Your career at Twilio is in your hands.\n.\n\nHiring and how we work\n\nWe use Artificial Intelligence (AI) to help make our hiring process efficient. That said, every hiring decision is made by real Twilions!\n\nAlso, while we are a remote-first company, you may be asked to report in person on an ad-hoc basis for team gatherings, functional off-sites or customer meetings.\n.\n\nSee yourself at Twilio\n\nJoin the team as Twilio’s next Sr. Marketing Strategy and Analytics Manager, Social Impact.\n\nAbout the job\n\nTwilio.org is seeking a Sr. Marketing Strategy and Analytics Manager to serve as the dedicated operational business partner to our Social Impact marketing leadership. Sitting at the intersection of Go-To-Market (GTM) Strategy, marketing operations, and advanced data modeling, you won't just report on what happened, you will design the automation, attribution, and account prioritization engines that drive what happens next. This is an ideal opportunity for:\n\n• The Analytics Strategist ready to drive decisions: You have deep technical data chops (SQL, Python, modeling) but want to move beyond reporting to directly author investment proposals, influence leadership, and see your analyses translate into decisions being made.\n\n• The Specialized Marketer ready for full-lifecycle ownership: You have deep subject-matter expertise in one domain (such as demand generation, marketing ops, or lifecycle marketing) and are ready to expand your runway to own the entire marketing engine, from top-of-funnel triggers and budget allocation to field event ROI and executive scorecards.\n\nResponsibilities\n\nIn this role, you’ll:\n\n• Act as Strategic GTM Business Partner: Drive regular operating rhythms, quarterly pipeline generation (PG) OKR targets, QBR data packs, and marketing budget allocation frameworks alongside marketing leadership.\n\n• Lead Investment Proposals & Impact Modeling: Architect rigorous business cases, scenario models, and ROI forecasts to secure investment for new marketing programs; evaluate capital trade-offs across channels and stress-test the expected pipeline return and payback periods before launch.\n\n• Lead Pipeline Automation & Marketing Triggers: Design, script, and operationalize automated marketing triggers in Python/SQL notebooks to power high-converting marketing plays and feed targeted accounts directly into sales workflows.\n\n• Architect Attribution & Single Source of Truth: Own end-to-end pipeline attribution models across sales, marketing, and partner channels; maintain rep-level marketing metrics integrated directly into Frontline Manager (FLM) data packs and leadership scorecards.\n\n• Drive Account Tiering & Routing: Operationalize advanced account tiering and segmentation logic across Salesforce (SFDC) and 6sense/Segment to optimize lead routing, demand generation campaigns, and Account-Based Marketing (ABM) outreach.\n\n• Advanced Commercial Modeling: Partner with broader central data science teams on company wide marketing frameworks (like Marketing Mix Modeling), while independently owning custom scenario analysis (e.g., ASP impact of bundling, Customer Lifetime Value/LFTV cohorting, and field event ROI modeling).\n\n• Maintain & Modernize GTM Data Infrastructure: Curate and optimize our Looker, Tableau, and SFDC reporting assets, managing SQL logic via GitHub version control, dashboard glossaries, and automated data QA processes.\n\nQualifications\n\nTwilio values diverse experiences from all kinds of industries, and we encourage everyone who meets the required qualifications to apply. If your career is just starting or hasn't followed a traditional path, don't let that stop you from considering Twilio. We are always looking for people who will bring something new to the table!\n\n*Required:\n\n• 5+ years of experience in Marketing Analytics, GTM Strategy, Revenue Operations, or Business Intelligence within a high-growth B2B SaaS or technology organization.\n\n• Advanced Technical Stack: Mastery of complex SQL and proficiency in Python (or R) for data extraction, manipulation, statistical analysis, and pipeline automation.\n\n• Data Visualization & BI: Proven track record building enterprise-grade executive scorecards and self-serve dashboards in Tableau and Looker.\n\n• CRM & GTM Tech Stack Depth: Strong functional understanding of Salesforce (SFDC) data architecture, campaign hierarchies, lead routing rules, and marketing automation platforms.\n\n• Commercial Acumen & Executive Presence: Exceptional communication skills with demonstrated experience partnering directly with Director/VP-level leaders to turn data insights into operational decisions.\n\nDesired:\n\n• Experience working with customer data platforms and intent tools (e.g., Segment, 6sense, Marketo).\n\n• Experience with Marketing Modeling, multi-touch attribution, and lifetime value (CLV/LFTV) analyses.\n\n• Familiarity with Git/GitHub workflows for analytics version control.\n\n• Genuine passion or prior experience in the social impact, non-profit, or public sector technology domains.\n\nLocation\n\nThis role will be remote, but is not eligible to be hired in CA, CT, NJ, NY, PA, WA.\n\nTravel\n\nWe prioritize connection and opportunities to build relationships with our customers and each other. For this role, approximately 15% travel is anticipated to help you connect in-person in a meaningful way.\n\nWhat We Offer\n\nWorking at Twilio offers many benefits, including competitive pay, generous time off, ample parental and wellness leave, healthcare, a retirement savings program, and much more. Offerings vary by location.\n\nCompensation\n\n*Please note this role is open to candidates outside of California, Colorado, Hawaii, Illinois, Maryland, Massachusetts, Minnesota, New Jersey, New York, Vermont, Washington D.C., and Washington State. The information below is provided for candidates hired in those locations only.\n\nThe estimated pay ranges for this role are as follows:\n\n• Based in Colorado, Hawaii, Illinois, Maryland, Massachusetts, Minnesota, Vermont or Washington D.C. : $128,560 - $160,700.\n\n• Based in New York, New Jersey, Washington State, or California (outside of the San Francisco Bay area): $136,000 - $170,000.\n\n• Based in the San Francisco Bay area, California: $151,120 - $188,900.\n\n• This role may be eligible to participate in Twilio’s equity plan and corporate bonus plan. All roles are generally eligible for the following benefits: health care insurance, 401(k) retirement account, paid sick time, paid personal time off, paid parental leave.\n\nThe successful candidate’s starting salary will be determined based on permissible, non-discriminatory factors such as skills, experience, and geographic location.\n\nApplication deadline information (required for ALL US jobs)\n\nApplications for this role are intended to be accepted until October 31, 2026, but may change based on business needs.\n\nTwilio thinks big. Do you?\n\nWe like to solve problems, take initiative, pitch in when needed, and are always up for trying new things. That's why we seek out colleagues who embody our values — something we call Twilio Magic. Additionally, we empower employees to build positive change in their communities by supporting their volunteering and donation efforts.\n\nSo, if you're ready to unleash your full potential, do your best work, and be the best version of yourself, apply now! If this role isn't what you're looking for, please consider other open positions.\n\n.\n\nStay alert to recruitment fraud\n\nWe care about your safety. Scammers sometimes impersonate Twilio recruiters through fake job postings, emails, websites, or messages. Please ensure you are engaging with an official @twilio.com email address. We will never ask for payment, gift cards, cryptocurrency, or banking information during the recruiting process. We do not make job offers without a formal interview process or conduct interviews exclusively through text-based messaging apps.\n\n.\n\nTwilio is proud to be an equal opportunity employer. We do not discriminate based upon race, religion, color, national origin, sex (including pregnancy, childbirth, reproductive health decisions, or related medical conditions), sexual orientation, gender identity, gender expression, age, status as a protected veteran, status as an individual with a disability, genetic information, political views or activity, or other applicable legally protected characteristics. We also consider qualified applicants with criminal histories, consistent with applicable federal, state and local law. Qualified applicants with arrest or conviction records will be considered for employment in accordance with the Los Angeles County Fair Chance Ordinance for Employers and the California Fair Chance Act. Additionally, Twilio participates in the E-Verify program in certain locations, as required by law.",
+   "descComplete": true,
+   "division": "DotOrg",
+   "employerUrl": "https://job-boards.greenhouse.io/twilio/jobs/8189769",
+   "extraction": {
+    "completeness": "Full description retrieved from official ATS API",
+    "missing": [
+     "salary",
+     "structured responsibilities/qualifications",
+     "company size/stage"
+    ],
+    "provenance": {
+     "description": "ATS API",
+     "salary": "not published"
+    }
+   },
+   "id": "j_148x9s81u3fnvs",
+   "location": "Remote - US",
+   "policyVersion": "v1",
+   "postedDate": "2026-09-15",
+   "postingStatus": "Open (employer ATS API returned posting on verification date)",
+   "ratingLatest": {
+    "interest": 7,
+    "qualification": 4
+   },
+   "ratingOriginal": {
+    "interest": 7,
+    "qualification": 4
+   },
+   "remoteEligibility": "US remote, but the posting says it is not eligible to be hired in CA, CT, NJ, NY, PA, WA",
+   "reqId": "3543961",
+   "reviewedAt": "2026-10-13T23:29:52.729Z",
+   "roleFamily": [
+    "Marketing Analytics",
+    "Strategy"
+   ],
+   "salary": {
+    "byLocation": [
+     {
+      "currency": "USD",
+      "label": "CO, HI, IL, MD, MA, MN, VT, DC",
+      "max": 160700,
+      "min": 128560
+     },
+     {
+      "currency": "USD",
+      "label": "NY, NJ, WA, CA outside SF Bay Area",
+      "max": 170000,
+      "min": 136000
+     },
+     {
+      "currency": "USD",
+      "label": "San Francisco Bay Area",
+      "max": 188900,
+      "min": 151120
+     }
+    ],
+    "currency": "USD",
+    "max": 188900,
+    "min": 128560,
+    "period": "year",
+    "periodNote": "annual implied by magnitude; period not stated in text",
+    "text": "$128,560 - $188,900 depending on location (3 published tiers)"
+   },
+   "seniority": "Manager",
+   "seq": 5,
+   "sourceUrl": "https://job-boards.greenhouse.io/twilio/jobs/8189769",
+   "sourcedAt": "2026-10-13T15:07:19.585Z",
+   "status": "reviewed",
+   "title": "Sr. Marketing Strategy and Analytics Manager",
+   "travel": "Approximately 15% (per posting)",
+   "verifiedAt": "2026-10-13T15:07:17.995816+00:00"
+  },
+  "j_991rjv1yfkpff": {
+   "arrangement": "On-site",
+   "atsPlatform": "Ashby",
+   "batchId": "b001",
+   "company": "Notion",
+   "companyId": "c_notion",
+   "desc": "WHO WE ARE\n\nNotion is the collaborative AI workspace where teams and agents think together https://www.youtube.com/watch?v=vkpYpWfEK5s. We're building one place where your knowledge, projects, meetings, and AI tools live side by side, so work is faster, clearer, and less fragmented. Millions of individuals, small teams, and large companies run their work on Notion.\n\n\n\nNotinos (our employees) are customer zero in bringing this future of work to life. We care about craft, building things that last, and the belief that great work is still fundamentally human. Our goal isn’t to ship the next feature. Each and every team of Notinos is working to set the standard for how humans work together in the AI era. From building a business’s system of record to making and managing AI agents to automating away the busy work, we care deeply about giving our customers more time for their life’s work.\n\n\n\n\nABOUT THE ROLE:\n\nNotion is looking for an experienced Lifecycle Marketing Manager, Campaign Strategy & Execution to develop and execute campaigns that help users discover value, adopt key workflows, and deepen their use of Notion.\n\nYou'll own campaigns end to end: translating business and customer opportunities into clear strategies, defining audiences and journeys, coordinating creative and technical production, launching across email and in-product channels, and measuring incremental impact.\n\nThis role combines strategic judgment with hands-on execution. You'll partner closely with Lifecycle Marketing, Product Marketing, Product Growth, Data Science, Marketing Operations, and creative partners. You should be equally comfortable shaping a campaign brief, building a journey in Customer.io http://Customer.io, resolving execution details, and interpreting results.\n\nScope guardrails: this role owns campaign strategy, hands-on execution, cross-functional delivery, and performance analysis. It is not the primary Customer.io http://Customer.io architect or incident-response owner, a general intake coordinator, or a production-only role receiving prewritten briefs. The person should operate as an independent campaign owner who can take work from an ambiguous opportunity to a high-quality, measured launch.\n\nThis role may be based in either our San Francisco or New York City offices. We work from our offices on Mondays, Tuesdays and Thursdays (our Anchor Days) because we do our best thinking and building together in person. We’re looking for someone who’s excited to work alongside the team during those days.\n\n\n\n\nWHAT YOU'LL ACHIEVE:\n\n - Own the campaign portfolio. Independently lead a portfolio of launch, one-off, and evergreen lifecycle campaigns with clear prioritization and predictable delivery.\n\n - Turn opportunities into strategies. Translate product launches, lifecycle moments, and business priorities into clear objectives, audiences, journeys, channel plans, and success metrics.\n\n - Build high-impact lifecycle programs. Develop campaigns across onboarding, activation, adoption, collaboration, monetization, retention, and resurrection.\n\n - Execute from brief to measurement. Own audience creation, build, QA, localization, launch readiness, and post-campaign analysis across email and in-product messaging.\n\n - Improve foundational journeys. Audit existing programs and recommend which should be maintained, improved, rebuilt, or retired; lead the rebuild of priority onboarding or adoption journeys.\n\n - Raise the experimentation bar. Develop testable hypotheses and use segmentation, personalization, holdouts, and A/B tests to understand incremental impact.\n\n - Measure customer and business outcomes. Connect campaigns to activation, product adoption, collaboration, conversion, retention, or qualified sales outcomes—not only opens and clicks.\n\n - Lead cross-functional delivery. Coordinate dependencies across Product, Engineering, Data Science, Product Marketing, Marketing Operations, Demand Generation, Sales, and external partners.\n\n - Create repeatable systems. Turn recurring campaign work into templates, playbooks, and reusable operating patterns that improve quality and velocity.\n\n - Enable safe self-service. Help cross-functional partners execute effectively while maintaining Lifecycle's strategic, customer-experience, and quality standards.\n\n\n\n\nSKILLS YOU'LL NEED TO BRING:\n\n - Significant experience owning lifecycle, CRM, growth, or product-marketing campaigns from strategy through execution.\n\n - A track record of independently leading complex, cross-functional campaigns at meaningful scale.\n\n - Strong customer-journey thinking across activation, adoption, engagement, conversion, and retention.\n\n - Hands-on experience with a lifecycle platform such as Customer.io http://Customer.io, Braze, Iterable, or Salesforce Marketing Cloud.\n\n - Strong audience segmentation, personalization, experimentation, and campaign-measurement skills.\n\n - Ability to use data to prioritize opportunities, evaluate results, and change strategy; working knowledge of SQL or self-serve analytics is a plus.\n\n - Excellent project leadership: clear briefs, dependable execution, proactive risk management, and crisp stakeholder communication.\n\n - Strong editorial and customer judgment—you care about sending useful, relevant messages rather than maximizing message volume.\n\n - Comfort operating in a product-led, highly cross-functional environment with incomplete information.\n\n - Experience with B2B or product-led growth, product telemetry, in-product messaging, or AI-assisted campaign workflows is a plus.\n\n - 8+ total years relevant + transferrable experience.\n   \n   \n\n\nWHAT SUCCESS LOOKS LIKE IN THE FIRST SIX MONTHS:\n\n - Establish a clear operating rhythm for launch, one-off, and evergreen campaigns.\n\n - Independently own a meaningful portfolio from strategy through performance analysis.\n\n - Launch a materially improved onboarding, activation, or adoption journey with a defined experiment and measurement plan.\n\n - Establish consistent briefs, segmentation standards, QA, launch-readiness checks, and post-campaign readouts.\n\n - Demonstrate credible incremental movement in a product or business outcome.\n\n - Create meaningful capacity for senior Lifecycle teammates to focus on systems architecture, journey strategy, personalization, and modernization.\n\n\nNotion is committed to providing highly competitive cash compensation, equity, and benefits. The compensation offered for this role will be based on multiple factors such as location, the role’s scope and complexity, and the candidate’s experience and expertise, and may vary from the range provided below. For roles based in San Francisco or New York City, the estimated base salary range for this role is $190,000 – $220,000 per year.\n\n\n\nBy clicking “Submit Application”, I understand and agree that Notion and its affiliates and subsidiaries will collect and process my information in accordance with Notion’s Global Recruiting Privacy Policy https://notion.notion.site/Notion-Global-Recruiting-Privacy-Policy-fc3eb4e829354a26a2bb6fd5e289b550?pvs=74 and NYLL 144 https://notion.notion.site/Ashby-AI-Bias-Audit-2b0efdeead05803bbbfae159ec86c528. \n\n#LI-Onsite\n\n\n\n\n\n\nA NOTE ON AI\n\nYou don’t need deep AI expertise for every role, but we do expect every Notino to be intellectually curious, drawn to tinkering and discovery, and excited to use AI as a real collaborator in their work. For some roles, AI fluency is a core requirement — when that’s the case, we'll say so explicitly in the qualifications. People who thrive here don’t treat AI as a novelty. They use it to think better, and make their work easier for others to build on.\n\n\n\n\nEQUAL OPPORTUNITY & ACCOMMODATIONS\n\nWe hire talented people from a wide range of backgrounds. If you’re excited about this role but don’t meet every bullet, we still encourage you to apply. Notion is an equal opportunity employer and does not discriminate on the basis of any legally protected characteristic. Consistent with applicable law, we will consider for employment qualified applicants with arrest and conviction records. Notion provides reasonable accommodations during the application process; if you need one, please let your recruiter know.\n\n\n\nNotion is proud to be an equal opportunity employer. We do not discriminate in hiring or any employment decision based on race, color, religion, national origin, age, sex (including pregnancy, childbirth, or related medical conditions), marital status, ancestry, physical or mental disability, genetic information, veteran status, gender identity or expression, sexual orientation, or other applicable legally protected characteristic. Notion considers qualified applicants with criminal histories, consistent with applicable federal, state and local law. Notion is also committed to providing reasonable accommodations for qualified individuals with disabilities and disabled veterans in our job application procedures. If you need assistance or an accommodation due to a disability, please let your recruiter know.",
+   "descComplete": true,
+   "division": "Marketing",
+   "employerUrl": "https://jobs.ashbyhq.com/notion/576401b9-66e7-4407-a9e2-8aafaa590082",
+   "extraction": {
+    "completeness": "Full description from official ATS API",
+    "missing": [
+     "salary",
+     "structured responsibilities/qualifications",
+     "company size/stage"
+    ],
+    "provenance": {
+     "arrangement": "posting tag '#LI-Onsite'; the Ashby remote flag also appeared, so confirm on the posting",
+     "description": "Ashby API"
+    }
+   },
+   "id": "j_991rjv1yfkpff",
+   "location": "San Francisco, California",
+   "policyVersion": "v1",
+   "postedDate": "2026-10-02",
+   "postingStatus": "Open (employer ATS API listed posting on verification date)",
+   "ratingLatest": {
+    "interest": 9,
+    "qualification": 7
+   },
+   "ratingOriginal": {
+    "interest": 9,
+    "qualification": 7
+   },
+   "reqId": null,
+   "reviewedAt": "2026-10-13T23:28:47.252Z",
+   "roleFamily": [
+    "Lifecycle/CRM"
+   ],
+   "salary": null,
+   "seniority": "Manager",
+   "seq": 4,
+   "sourceUrl": "https://jobs.ashbyhq.com/notion/576401b9-66e7-4407-a9e2-8aafaa590082",
+   "sourcedAt": "2026-10-13T15:07:19.585Z",
+   "status": "reviewed",
+   "title": "Lifecycle Marketing Manager, Campaign Strategy & Execution",
+   "verifiedAt": "2026-10-13T15:07:17.729018+00:00"
+  },
+  "j_1xmjitu1ubq8j6": {
+   "arrangement": "Remote",
+   "atsPlatform": "Greenhouse",
+   "batchId": "b001",
+   "company": "Coinbase",
+   "companyId": "c_coinbase",
+   "desc": "Ready to do the most impactful work of your career? At Coinbase, we are uncompromising on our mission to increase economic freedom. The bar is high, the environment is intense, and we like it that way. This isn't a place for complacency, it’s a place to be pushed past your perceived limits. If you're ready to build the future of finance alongside people who refuse to settle for \"good enough,\" you belong here. Coinbase is a remote-first, but not remote-only company. Expect to get together quarterly for intense in-person working sessions called “surges.” learn more about working at Coinbase.\n\nThe brand team at Coinbase leads defining the vision for the Coinbase brand and how this can be best delivered in marketing and across the company. We see the brand as an Operating System that instructs and inspires all we do across the company. We are looking for a senior strategist to bring brand and product closer together, and ensures everything we do flows from and reinforces the Coinbase brand.\n\nWhat you’ll do:\n\n• You'll close the gap between what Coinbase promises and what customers experience by helping the brand shape and impact every surface, from GTM to product to CX. This role sits at the center of Integrated Marketing and owns how the brand travels beyond campaigns into the way we build, launch, and show up across the company.\n\n• Author creative GTM strategies for product and partner initiatives, working closely with our Product Marketing and Partnership teams, and help shape the output from these briefs\n\n• Work with product marketers and partnership marketers  to drive strategy upstream into the products we deliver and the partnerships we build and our role within them\n\nRequired Skills and Experience:\n\n• Experience setting brand and product strategy either internally at companies or at agencies\n\n• Experience in shaping go to market strategy\n\n• Experience in delivering a brand across an organization, not just inside the marketing org\n\n• Strong persuasive writing skills, comfortable in partnering with Insights to shape and design research and apply it to the problems you’re solving\n\n• Utilizes generative AI responsibly, maintaining human oversight to deliver business-ready outputs and drive measurable improvements in workflow efficiency, cost, and quality.\n\n• Demonstrates the ability to responsibly use generative AI tools and copilots (e.g., LibreChat, Gemini, Glean) in daily workflows, continuously learn as tools evolve, and apply human‑in‑the‑loop practices to deliver business‑ready outputs and drive measurable improvements in efficiency, cost, and quality.\n\n#LI-Remote\n\nPay Transparency Notice: Base salary varies by location (see range below). Total compensation may also include equity and bonus eligibility, and benefits (medical, dental, vision, 401(k)).\n\nAnnual base salary range (excluding equity and bonus):\n\n$205,785—$242,100 USD\n\n• Application Limit: Candidates may submit a maximum of 3 applications within a 6-month period.\n\n• Equal Opportunity Employer: Coinbase is an Equal Opportunity Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, national origin, disability, protected veteran status, or genetic information. Applicants with criminal histories will be considered consistent with applicable federal, state, and local laws.\n\n• US Applicants: View Employee Rights, Know Your Rights, and E-Verify Notice of Participation.\n\n• Accommodations: If you are an individual with a disability who needs a reasonable accommodation, email us your request and contact info at accommodations[at]coinbase.com. Need screen reading technology? Click here to download a free compatible screen reader and view the tutorial.\n\n• Data Privacy & Arbitration: By submitting your application, you agree to our Candidate Privacy Notice. US applicants: By submitting your application, you agree to Arbitration of Disputes.",
+   "descComplete": true,
+   "division": "Marketing & Communications",
+   "employerUrl": "https://www.coinbase.com/careers/positions/8242207?gh_jid=8242207",
+   "extraction": {
+    "completeness": "Full description retrieved from official ATS API",
+    "missing": [
+     "structured responsibilities/qualifications",
+     "company size/stage"
+    ],
+    "provenance": {
+     "description": "ATS API",
+     "salary": "ATS API pay fields"
+    }
+   },
+   "id": "j_1xmjitu1ubq8j6",
+   "location": "Remote - USA",
+   "policyVersion": "v1",
+   "postedDate": "2026-10-01",
+   "postingStatus": "Open (employer ATS API returned posting on verification date)",
+   "ratingLatest": {
+    "interest": 1,
+    "qualification": 5
+   },
+   "ratingOriginal": {
+    "interest": 1,
+    "qualification": 5
+   },
+   "remoteEligibility": "United States (location field: Remote - USA)",
+   "reqId": "3566315",
+   "reviewedAt": "2026-10-13T16:37:18.548Z",
+   "roleFamily": [
+    "Brand"
+   ],
+   "salary": {
+    "basis": "base salary",
+    "currency": "USD",
+    "max": 242100,
+    "min": 205785,
+    "period": "year",
+    "text": "$205,785—$242,100 USD (annual base salary, excluding equity and bonus)"
+   },
+   "seniority": "Manager",
+   "seq": 3,
+   "sourceUrl": "https://job-boards.greenhouse.io/coinbase/jobs/8242207",
+   "sourcedAt": "2026-10-13T15:07:19.585Z",
+   "status": "reviewed",
+   "title": "Senior Marketing Manager, Brand Strategy",
+   "verifiedAt": "2026-10-13T15:07:17.477384+00:00"
+  },
+  "j_heqnwpm8v9c9": {
+   "arrangement": "On-site",
+   "atsPlatform": "Greenhouse",
+   "batchId": "b001",
+   "company": "Duolingo",
+   "companyId": "c_duolingo",
+   "desc": "Our mission at Duolingo is to develop the best education in the world and make it universally available. It’s a big mission, and that’s where you come in!\n\nAt Duolingo, you’ll join a team that cares about educating our users, experimenting with big ideas, making fact-based decisions, and finding innovative solutions to complex problems. You’ll have limitless learning opportunities and daily collaborations with world-class minds — while doing work that’s both meaningful and fun.\n\nJoin our life-changing mission to develop education for our half a billion (and growing!) learners around the world.\n\nRead our blog to learn more.\n\nAbout the role...\n\nWe are building a world-class marketing organization at Duolingo with the goal to make a significant impact on the company's rapid global growth. For this growing team, we're looking for a curious marketing analytics manager to help us build the foundations of measuring and understanding the impact of our media spend. You will play a key role in enabling data-driven marketing campaigns for Duolingo.\n\n🧠  You will...\n\n• Create data-driven insights about the impact of our global performance marketing campaigns\n\n• Develop new approaches to grow our user base through data-driven marketing optimization\n\n• Partner with our data science team to better understand our new user cohorts and user behaviors\n\n• Act as a thought partner in defining marketing key performance indicators and tracking progress against target metrics\n\n• Mold data from multiple sources to answer key strategic marketing questions\n\n• Partner with marketing tech to influence and prototype backend data design, build intuitive and readable dashboards using visualization tools (e.g., Tableau), and extract actionable insights\n\n• Bridge analytics and marketing, speaking both languages\n\n✅  You have...\n\n• Minimum of a Bachelor's degree in Statistics, Mathematics, Economics, or another related STEM degree field\n\n• Experience as a marketing analyst working with data from digital campaigns, including using data to inform strategic campaign decisions\n\n• Strong ability to condense complex concepts and analysis into clear and concise takeaways that drive action\n\n• Strong expertise using SQL to extract, clean, and transform data in large, complex, nested, databases\n\n• Proficiency with data visualization tools such as Tableau or Data Studio for data analysis, insight synthesis and presentation\n\n• Demonstrated strong intellectual curiosity\n\n• Able to work in our New York office\n\n⭐  Exceptional candidates will have...\n\n• Hands-on experience running and optimizing digital app install campaigns\n\n• Expertise working with R, Python, or  other statistical software\n\n• An impressive Duolingo XP or streak!\n\nThe offered salary is dependent upon several factors, including work experience, skills, and internal peer comparisons. The posted range is subject to change in the future. For this role, base salary is supplemented by equity compensation. We encourage you to talk with your recruiter for more information related to compensation for this role!\n\nSalary Range:\n\n$154,700—$209,300 USD\n\nBenefits: Take a peek at how we care for our employees' holistic well-being with our benefits here.\n\nJob Alerts: Sign up for job alerts here.\n\nAccommodations: We will do everything we can within reason to make sure that your interview takes place in an environment that fairly and accurately assesses your skills. If you need assistance or accommodation, please contact accommodations@duolingo.com.\n\nEqual Employment Opportunity: Duolingo is proud to be an Equal Employment Opportunity employer. We do not discriminate based upon race, religion, color, national origin, gender (including pregnancy, childbirth, or related medical conditions), sexual orientation, gender identity, gender expression, age, status as a protected veteran, status as an individual with a disability, or other applicable legally protected characteristics.\n\nFraud Warning: Unfortunately, there is a rise in scammers pretending to be real Duolingo employees. Duolingo and our employees will never ask for your Social Security number, bank details, or passport info, and we’ll never ask you to deposit a check, purchase equipment, or exchange money during the interview process. Real Duolingo employees always use an email that ends in @duolingo.com or @recruiting.duolingo.com. Stay alert and double-check these details before sharing any information.\n\nBy applying for this position your data will be processed as per the Duolingo Applicant Privacy Notice.",
+   "descComplete": true,
+   "division": "Marketing and Communications",
+   "employerUrl": "https://careers.duolingo.com/jobs/8759720002?gh_jid=8759720002",
+   "extraction": {
+    "completeness": "Full description from official ATS API",
+    "missing": [
+     "structured responsibilities/qualifications",
+     "company size/stage"
+    ],
+    "provenance": {
+     "arrangement": "posting text: 'Able to work in our New York office'",
+     "description": "Greenhouse API",
+     "salary": "Greenhouse pay field and posting text"
+    }
+   },
+   "id": "j_heqnwpm8v9c9",
+   "location": "New York, NY",
+   "policyVersion": "v1",
+   "postedDate": "2026-08-28",
+   "postingStatus": "Open (employer ATS API returned posting on verification date)",
+   "ratingLatest": {
+    "interest": 10,
+    "qualification": 8
+   },
+   "ratingOriginal": {
+    "interest": 10,
+    "qualification": 8
+   },
+   "reqId": "6503995002",
+   "reviewedAt": "2026-10-13T23:26:42.980Z",
+   "roleFamily": [
+    "Marketing Analytics"
+   ],
+   "salary": {
+    "basis": "not stated (base vs total compensation)",
+    "currency": "USD",
+    "max": 209300,
+    "min": 154700,
+    "period": "year",
+    "periodNote": "annual implied by magnitude; period not stated in text",
+    "text": "$154,700—$209,300 USD"
+   },
+   "seniority": "Manager",
+   "seq": 1,
+   "sourceUrl": "https://job-boards.greenhouse.io/duolingo/jobs/8759720002",
+   "sourcedAt": "2026-10-13T15:07:19.585Z",
+   "status": "reviewed",
+   "title": "Senior Marketing Analytics Manager",
+   "verifiedAt": "2026-10-13T15:07:16.926875+00:00"
+  },
+  "j_o6u4u71j4nw5b": {
+   "arrangement": "Unknown",
+   "atsPlatform": "Ashby",
+   "batchId": "b001",
+   "company": "Plaid",
+   "companyId": "c_plaid",
+   "desc": "We believe that the way people interact with their finances will drastically improve in the next few years. We’re dedicated to empowering this transformation by building the tools and experiences that thousands of developers use to create their own products. Plaid powers the tools millions of people rely on to live a healthier financial life. We work with thousands of companies like Venmo, SoFi, several of the Fortune 500, and many of the largest banks to make it easy for people to connect their financial accounts to the apps and services they want to use. Plaid’s network covers 12,000 financial institutions across the US, Canada, UK and Europe. Founded in 2013, the company is headquartered in San Francisco with offices in New York, Seattle, Washington D.C., Raleigh, London, and Amsterdam.\n\nThe Head of Product Marketing will own the end-to-end strategy, operating model, performance bar, and talent development for the Product Marketing function at Plaid.\n\n \n\nThis leader will:\n\nSet the PMM Strategy & Operating Model\n\n - Own and operationalize the PMM structure (Product Areas and Industry)  ￼\n\n - Finalize and institutionalize the PMM operating model￼\n\n - Define clear “PMM does / PMM does not” guardrails\n\n - Clarify cross-functional engagement norms with Product, GTM, Marketing, Comms\n\n - Establish KPI frameworks that tie PMM work to measurable business impact\n\n \n\n Elevate Quality & Narrative Coherence\n\n - Own Plaid’s central product narrative￼\n\n - Raise the messaging and positioning bar across all products\n\n - Ensure consistent product naming, positioning discipline, and storytelling rigor \n\n \n\nDrive Business Impact\n\n - Partner with Product on product-market fit strategy￼\n\n - Partner with GTM leadership to increase:\n   \n   - Quota attainment\n   \n   - Time to close\n   \n   - Campaign lift for priority industries  ￼\n\n - Ensure launch discipline, release alignment, and post-launch optimization\n\n\n\n\nBuild and Develop a Championship PMM Team\n\n - Directly manage senior PMM leads\n\n - Reset expectations where unclear scope exists\n\n - Upgrade performance management and leveling rigor ￼\n\n - Coach senior ICs and managers toward executive-grade PMM craft\n\n - Recruit and calibrate top-tier PMM talent\n\n\n\n\nServe as Executive Interface\n\n - Act as senior thought partner to: CMO, CEO/CPO, COO and Sales Leadership\n\n - Represent PMM in executive decision-making forums\n\n \n\nRequirements\n\n - Minimum 10 years of experience in product marketing leadership at high growth B2B SaaS companies.\n\n - Experience managing large, multi-layered teams (15+)\n\n - Proven success as a Product Marketing leader at a B2B SaaS company of similar scale\n\n - Has built and led a team of world-class product marketers \n\n - Success in a multi-dimensional phase of marketing maturity: multi-product / solution, multi-segment, multi-buyer\n\n - Is a builder - has been successful as a leader in a start-up / small company experience \n\n - Low ego, high EQ\n\n\"Nice to Have\" Experience\n\n - Domain experience: payments, credit, fintech, bank start-up\n\n - Experience working with / selling into financial institutions / banks\n\n - Experience marketing in a regulated environment\n\n - Experience in founder-led environments\n\n - Experience with PMM ‘rebrands’\n\nOur mission at Plaid is to unlock financial freedom for everyone. To support that mission, we seek to build a diverse team of driven individuals who care deeply about making the financial ecosystem more equitable. We recognize that strong qualifications can come from both prior work experiences and lived experiences. We encourage you to apply to a role even if your experience doesn't fully match the job description. We are always looking for team members that will bring something unique to Plaid!\n\n\n\nPlaid is proud to be an equal opportunity employer and values diversity at our company. We do not discriminate based on race, color, national origin, ethnicity, religion or religious belief, sex (including pregnancy, childbirth, or related medical conditions), sexual orientation, gender, gender identity, gender expression, transgender status, sexual stereotypes, age, military or veteran status, disability, or other applicable legally protected characteristics. We also consider qualified applicants with criminal histories, consistent with applicable federal, state, and local laws. Plaid is committed to providing reasonable accommodations for candidates with disabilities in our recruiting process. If you need any assistance with your application or interviews due to a disability, please let us know at accommodations@plaid.com.\n\n\n\nPlease review our Candidate Privacy Notice here https://plaid.com/legal/#candidate-privacy-notice.\n\n\nAdditional compensation in the form(s) of equity and/or commission are dependent on the position offered. Plaid provides a comprehensive benefit plan, including medical, dental, vision, and 401(k). Pay is based on factors such as (but not limited to) scope and responsibilities of the position, candidate's work experience and skillset, and location. Pay and benefits are subject to change at any time, consistent with the terms of any applicable compensation or benefit plans.",
+   "descComplete": true,
+   "division": "All Departments",
+   "employerUrl": "https://jobs.ashbyhq.com/plaid/9245bee1-0902-417f-968f-a174bf4bdf2c",
+   "extraction": {
+    "completeness": "Full description retrieved from official ATS API",
+    "missing": [
+     "reqId",
+     "structured responsibilities/qualifications",
+     "company size/stage"
+    ],
+    "provenance": {
+     "description": "ATS API",
+     "salary": "ATS API pay fields"
+    }
+   },
+   "id": "j_o6u4u71j4nw5b",
+   "location": "San Francisco HQ",
+   "policyVersion": "v1",
+   "postedDate": "2026-03-24",
+   "postingStatus": "Open (employer ATS API listed posting on verification date)",
+   "ratingLatest": {
+    "interest": 9,
+    "qualification": 3
+   },
+   "ratingOriginal": {
+    "interest": 9,
+    "qualification": 3
+   },
+   "remoteEligibility": "Not stated (Ashby remote flag is set; location listed as San Francisco HQ)",
+   "reqId": null,
+   "reviewedAt": "2026-10-13T23:27:52.281Z",
+   "roleFamily": [
+    "Product Marketing"
+   ],
+   "salary": {
+    "basis": "not stated; Plaid says equity and/or commission are additional",
+    "max": 400000,
+    "min": 230000,
+    "text": "$230K – $400K"
+   },
+   "seniority": "VP+",
+   "seq": 2,
+   "sourceUrl": "https://jobs.ashbyhq.com/plaid/9245bee1-0902-417f-968f-a174bf4bdf2c",
+   "sourcedAt": "2026-10-13T15:07:19.585Z",
+   "status": "reviewed",
+   "title": "Head of Product Marketing",
+   "verifiedAt": "2026-10-13T15:07:17.141084+00:00"
+  },
+  "j_z3y7l1wxrllx": {
+   "arrangement": "Remote",
+   "atsPlatform": "Greenhouse",
+   "batchId": "b001",
+   "company": "Wikimedia Foundation",
+   "companyId": "c_wikimedia-foundation",
+   "desc": "HEAD OF MARKETING\n\nReports to: Senior Director of External Communications\n\nSummary\n\nThe Wikimedia Foundation is looking for an experienced Head of Marketing to help establish and oversee a new function responsible for product and integrated marketing.\n\nThe Wikimedia Foundation is the non-profit that hosts Wikipedia and other Wikimedia projects. Product marketing is a new function being established at the Foundation, and the Head of Marketing will help build it from the ground up. They will bring our existing integrated marketing work together with this new capability into one unified function that will help ensure Wikipedia remains visible and relevant to generations of readers around the world.\n\nPositioned within the External Communications team, this senior manager level role will collaborate with Foundation stakeholders to shape our go-to-market approach. While the primary audience focus for the role is readers, they will also help develop a unified view of audience engagement across the Foundation’s external audiences.\n\nThis role is remote and open to candidates across UTC+2 to UTC-4 (Central European through Eastern Time). Given the globally distributed nature of the team and role requirements, flexibility outside standard hours should be expected.\n\nKey responsibilities will include:\n\nProduct marketing leadership\n\n• Work with the Senior Director of External Communications to help establish product marketing as an emerging function, developing the processes and go-to-market approach needed to engage new external audiences.\n\n• Recruit and lead team members overseeing product marketing, ensuring alignment with strategy and organisational needs.\n\n• Lead coordination with Foundation departments to establish a shared approach to external audience engagement, and campaign planning.\n\n• Bring a retention and lifetime-engagement lens to product marketing planning.\n\n• Develop a foundation for product marketing metrics including audience growth, campaign impact, adoption/retention improvement, stronger brand awareness, or clearer GTM process.\n\n• Establish strong commercial judgement within the audience and competitive landscape, able to identify and prioritise market needs and balance that with corresponding product features.\n\nBrand and channel marketing\n\n• Partner with the Brand Studio and Brand Management team to develop a shared global brand marketing approach.\n\n• Line-manage team members responsible for integrated and performance marketing, including paid media and owned digital experiences.\n\n• Collaborate with Insights and Brand Studio on developing new marketing briefs, staffing for new projects, and development of campaigns and activations that grow global brand visibility, likeability, and awareness.\n\n• Ensure strategic alignment between the briefs product marketing produces and how the wider marketing and communications team adopts them.\n\n• Oversee the development and execution of the Foundation's web, SEO/GEO, and app store strategy as core organic growth channels.\n\n• Architect and oversee decisions on marketing technology and tooling, ensuring seamless data integration between CRM platforms, martech systems, product analytics tools, and communication channels.\n\n• Stay at the forefront of trends, platform shifts, emerging channels, and marketing tools.\n\nTeam leadership\n\n• Experience leading and line managing a multidisciplinary marketing team.\n\n• Actively managing priorities across the dual remit of product marketing and integrated marketing, ensuring sufficient attention is directed to both.\n\n• Overseeing and managing relationships with external agencies.\n\nSkills and experience\n\n• 12+ years of marketing experience, including significant knowledge of product marketing (at least 5 years in a b2c setting), and line management of multi-disciplinary teams.\n\n• Experience at a major website, online publisher/platform, growing and engaging audiences at scale globally.\n\n• Experience building product messaging and value propositions, with global audience segmentation and lifecycle marketing experience.\n\n• Ability to adapt tone, voice, and message across different cultural contexts.\n\n• Experience in agile, fast-paced, complex, and ambiguous marketing environments, comfortable balancing both a hands on and strategic approach, while handling long-term strategy building with short-term performance demands.\n\n• Experience in leading through influence and collaboration to drive alignment across teams and departments.\n\n• Experience developing and overseeing a multichannel strategy across paid, owned, and earned media.\n\n• Ability to operate as a peer with internal stakeholders.\n\n• Experience with campaign analytics, with the ability to translate data into shared strategic decisions.\n\n• Direct experience evaluating or implementing marketing technology, such as CRM or audience and campaign data platforms.\n\n• Experience working remotely and across multiple time zones and emerging markets, including leading a distributed team.\n\n• Budget management experience.\n\nWe’d also love it if you have\n\n• Curiosity and enthusiasm for the Wikimedia mission.\n\nAbout the Wikimedia Foundation\n\nThe Wikimedia Foundation is the nonprofit organization that operates Wikipedia and the other Wikimedia free knowledge projects. Our vision is a world in which every single human can freely share in the sum of all knowledge. We believe that everyone has the potential to contribute something to our shared knowledge, and that everyone should be able to access that knowledge freely. We host Wikipedia and the Wikimedia projects, build software experiences for reading, contributing, and sharing Wikimedia content, support the volunteer communities and partners who make Wikimedia possible, and advocate for policies that enable Wikimedia and free knowledge to thrive.\n\nThe Wikimedia Foundation is a charitable, not-for-profit organization that relies on donations. We receive donations from millions of individuals around the world, with an average donation of about $15. We also receive donations through institutional grants and gifts. The Wikimedia Foundation is a United States 501(c)(3) tax-exempt organization with offices in San Francisco, California, USA.\n\nAs an equal opportunity employer, the Wikimedia Foundation values having a diverse workforce and continuously strives to maintain an inclusive and equitable workplace. We encourage people with a diverse range of backgrounds to apply. We do not discriminate against any person based upon their race, traits historically associated with race, religion, color, national origin, sex, pregnancy or related medical conditions, parental status, sexual orientation, gender identity, gender expression, age, status as a protected veteran, status as an individual with a disability, genetic information, or any other legally protected characteristics.\n\nThe Wikimedia Foundation is a remote-first organization with staff members including contractors based 40+ countries*. Salaries at the Wikimedia Foundation are set in a way that is competitive, equitable, and consistent with our values and culture. The anticipated annual pay range of this position for applicants based within the United States is US$143,478 to US$217,585 with multiple individualized factors, including cost of living in the location, being the determinants of the offered pay. For applicants located outside of the US, the pay range will be adjusted to the country of hire. We neither ask for nor take into consideration the salary history of applicants. The compensation for a successful applicant will be based on their skills, experience and location.\n\n*Please note that we are currently able to hire in the following:\nUS States: Arizona, California, Colorado, Connecticut, District of Columbia*, Florida, Georgia, Idaho, Illinois, Indiana, Iowa, Maryland, Massachusetts, Michigan, Minnesota, Missouri, New Jersey, New Mexico, New York, North Carolina, Ohio, Oklahoma, Oregon, Pennsylvania, Puerto Rico*, Rhode Island, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia, Wisconsin and Wyoming (*US Territory or Federal District)\n\nCountries: Brazil, Canada, Colombia, France, Germany, Ghana, India, Indonesia, Italy, Kenya*, Mexico, Morocco, Netherlands, Poland, Singapore*, South Africa, Spain, Switzerland and the United Kingdom. Our non-US employees are hired through a local third party Employer of Record (EOR) and must have current work authorization in their location. (*citizens/permanent residents only)\n\nWe periodically review this list to streamline to ensure alignment with our hiring requirements.\n\nAll applicants can reach out to their recruiter to understand more about the specific pay range for their location during the interview process.\n\nIf you are a qualified applicant requiring assistance or an accommodation to complete any step of the application process due to a disability, you may contact us at recruiting@wikimedia.org or +1 (415) 839-6885.\n\nMore information\n\nU.S. Benefits & Perks\n\nApplicant Privacy Policy\n\nWikimedia Foundation\n\nWhat does the Wikimedia Foundation do?\n\nWhat makes Wikipedia different from social media platforms?\n\nOur Projects\n\nOur Tech Stack\n\nNews from across the Wikimedia movement\n\nWikimedia Blog\n\nWikimedia 2030",
+   "descComplete": true,
+   "division": "Communications",
+   "employerUrl": "https://job-boards.greenhouse.io/wikimedia/jobs/8127761",
+   "extraction": {
+    "completeness": "Full description from official ATS API; role family classified by Claude from a generic title",
+    "missing": [
+     "salary",
+     "structured responsibilities/qualifications",
+     "company size/stage"
+    ],
+    "provenance": {
+     "description": "Greenhouse API",
+     "roleFamily": "Claude classification from title and description"
+    }
+   },
+   "id": "j_z3y7l1wxrllx",
+   "location": "Remote",
+   "policyVersion": "v1",
+   "postedDate": "2026-08-18",
+   "postingStatus": "Open (employer ATS API returned posting on verification date)",
+   "ratingLatest": {
+    "interest": 10,
+    "qualification": 6
+   },
+   "ratingOriginal": {
+    "interest": 10,
+    "qualification": 6
+   },
+   "remoteEligibility": "Open to candidates in UTC+2 to UTC-4 (per posting)",
+   "reqId": "3519698",
+   "reviewedAt": "2026-10-13T23:31:45.597Z",
+   "roleFamily": [
+    "Brand",
+    "Strategy"
+   ],
+   "salary": null,
+   "seniority": "VP+",
+   "seq": 7,
+   "sourceUrl": "https://job-boards.greenhouse.io/wikimedia/jobs/8127761",
+   "sourcedAt": "2026-10-13T15:07:19.585Z",
+   "status": "reviewed",
+   "title": "Head of Marketing",
+   "verifiedAt": "2026-10-13T15:07:18.407572+00:00"
+  },
+  "j_lpegdkg66xwo": {
+   "arrangement": "Hybrid",
+   "atsPlatform": "Greenhouse",
+   "batchId": "b001",
+   "company": "Lyft",
+   "companyId": "c_lyft",
+   "desc": "At Lyft, our purpose is to serve and connect. We aim to achieve this by cultivating a work environment where all team members belong and have the opportunity to thrive.\n\nThe Marketplace organization drives Lyft’s business growth and ensures our marketplace performs reliably and efficiently. Within Marketplace, the Market Insights team is responsible for the health and growth of Lyft’s top regions.\n\nWe are looking for an analyst to join the Market Insights team to identify key opportunities in these regions and influence strategy across the company. From long-term strategic decisions to weekly agile operations, you will own a range of business-critical work. You will identify our marketplace’s most critical gaps, create business and product strategies to address them, and partner with cross-functional teams to deliver impact.\n\nThe ideal candidate is proactive, has strong analytical capabilities, and can collaborate effectively across teams.\n\nResponsibilities:\n\n• Become an expert in rideshare marketplace behaviors/trends and support leadership in data-informed business strategies and decisions\n\n• Leverage data and analytics to identify problems and opportunities in Lyft’s top regions, synthesize the trends and insights, and recommend action plans\n\n• Operate within rideshare decision-making frameworks with a critical lens, evaluating areas of improvement and business growth opportunities\n\n• Partner with Data Science, Product, Engineering, and other teams to deliver business, product, and strategy improvements\n\n• Be proactive in pursuing opportunities and have a true ownership mindset to get things done\n\nExperience:\n\n• Bachelor’s degree with a focus in analytics, statistics, economics, finance, marketing, or other quantitative fields\n\n• 3+ years experience in management consulting, strategic data science/analytics roles in a technology company, or an equivalent analytical role in a high growth startup\n\n• Experience analyzing data, extracting key insights and trends, and producing actionable recommendations from the data\n\n• Ability to think strategically and tackle open-ended problems, leading to analysis, recommendations, and next steps\n\n• Experience building relationships and influence with cross-functional teams\n\n• Strong written and verbal communication skills with the ability to present findings and recommendations to different types of stakeholders, including senior leadership\n\n• Proficient in SQL and Excel/Google Sheets with strong quantitative analysis and data visualization skills\n\n• You are a self-starter, take ownership, and are proactive; you have an eagerness to identify opportunities and a drive for impact\n\nBenefits:\n\n• Great medical, dental, and vision insurance options with additional programs available when enrolled\n\n• Mental health benefits\n\n• Family building benefits\n\n• Child care and pet benefits\n\n• 401(k) plan with company match to help save for your future\n\n• In addition to 12 observed holidays, salaried team members have discretionary paid time off, hourly team members have 15 days paid time off\n\n• 18 weeks of paid parental leave. Biological, adoptive, and foster parents are all eligible\n\n• Subsidized commuter benefits\n\n• Monthly Lyft credits and complimentary Lyft Pink membership\n\nLyft is an equal opportunity employer committed to an inclusive workplace that fosters belonging. All qualified applicants will receive consideration for employment without regards to race, color, religion, sex, sexual orientation, gender identity, national origin, disability status, protected veteran status, age, genetic information, or any other basis prohibited by law. We also consider qualified applicants with criminal histories consistent with applicable federal, state and local law.\n\nLyft highly values having employees working in-office to foster a collaborative work environment and company culture. This role will be in-office on a hybrid schedule — Team Members will be expected to work in the office 3 days per week on Mondays, Wednesdays, and Thursdays. Lyft considers working in the office at least 3 days per week to be an essential function of this hybrid role. Your recruiter can share more information about the various in-office perks Lyft offers. Additionally, hybrid roles have the flexibility to work from anywhere for up to 4 weeks per year. #Hybrid\n\nThe expected base pay range for this position in the San Francisco area is $118,000 - $147,500, not inclusive of potential equity offering, bonus or benefits. Salary ranges are dependent on a variety of factors, including qualifications, experience and geographic location. Your recruiter can share more information about the salary range specific to your working location and other factors during the hiring process.",
+   "descComplete": true,
+   "division": "Central Market Management & AI",
+   "employerUrl": "https://app.careerpuck.com/job-board/lyft/job/8503985002?gh_jid=8503985002",
+   "extraction": {
+    "completeness": "Full description from official ATS API; salary and hybrid arrangement taken from the posting text",
+    "missing": [
+     "division",
+     "structured responsibilities/qualifications",
+     "company size/stage"
+    ],
+    "provenance": {
+     "arrangement": "posting text: 'in-office on a hybrid schedule'",
+     "description": "Greenhouse API",
+     "salary": "posting text"
+    }
+   },
+   "id": "j_lpegdkg66xwo",
+   "location": "San Francisco, CA",
+   "policyVersion": "v1",
+   "postedDate": "2026-04-14",
+   "postingStatus": "Open (employer ATS API returned posting on verification date)",
+   "ratingLatest": {
+    "interest": 7,
+    "qualification": 5
+   },
+   "ratingOriginal": {
+    "interest": 7,
+    "qualification": 5
+   },
+   "reqId": "6396743002",
+   "reviewedAt": "2026-10-13T23:27:25.346Z",
+   "roleFamily": [
+    "Consumer Insights",
+    "Marketing Analytics"
+   ],
+   "salary": {
+    "basis": "base salary",
+    "currency": "USD",
+    "max": 147500,
+    "min": 118000,
+    "period": "year",
+    "periodNote": "annual implied by magnitude; period not stated in text",
+    "text": "$118,000 - $147,500 (expected base pay, San Francisco area; excludes equity, bonus, benefits)"
+   },
+   "seniority": "Manager",
+   "seq": 0,
+   "sourceUrl": "https://job-boards.greenhouse.io/lyft/jobs/8503985002",
+   "sourcedAt": "2026-10-13T15:07:19.585Z",
+   "status": "reviewed",
+   "title": "Analytics Lead, Market Insights",
+   "verifiedAt": "2026-10-13T15:07:16.342533+00:00"
+  },
+  "j_8qxe1ymndqkm": {
+   "arrangement": "Mixed",
+   "atsPlatform": "Greenhouse",
+   "batchId": "b001",
+   "company": "Stripe",
+   "companyId": "c_stripe",
+   "desc": "Who we are\n\nAbout Stripe\n\nStripe is a financial infrastructure platform for businesses. Millions of companies - from the world’s largest enterprises to the most ambitious startups - use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone's reach while doing the most important work of your career.\n\nAbout the team\n\nThe Partner Marketing team extends Stripe’s marketing reach to customers and prospects by educating, engaging, and enabling partners, globally, to build market awareness and generate demand for their Stripe solutions and services. We recruit prospective partners and support the on-boarding and growth of existing partners as they build, launch, market, and scale business through the Stripe Partner Ecosystem and the Stripe platform. We partner closely with our global partnerships, GTM, marketing, and product teams and serve many different partner types.\n\nWhat you’ll do\n\nWe’re looking for an experienced, creative, results-oriented marketer to lead our Global Scale Partner Marketing strategy and team. You will be directly responsible for a global scale marketing team of 6, in addition to 15-20 contracted marketing coordinators with a dotted-line reporting relationship. This role leads defining our scaled operating model and partner marketing investment model across our to, through, and with partner marketing functions. This individual will develop and lead a team that creates the strategy and executes: to partner communications, Stripe-led events & our Partner Advisory Board, online & field events (inclusive of designing and managing a shared resource of marketing coordinators for regional execution), campaign content, Partner program strategy & partner journeys, and market development funds (MDF) & incentive design.\n\nWe are looking for a candidate that can develop the new operating model, form this new, integrated partner marketing function, and deliver a shared global service across multiple Global Partner Segments. This role will have the opportunity to build out the strategy and scale growth plan for our partner marketing segments globally and locally, innovating marketing approaches to maximize ROI. This team's programs will generate demand, accelerate GTM pipeline, and strengthen partner relationships globally, supporting Stripe’s mission of increasing the GDP of the internet.\n\nResponsibilities\n\n• Set and communicate a clear vision, strategy, and operating model for the newly created scale partner marketing organization, with functions on the team including:\n\n• To-partner communications: Lead the development of to-partner value propositions aligned by partner type, an editorial calendar inclusive of omnichannel tactics and governance process working across partner marketing, sales, product, and marketing.\n\n• Stripe-led events & Partner Advisory Board: Lead partner strategy for Stripe’s flagship event Sessions, Stripe Tour, tier one industry events and develop and lead a Partner Advisory Board program.\n\n• Online & field events: Lead the development of a global online and regional event engine to drive consistency & efficiency in execution, inclusive of developing a capacity model and event calendar in partnership with partner marketing segment leaders.\n\n• Campaign content: Lead the development of Partner co-marketing materials aligned to our Stripe campaign roadmap, determining the prioritization based on to-partner value proposition & opportunity, ensuring content stays updated at all times, and innovating on content based on partner usage data.\n\n• Partner program strategy & partner journeys: Develop the partner journey by partner type and tier across the partner lifecycle to inform Partner Program requirements, prioritize those requirements, and lead the brand and marketing of the Stripe Partner Ecosystem.\n\n• MDF & incentive design: Develop, implement and manage a MDF program and incentives that motivates partners to exceed the growth objectives of our product and sales segments. Create a partner benefits program leveraging funds matched by Stripe that allows partners to easily extend Stripe’s distribution through marketing campaigns.\n\n• Manage, coach, and develop a high-performing team of partner marketers; create an inclusive, accountable team culture and identify opportunities to grow leadership capability across the organization. Build strong senior relationships across Partner Marketing Segment Leads, Campaigns, Regional Marketing, Demand Generation, Field Marketing, Partnerships, and other stakeholder teams; resolve cross-functional tradeoffs, resourcing gaps, and execution blockers\n\n• Establish rigorous measurement and learning practices for partner marketing, synthesizing performance across marketing engines to identify the levers that most effectively drive customer acquisition, activation, and partner impact—and share those insights broadly\n\nWho you are\n\nWe're looking for someone who meets the minimum requirements to be considered for the role. If you meet these requirements, you are encouraged to apply. The preferred qualifications are a bonus, not a requirement.\n\nMinimum requirements\n\n• 15+ years of relevant B2B partner marketing experience\n\n• 5+ years of direct people management experience, including managing managers and building teams of 5+ people\n\n• Experience working as part of a global marketing team with execution across different regions\n\n• Proven ability to influence and guide the partner’s marketing leadership team to align on objectives and deliver against joint marketing priorities and plans\n\n• Strong written and verbal communication skills that demonstrate proven leadership capabilities and ability to collaborate cross-functionally\n\n• Experience shaping value proposition and messaging framework\n\n• Demonstrated experience in measuring and improving the ROI of marketing investments through marketing engines\n\n• Deep understanding of the user journey through and with a partner channel and funnel, sales cycle and product lifecycle and their respective requirements on the partner marketing organization to drive attach, growth and revenue\n\n• Superb organization and project management skills and the capacity to manage multiple complex projects at once\n\n• Experience in managing distributed teams across different timezones\n\n• Excellent analytical skills and the ability to craft actionable insights from complex data\n\nPreferred qualifications\n\n• Experience in the payments, financial technology, or adjacent industries or marketing FinTech solutions\n\n• Experience at a highly dynamic, high-growth tech company\n\n• Experience with demand generation marketing or product marketing",
+   "descComplete": true,
+   "division": "2316 Marketing - Partner",
+   "employerUrl": "https://stripe.com/jobs/search?gh_jid=8175627",
+   "extraction": {
+    "completeness": "Full description from official ATS API",
+    "missing": [
+     "salary",
+     "structured responsibilities/qualifications",
+     "company size/stage"
+    ],
+    "provenance": {
+     "arrangement": "posting lists several office cities plus 'Remote in the US'",
+     "description": "Greenhouse API"
+    }
+   },
+   "id": "j_8qxe1ymndqkm",
+   "location": "San Francisco, Seattle, New York, Chicago, Atlanta, Remote in the US",
+   "policyVersion": "v1",
+   "postedDate": "2026-09-17",
+   "postingStatus": "Open (employer ATS API returned posting on verification date)",
+   "ratingLatest": {
+    "interest": 7,
+    "qualification": 3
+   },
+   "ratingOriginal": {
+    "interest": 7,
+    "qualification": 3
+   },
+   "reqId": "3538236",
+   "reviewedAt": "2026-10-13T23:32:24.620Z",
+   "roleFamily": [
+    "Partnerships",
+    "Product Marketing"
+   ],
+   "salary": null,
+   "seniority": "Manager",
+   "seq": 8,
+   "sourceUrl": "https://job-boards.greenhouse.io/stripe/jobs/8175627",
+   "sourcedAt": "2026-10-13T15:07:19.585Z",
+   "status": "reviewed",
+   "title": "Scale Partner Marketing Lead",
+   "verifiedAt": "2026-10-13T15:07:18.898027+00:00"
+  },
+  "j_16j8mnuzb52nu": {
+   "arrangement": "Remote",
+   "atsPlatform": "Greenhouse",
+   "batchId": "b001",
+   "company": "Mozilla Corporation",
+   "companyId": "c_mozilla-corporation",
+   "desc": "Why Mozilla?\n\nMozilla Corporation is the non-profit-backed technology company that has shaped the internet for the better over the last 25 years. We make pioneering brands like Firefox, the privacy-minded web browser. Now, with more than 225 million people around the world using our products each month, we’re shaping the next 25 years of technology and helping to reclaim an internet built for people, not companies. Our work focuses on diverse areas including AI, social media, security and more. And we’re doing this while never losing our focus on our core mission – to make the internet better for people.\n\nThe Mozilla Corporation is wholly owned by the non-profit 501(c) Mozilla Foundation. This means we aren’t beholden to any shareholders — only to our mission. Along with thousands of volunteer contributors and collaborators all over the world, Mozillians design, build and distribute open-source software that enables people to enjoy the internet on their terms.\n\nAbout this team and role:\n\nIn the past few years, Marketing has emerged as a key vector and focus of Firefox’s growth, with Data Science playing an essential role in evaluating Marketing’s impact and developing clear strategies to ensure that success. Marketing Data Science supports Firefox through the standard fare of marketing (ongoing measurement, experimentation/lift testing, adhoc analysis, forecasting/budget optimization), and beyond that as thought leaders at Firefox in translating broad goals into clearly defined objectives and identifying the path towards succeeding in them.\n\nIn this role, you will continue to build on the Marketing team’s recent successes as Firefox’s Marketing program continues to expand its footprint throughout the funnel. You’ll look to support this success in owning global data strategy for Firefox Marketing, developing new data capabilities to unlock future business growth, collaborating with Data Science counterparts in other domains domains, and working closely across marketing and adjacent cross-functional teams to translate your team’s work into practical recommendations and enablement that drive Firefox’s growth.\n\nWhat you’ll do:\n\n• Set the strategy and roadmap for Marketing Data Science, prioritizing the highest-impact opportunities with key partners.\n\n• Establish goals and measurement approaches for attribution, ROI, and campaign performance; deliver insights that improve marketing investment and outcomes.\n\n• Lead and develop the team’s core capabilities across:\n\n• Performance marketing: budget optimization, causal lift measurement, and conversion-signal testing\n\n• Brand marketing: measurement planning and assessment of long-term and lower-funnel impact\n\n• User insights: retention/LTV modeling and audience segmentation\n\n• Reporting and infrastructure: build self-service dashboards, deliver ad hoc and executive reporting, and develop scalable data models and internal tools that expand our understanding of the acquisition landscape.\n\n• Bring a forward-looking perspective on advertising, media innovation, and marketing analytics methods.\n\n• Partner with Data Science leaders to evaluate and responsibly adopt emerging AI tools that improve team workflows and impact.\n\nWhat you’ll bring:\n\n• 6+ years of marketing data science experience, ideally at a media agency or in-house marketing organization.\n\n• Proficiency with marketing analytics tools, including Google Analytics and advertising platforms, and familiarity with modeling methods such as MMM, causal lift/synthetic control, saturation modeling, optimization, and Bayesian approaches.\n\n• Proven experience leading, mentoring, and developing talent, with strong stakeholder management and the ability to prioritize multiple complex workstreams.\n\n• Strong storytelling and communication skills, with the ability to tailor data-driven insights and recommendations to different audiences.\n\nWhat you’ll get:\n\n• Generous performance-based bonus plans to all eligible employees - we share in our success as one team\n\n• Rich medical, dental, and vision coverage\n\n• Generous retirement contributions with 100% immediate vesting (regardless of whether you contribute)\n\n• Quarterly all-company wellness days where everyone takes a pause together\n\n• Country specific holidays plus a day off for your birthday\n\n• One-time home office stipend\n\n• Annual professional development budget\n\n• Quarterly well-being stipend\n\n• Considerable paid parental leave\n\n• Employee referral bonus program\n\n• Other benefits (life/AD&D, disability, EAP, etc. - varies by country)\n\nAbout Mozilla\n\nMozilla exists to build the Internet as a public resource accessible to all because we believe that open and free is better than closed and controlled. When you work at Mozilla, you give yourself a chance to make a difference in the lives of Web users everywhere. And you give us a chance to make a difference in your life every single day. Join us to work on the Web as the platform and help create more opportunity and innovation for everyone online.\n\nCommitment to diversity, equity, inclusion, and belonging\n\nMozilla understands that valuing diverse creative practices and forms of knowledge are crucial to and enrich the company’s core mission.  We encourage applications from everyone, including members of all equity-seeking communities, such as (but certainly not limited to) women, racialized and Indigenous persons, persons with disabilities, persons of all sexual orientations, gender identities, and expressions.\n\nWe will ensure that qualified individuals with disabilities are provided reasonable accommodations to participate in the job application or interview process, to perform essential job functions, and to receive other benefits and privileges of employment, as appropriate. Please contact us at hiringaccommodation@mozilla.com to request accommodation.\n\nWe are an equal opportunity employer. We do not discriminate on the basis of race (including hairstyle and texture), religion (including religious grooming and dress practices), gender, gender identity, gender expression, color, national origin, pregnancy, ancestry, domestic partner status, disability, sexual orientation, age, genetic predisposition, medical condition, marital status, citizenship status, military or veteran status, or any other basis covered by applicable laws.  Mozilla will not tolerate discrimination or harassment based on any of these characteristics or any other unlawful behavior, conduct, or purpose.\n\nGroup: D\n\n#LI-REMOTE\n\nReq ID: R3211\n\nHiring Ranges:\n\nUS Tier 1 Locations\n\n$195,000—$260,000 USD\n\nUS Tier 2 Locations\n\n$179,000—$239,000 USD\n\nUS Tier 3 Locations\n\n$166,000—$221,000 USD",
+   "descComplete": true,
+   "division": "Core Services",
+   "employerUrl": "https://job-boards.greenhouse.io/mozilla/jobs/8139403",
+   "extraction": {
+    "completeness": "Full description retrieved from official ATS API",
+    "missing": [
+     "structured responsibilities/qualifications",
+     "company size/stage"
+    ],
+    "provenance": {
+     "description": "ATS API",
+     "salary": "ATS API pay fields"
+    }
+   },
+   "id": "j_16j8mnuzb52nu",
+   "location": "Remote US",
+   "policyVersion": "v1",
+   "postedDate": "2026-08-25",
+   "postingStatus": "Open (employer ATS API returned posting on verification date)",
+   "ratingLatest": {
+    "interest": 9,
+    "qualification": 4
+   },
+   "ratingOriginal": {
+    "interest": 9,
+    "qualification": 4
+   },
+   "remoteEligibility": "US remote (location field: Remote US)",
+   "reqId": "3519339",
+   "reviewedAt": "2026-10-13T23:33:08.618Z",
+   "roleFamily": [
+    "Marketing Analytics",
+    "Consumer Insights"
+   ],
+   "salary": {
+    "byLocation": [
+     {
+      "currency": "USD",
+      "label": "US Tier 1",
+      "max": 260000,
+      "min": 195000
+     },
+     {
+      "currency": "USD",
+      "label": "US Tier 2",
+      "max": 239000,
+      "min": 179000
+     },
+     {
+      "currency": "USD",
+      "label": "US Tier 3",
+      "max": 221000,
+      "min": 166000
+     }
+    ],
+    "currency": "USD",
+    "max": 260000,
+    "min": 166000,
+    "period": "year",
+    "periodNote": "annual implied by magnitude; period not stated in text",
+    "text": "US Tier 1: $195,000—$260,000; Tier 2: $179,000—$239,000; Tier 3: $166,000—$221,000 USD"
+   },
+   "seniority": "Manager",
+   "seq": 9,
+   "sourceUrl": "https://job-boards.greenhouse.io/mozilla/jobs/8139403",
+   "sourcedAt": "2026-10-13T15:07:19.585Z",
+   "status": "reviewed",
+   "title": "Marketing Data Science Manager",
+   "verifiedAt": "2026-10-13T15:07:19.107789+00:00"
+  },
+  "j_1w82cnj1eoiojz": {
+   "arrangement": "Unknown",
+   "atsPlatform": "Greenhouse",
+   "batchId": "b001",
+   "company": "Squarespace",
+   "companyId": "c_squarespace",
+   "desc": "Squarespace is reshaping how we go to market, and this role sits right at the center. As Director of GTM & Growth Marketing, you will partner closely with our GMs and product leaders across a growing portfolio. You will design and run the system that brings every launch to market with clarity, speed, and impact.\n\nThis is a senior role for a hands-on operator and systems architect. Rather than managing individual campaigns, you will build the overarching GTM playbook - defining the upstream briefs, channel strategies, financial models, and feedback loops that make the marketing engine run smarter and faster over time. Working alongside PMM, Brand, Media, and GM partners, you'll ensure every product launch delivers a unified story across all customer touchpoints.\n\nYou will lead a team of senior growth marketing managers and serve as the main GTM contact across key business lines. Partnering directly with GMs, you will drive growth, maintain momentum, and raise the bar for our go-to-market execution.\n\nYou’ll Get To…\n\n• Build and own the GTM playbook. Define market priorities, channel logic, and financial assumptions in upstream briefs, and establish clear standards for how launches run company-wide.\n\n• Shape content strategy and creative direction with Brand, PMM, and Creative teams so every campaign presents a clear, compelling narrative across the entire funnel.\n\n• Act as the primary GTM contact for product portfolio GMs, aligning channel execution around shared goals and clear business outcomes.\n\n• Manage GTM resources across business lines, establishing trade-offs and priorities based on strategic growth targets.\n\n• Partner with international and organic growth teams to align global briefs and expand distribution.\n\n• Collaborate across marketing and media teams to sharpen campaign briefs and measure the direct business impact of marketing spend.\n\n• Incorporate market, competitive, and customer intelligence directly into positioning and GTM plans.\n\n• Build post-launch feedback loops that actively inform the next brief.\n\n• Drive team efficiency by streamlining workflows, using modern tooling, and grounding capacity requests in clear evidence.\n\nWho We’re Looking For\n\n• 12+ years of experience in growth marketing or GTM, with a track record of building global-scale GTM systems from the ground up - not just executing campaigns within one.\n\n• Experience across both B2C consumer marketing and B2B or sales-assisted models, with the flexibility to adapt strategy across different selling motions, ICPs, and go-to-market approaches depending on the product and audience.\n\n• Proven experience building or scaling global GTM playbooks, with an understanding of how regional channel dynamics and localization affect strategy.\n\n• Experience managing GTM in multi-product or multi-business-unit environments with competing resource demands.\n\n• Has built from scratch, not just inherited - comfortable operating in environments where the playbook, the process, and the operating model are things you create, not things you receive\n\n• Strong systems thinker who can spot process or organizational gaps quickly and build effective solutions.\n\n• Strong strategic range - equally comfortable setting high-level strategy with GMs and ensuring quality execution across teams.\n\n• Credible enough to push back, reframe, and redirect senior stakeholders without positional authority doing the work.\n\n• Fluent in AI tools and can use them to compress planning cycles, synthesize performance data, and challenge capacity constraints.\n\nBenefits & Perks\n\n• A choice between medical plans with an option for 100% covered premiums\n\n• Fertility and adoption benefits\n\n• Access to supplemental insurance plans for additional coverage\n\n• Headspace mindfulness app subscription\n\n• Global Employee Assistance Program\n\n• Retirement benefits with employer match\n\n• Flexible paid time off\n\n• 12 weeks paid parental leave and family care leave\n\n• Pretax commuter benefit\n\n• Education reimbursement\n\n• Employee donation match to community organizations\n\n• 7 Global Employee Resource Groups (ERGs)\n\n• Dog-friendly workplace\n\n• Free lunch and snacks\n\n• Private rooftop\n\n• Hack week twice per year\n\nCash Compensation Range: $203,500 - $327,750 USD\n\nThe base salary for this position will vary based on job-related criteria including relevant skills, experience, and location, among other factors.\n\nIn addition to the cash compensation above (which includes base salary and, where applicable for eligible roles, may include overtime pay), Squarespace employees are eligible to be granted an option to purchase our common stock. Sales positions generally offer a competitive On Target Earnings (OTE) incentive structure in addition to base salary.\n\nAbout Squarespace\n\nSquarespace is a design-driven platform helping entrepreneurs build brands and businesses online. We empower millions of customers in more than 200 countries and territories with all the tools they need to create an online presence, build an audience, monetize, and scale their business. Our suite of products range from websites, domains, ecommerce, and marketing tools, as well as tools for scheduling with Acuity and creating and managing social media presence with Bio Sites and Unfold. Our team of more than 1,700 is headquartered in New York City, with offices in Dublin, Ireland, and Aveiro, Portugal. For more information about our company, visit https://www.squarespace.com/about/careers.\n\nOur Commitment\n\nToday, more than a million people around the globe use Squarespace to share different perspectives and experiences with the world. Not only do we embrace and celebrate the diversity of our customer base, but we also strive for the same in our employees. At Squarespace, we are committed to equal employment opportunity regardless of race, color, ethnicity, ancestry, religion, national origin, gender, sex, gender identity or expression, sexual orientation, age, citizenship, marital or parental status, disability, veteran status, or other class protected by applicable law. We are proud to be an equal opportunity workplace.\n\nThank you in advance for providing the following details about your work history from your resume! This helps us ensure that your candidate information is accurate and consistent during the hiring process.\n\nSquarespace will never solicit your personal banking information or ask you to transfer money in connection with a job offer or interview. We also will not reach out to you via phone or SMS without your permission or knowledge.\n\nIf you plan to use AI in any capacity during your candidate journey, please review our Candidate AI Policy.",
+   "descComplete": true,
+   "division": "Marketing",
+   "employerUrl": "http://www.squarespace.com/about/careers?gh_jid=8174807",
+   "extraction": {
+    "completeness": "Full description retrieved from official ATS API",
+    "missing": [
+     "salary",
+     "structured responsibilities/qualifications",
+     "company size/stage"
+    ],
+    "provenance": {
+     "description": "ATS API",
+     "salary": "not published"
+    }
+   },
+   "id": "j_1w82cnj1eoiojz",
+   "location": "New York City",
+   "policyVersion": "v1",
+   "postedDate": "2026-09-15",
+   "postingStatus": "Open (employer ATS API returned posting on verification date)",
+   "ratingLatest": {
+    "interest": 10,
+    "qualification": 7
+   },
+   "ratingOriginal": {
+    "interest": 10,
+    "qualification": 7
+   },
+   "reqId": "3537933",
+   "reviewedAt": "2026-10-13T23:30:49.265Z",
+   "roleFamily": [
+    "Growth",
+    "Strategy"
+   ],
+   "salary": {
+    "basis": "cash compensation (split of base vs variable not stated)",
+    "currency": "USD",
+    "max": 327750,
+    "min": 203500,
+    "period": "year",
+    "periodNote": "annual implied by magnitude; period not stated in text",
+    "text": "$203,500 - $327,750 USD (cash compensation range)"
+   },
+   "seniority": "Director",
+   "seq": 6,
+   "sourceUrl": "https://job-boards.greenhouse.io/squarespace/jobs/8174807",
+   "sourcedAt": "2026-10-13T15:07:19.585Z",
+   "status": "reviewed",
+   "title": "Director, GTM & Growth Marketing",
+   "verifiedAt": "2026-10-13T15:07:18.198489+00:00"
+  }
+ },
+ "reviews": {
+  "j_148x9s81u3fnvs": {
+   "active_s": 65,
+   "elapsed_s": 65,
+   "extra_active_s": 0,
+   "jobId": "j_148x9s81u3fnvs",
+   "ratings": [
+    {
+     "at": "2026-10-13T23:29:52.729Z",
+     "interest": 7,
+     "kind": "original",
+     "note": "",
+     "qualification": 4,
+     "review_s": 65
+    }
+   ],
+   "sessions": [
+    {
+     "active_s": 65,
+     "elapsed_s": 65,
+     "end": "2026-10-13T23:29:52.729Z",
+     "method": "page-events: visibility + idle(120s) + manual pause",
+     "pauses": [
+      "submit"
+     ],
+     "purpose": "initial",
+     "start": "2026-10-13T23:28:47.723Z"
+    }
+   ],
+   "timing_method": "page-events: visibility + idle(120s) + manual pause"
+  },
+  "j_991rjv1yfkpff": {
+   "active_s": 55,
+   "elapsed_s": 55,
+   "extra_active_s": 0,
+   "jobId": "j_991rjv1yfkpff",
+   "ratings": [
+    {
+     "at": "2026-10-13T23:28:47.252Z",
+     "interest": 9,
+     "kind": "original",
+     "note": "",
+     "qualification": 7,
+     "review_s": 55
+    }
+   ],
+   "sessions": [
+    {
+     "active_s": 55,
+     "elapsed_s": 55,
+     "end": "2026-10-13T23:28:47.252Z",
+     "method": "page-events: visibility + idle(120s) + manual pause",
+     "pauses": [
+      "submit"
+     ],
+     "purpose": "initial",
+     "start": "2026-10-13T23:27:52.660Z"
+    }
+   ],
+   "timing_method": "page-events: visibility + idle(120s) + manual pause"
+  },
+  "j_1xmjitu1ubq8j6": {
+   "active_s": 204,
+   "elapsed_s": 5198,
+   "extra_active_s": 0,
+   "jobId": "j_1xmjitu1ubq8j6",
+   "ratings": [
+    {
+     "at": "2026-10-13T16:37:18.548Z",
+     "interest": 1,
+     "kind": "original",
+     "note": "Not interested in crypto",
+     "qualification": 5,
+     "review_s": 204
+    }
+   ],
+   "sessions": [
+    {
+     "active_s": 24,
+     "elapsed_s": 24,
+     "end": "2026-10-13T15:09:05.081Z",
+     "method": "page-events: visibility + idle(120s) + manual pause",
+     "pauses": [
+      "left-record"
+     ],
+     "purpose": "initial",
+     "start": "2026-10-13T15:08:41.252Z"
+    },
+    {
+     "active_s": 116,
+     "elapsed_s": 5110,
+     "end": "2026-10-13T16:34:46.066Z",
+     "method": "page-events: visibility + idle(120s) + manual pause",
+     "pauses": [
+      "hidden",
+      "hidden",
+      "hidden",
+      "idle",
+      "left-record"
+     ],
+     "purpose": "initial",
+     "start": "2026-10-13T15:09:36.069Z"
+    },
+    {
+     "active_s": 64,
+     "elapsed_s": 64,
+     "end": "2026-10-13T16:37:18.547Z",
+     "method": "page-events: visibility + idle(120s) + manual pause",
+     "pauses": [
+      "submit"
+     ],
+     "purpose": "initial",
+     "start": "2026-10-13T16:36:14.838Z"
+    }
+   ],
+   "timing_method": "page-events: visibility + idle(120s) + manual pause"
+  },
+  "j_heqnwpm8v9c9": {
+   "active_s": 103,
+   "elapsed_s": 103,
+   "extra_active_s": 0,
+   "jobId": "j_heqnwpm8v9c9",
+   "ratings": [
+    {
+     "at": "2026-10-13T23:26:42.980Z",
+     "interest": 10,
+     "kind": "original",
+     "note": "",
+     "qualification": 8,
+     "review_s": 103
+    }
+   ],
+   "sessions": [
+    {
+     "active_s": 91,
+     "elapsed_s": 91,
+     "end": "2026-10-13T17:05:25.986Z",
+     "method": "page-events: visibility + idle(120s) + manual pause",
+     "pauses": [
+      "left-record"
+     ],
+     "purpose": "initial",
+     "start": "2026-10-13T17:03:55.383Z"
+    },
+    {
+     "active_s": 12,
+     "elapsed_s": 12,
+     "end": "2026-10-13T23:26:42.980Z",
+     "method": "page-events: visibility + idle(120s) + manual pause",
+     "pauses": [
+      "submit"
+     ],
+     "purpose": "initial",
+     "start": "2026-10-13T23:26:30.937Z"
+    }
+   ],
+   "timing_method": "page-events: visibility + idle(120s) + manual pause"
+  },
+  "j_o6u4u71j4nw5b": {
+   "active_s": 27,
+   "elapsed_s": 27,
+   "extra_active_s": 0,
+   "jobId": "j_o6u4u71j4nw5b",
+   "ratings": [
+    {
+     "at": "2026-10-13T23:27:52.281Z",
+     "interest": 9,
+     "kind": "original",
+     "note": "",
+     "qualification": 3,
+     "review_s": 27
+    }
+   ],
+   "sessions": [
+    {
+     "active_s": 27,
+     "elapsed_s": 27,
+     "end": "2026-10-13T23:27:52.281Z",
+     "method": "page-events: visibility + idle(120s) + manual pause",
+     "pauses": [
+      "submit"
+     ],
+     "purpose": "initial",
+     "start": "2026-10-13T23:27:25.726Z"
+    }
+   ],
+   "timing_method": "page-events: visibility + idle(120s) + manual pause"
+  },
+  "j_z3y7l1wxrllx": {
+   "active_s": 56,
+   "elapsed_s": 56,
+   "extra_active_s": 0,
+   "jobId": "j_z3y7l1wxrllx",
+   "ratings": [
+    {
+     "at": "2026-10-13T23:31:45.597Z",
+     "interest": 10,
+     "kind": "original",
+     "note": "",
+     "qualification": 6,
+     "review_s": 56
+    }
+   ],
+   "sessions": [
+    {
+     "active_s": 56,
+     "elapsed_s": 56,
+     "end": "2026-10-13T23:31:45.597Z",
+     "method": "page-events: visibility + idle(120s) + manual pause",
+     "pauses": [
+      "submit"
+     ],
+     "purpose": "initial",
+     "start": "2026-10-13T23:30:49.701Z"
+    }
+   ],
+   "timing_method": "page-events: visibility + idle(120s) + manual pause"
+  },
+  "j_lpegdkg66xwo": {
+   "active_s": 42,
+   "elapsed_s": 42,
+   "extra_active_s": 0,
+   "jobId": "j_lpegdkg66xwo",
+   "ratings": [
+    {
+     "at": "2026-10-13T23:27:25.346Z",
+     "interest": 7,
+     "kind": "original",
+     "note": "",
+     "qualification": 5,
+     "review_s": 42
+    }
+   ],
+   "sessions": [
+    {
+     "active_s": 42,
+     "elapsed_s": 42,
+     "end": "2026-10-13T23:27:25.345Z",
+     "method": "page-events: visibility + idle(120s) + manual pause",
+     "pauses": [
+      "submit"
+     ],
+     "purpose": "initial",
+     "start": "2026-10-13T23:26:43.371Z"
+    }
+   ],
+   "timing_method": "page-events: visibility + idle(120s) + manual pause"
+  },
+  "j_8qxe1ymndqkm": {
+   "active_s": 39,
+   "elapsed_s": 39,
+   "extra_active_s": 0,
+   "jobId": "j_8qxe1ymndqkm",
+   "ratings": [
+    {
+     "at": "2026-10-13T23:32:24.620Z",
+     "interest": 7,
+     "kind": "original",
+     "note": "",
+     "qualification": 3,
+     "review_s": 39
+    }
+   ],
+   "sessions": [
+    {
+     "active_s": 39,
+     "elapsed_s": 39,
+     "end": "2026-10-13T23:32:24.619Z",
+     "method": "page-events: visibility + idle(120s) + manual pause",
+     "pauses": [
+      "submit"
+     ],
+     "purpose": "initial",
+     "start": "2026-10-13T23:31:46.115Z"
+    }
+   ],
+   "timing_method": "page-events: visibility + idle(120s) + manual pause"
+  },
+  "j_16j8mnuzb52nu": {
+   "active_s": 44,
+   "elapsed_s": 44,
+   "extra_active_s": 0,
+   "jobId": "j_16j8mnuzb52nu",
+   "ratings": [
+    {
+     "at": "2026-10-13T23:33:08.618Z",
+     "interest": 9,
+     "kind": "original",
+     "note": "",
+     "qualification": 4,
+     "review_s": 44
+    }
+   ],
+   "sessions": [
+    {
+     "active_s": 44,
+     "elapsed_s": 44,
+     "end": "2026-10-13T23:33:08.618Z",
+     "method": "page-events: visibility + idle(120s) + manual pause",
+     "pauses": [
+      "submit"
+     ],
+     "purpose": "initial",
+     "start": "2026-10-13T23:32:25.094Z"
+    }
+   ],
+   "timing_method": "page-events: visibility + idle(120s) + manual pause"
+  },
+  "j_1w82cnj1eoiojz": {
+   "active_s": 39,
+   "elapsed_s": 56,
+   "extra_active_s": 0,
+   "jobId": "j_1w82cnj1eoiojz",
+   "ratings": [
+    {
+     "at": "2026-10-13T23:30:49.265Z",
+     "interest": 10,
+     "kind": "original",
+     "note": "",
+     "qualification": 7,
+     "review_s": 39
+    }
+   ],
+   "sessions": [
+    {
+     "active_s": 39,
+     "elapsed_s": 56,
+     "end": "2026-10-13T23:30:49.265Z",
+     "method": "page-events: visibility + idle(120s) + manual pause",
+     "pauses": [
+      "hidden",
+      "submit"
+     ],
+     "purpose": "initial",
+     "start": "2026-10-13T23:29:53.178Z"
+    }
+   ],
+   "timing_method": "page-events: visibility + idle(120s) + manual pause"
+  }
+ },
+ "companies": {
+  "c_duolingo": {
+   "id": "c_duolingo",
+   "name": "Duolingo",
+   "industry": "Education technology",
+   "model": "B2C",
+   "ownership": "Public",
+   "hq": "Pittsburgh, PA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "DUOL",
+   "exchange": "NASDAQ"
+  },
+  "c_mozilla-corporation": {
+   "id": "c_mozilla-corporation",
+   "name": "Mozilla Corporation",
+   "industry": "Technology (web browser)",
+   "model": "Mixed",
+   "ownership": "Private (for-profit subsidiary of a nonprofit)",
+   "hq": "Remote-first",
+   "provenance": "Parent relationship from the posting text; other fields entered by Claude from general knowledge, unverified.",
+   "parent": {
+    "name": "Mozilla Foundation",
+    "ownership": "Nonprofit",
+    "source": "Posting text: 'wholly owned by the non-profit 501(c) Mozilla Foundation'"
+   },
+   "ticker": null,
+   "exchange": null
+  },
+  "c_lyft": {
+   "id": "c_lyft",
+   "name": "Lyft",
+   "industry": "Transportation",
+   "model": "Mixed",
+   "ownership": "Public",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "LYFT",
+   "exchange": "NASDAQ"
+  },
+  "c_coinbase": {
+   "id": "c_coinbase",
+   "name": "Coinbase",
+   "industry": "Crypto / fintech",
+   "model": "Mixed",
+   "ownership": "Public",
+   "hq": "Remote-first (US)",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "COIN",
+   "exchange": "NASDAQ"
+  },
+  "c_stripe": {
+   "id": "c_stripe",
+   "name": "Stripe",
+   "industry": "Fintech / payments",
+   "model": "B2B",
+   "ownership": "Private",
+   "hq": "San Francisco, CA and Dublin",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  },
+  "c_wikimedia-foundation": {
+   "id": "c_wikimedia-foundation",
+   "name": "Wikimedia Foundation",
+   "industry": "Nonprofit (knowledge)",
+   "model": "B2C",
+   "ownership": "Nonprofit",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  },
+  "c_squarespace": {
+   "id": "c_squarespace",
+   "name": "Squarespace",
+   "industry": "Software (web presence)",
+   "model": "Mixed",
+   "ownership": "Private",
+   "hq": "New York, NY",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  },
+  "c_notion": {
+   "id": "c_notion",
+   "name": "Notion",
+   "industry": "Software (productivity)",
+   "model": "Mixed",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  },
+  "c_twilio": {
+   "id": "c_twilio",
+   "name": "Twilio",
+   "industry": "Software (communications APIs)",
+   "model": "B2B",
+   "ownership": "Public",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "TWLO",
+   "exchange": "NYSE"
+  },
+  "c_plaid": {
+   "id": "c_plaid",
+   "name": "Plaid",
+   "industry": "Fintech (APIs)",
+   "model": "B2B",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ "batches": {
+  "b001": {
+   "date": "2026-10-13T15:07:19.585Z",
+   "requested": 10,
+   "accepted": 10,
+   "duplicatesSkipped": 0,
+   "jobIds": [
+    "j_lpegdkg66xwo",
+    "j_heqnwpm8v9c9",
+    "j_o6u4u71j4nw5b",
+    "j_1xmjitu1ubq8j6",
+    "j_991rjv1yfkpff",
+    "j_148x9s81u3fnvs",
+    "j_1w82cnj1eoiojz",
+    "j_z3y7l1wxrllx",
+    "j_8qxe1ymndqkm",
+    "j_16j8mnuzb52nu"
+   ],
+   "coverage": {
+    "roleFamilies": 8,
+    "industries": 10,
+    "maxPerCompany": 1,
+    "warnings": []
+   },
+   "id": "b001",
+   "policyVersion": "v1",
+   "criteria": "Policy v1 (exploratory). Official Greenhouse/Ashby job-board APIs only; manager through VP/head-of; deliberately spans insights, analytics, product marketing, brand, lifecycle, strategy/growth, partnerships; fintech, crypto, transportation, edtech, SaaS, nonprofit; strong-fit and stretch roles; at most 1 role per company. Geography left open (no constraints given).",
+   "note": "First batch. Salary shown only where the posting publishes it. Company facts are Claude-entered from general knowledge and marked unverified; size and market cap left Unknown.",
+   "shortfall": 0
+  }
+ },
+ "policies": {},
+ "reports": {},
+ "targets": {},
+ "settings": {}
+}

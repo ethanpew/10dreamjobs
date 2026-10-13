@@ -28,19 +28,22 @@ test('salary: undisclosed is honest; published text preserved; annualization onl
   assert.equal(DJ.annualMid(null), null);
 });
 
-test('rating history is append-only; original preserved; review_s tracked separately', () => {
-  let r = DJ.appendRating(null, 9, 4, 'love it', '2026-10-13T10:00:00Z', 0);
+test('rating history is append-only; original preserved; review_s tracked separately; legacy normalizes', () => {
+  let r = DJ.appendRating(null, { roleInterest: 9, companyInterest: 4, qualification: 4 }, 'love the work', '2026-10-13T10:00:00Z', 0);
   r.active_s = 95;
-  const r1 = DJ.appendRating(r, 9, 4, 'love it', '2026-10-13T10:00:00Z', 0); // sanity: first call on prior with ratings => revision
-  assert.equal(r1.ratings[1].kind, 'revision');
+  assert.equal(r.ratings[0].kind, 'original'); assert.equal(r.ratings[0].schema, 2);
   const before = JSON.stringify(r.ratings[0]);
-  const r2 = DJ.appendRating(r, 6, 5, 'cooled', '2026-10-20T10:00:00Z', 42);
+  const r2 = DJ.appendRating(r, { roleInterest: 6, companyInterest: 8, qualification: 5, qualificationCarried: true }, 'cooled', '2026-10-20T10:00:00Z', 42);
   assert.equal(JSON.stringify(r2.ratings[0]), before);
-  assert.equal(r2.ratings.length, 2);
-  assert.equal(r2.ratings[1].review_s, 42);
-  assert.equal(DJ.ratingOf(r2, 'original').interest, 9);
-  assert.equal(DJ.ratingOf(r2, 'latest').interest, 6);
+  assert.equal(r2.ratings.length, 2); assert.equal(r2.ratings[1].kind, 'revision'); assert.equal(r2.ratings[1].review_s, 42); assert.equal(r2.ratings[1].qualificationCarried, true);
+  assert.equal(DJ.norm(DJ.ratingOf(r2, 'original')).role, 9); assert.equal(DJ.norm(DJ.ratingOf(r2, 'latest')).company, 8);
   assert.equal(r.ratings.length, 1, 'input not mutated');
+  // legacy (schema 1): one combined interest, no company score
+  const leg = { ratings: [{ at: 't', interest: 7, qualification: 4, kind: 'original', review_s: 30 }], active_s: 30 };
+  const n = DJ.norm(DJ.ratingOf(leg, 'latest')); assert.equal(n.legacy, true); assert.equal(n.role, 7); assert.equal(n.company, null);
+  const mig = DJ.appendRating(leg, { roleInterest: 8, companyInterest: 3, qualification: 4, qualificationCarried: true }, '', 't2', 20);
+  assert.equal(mig.ratings[0].interest, 7); assert.equal(mig.ratings[1].roleInterest, 8); assert.equal(DJ.norm(DJ.ratingOf(mig, 'latest')).legacy, false);
+  assert.equal(DJ.quadrant2(9, 2), 'High role / lower company'); assert.equal(DJ.quadrant2(2, 9), 'Lower role / high company');
 });
 
 test('timer: hidden pause, resume, idle pause excludes trailing idle, accumulation', () => {
@@ -72,6 +75,8 @@ test('timer: missed idle tick (throttled timer) is detected on next activity', (
 test('groupMeans handles multi-tags, Unknown, missingness and tentative flags', () => {
   const rows = [{ interest: 9, f: ['A', 'B'] }, { interest: 3, f: ['A'] }, { interest: 8, f: ['Unknown'] }, { interest: 5, f: [] }];
   const g = DJ.groupMeans(rows, r => r.f, 2);
+  const gc = DJ.groupMeans([{ interest: 1, companyInterest: 9, f: ['X'] }, { interest: 9, companyInterest: null, f: ['X'] }], r => r.f, 1, 'companyInterest');
+  assert.equal(gc.groups[0].n, 1); assert.equal(gc.groups[0].mean, 9);   // null company interest skipped
   assert.equal(g.missing, 2);
   const a = g.groups.find(x => x.key === 'A');
   assert.equal(a.n, 2); assert.equal(a.mean, 6); assert.equal(a.tentative, false);
