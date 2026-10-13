@@ -67,7 +67,7 @@ assert.equal(rows.length, 3); assert.equal(rows.find(r => r[0] === 'Testco Beta'
 // open record, check description exactly, no preselection, order
 await page.click('tr:has-text("Testco Alpha")'); await page.waitForSelector('#jd');
 assert.equal(await page.textContent('#jd'), FIX[0].desc); ok('row opens the correct complete description (bullets preserved)');
-assert.equal(await page.$$eval('.sc.on', e => e.length), 0); assert.equal(await page.$$eval('.scale', e => e.length), 3); assert.equal(await page.isDisabled('#save'), true);
+assert.equal(await page.$$eval('.sc.on', e => e.length), 0); assert.deepEqual(await page.$$eval('.ratingrow h3', e => e.map(x => x.textContent)), ['Company Interest', 'Role Interest', 'Qualification Level']); assert.equal(await page.$$eval('.scale', e => e.length), 3); assert.equal(await page.isDisabled('#save'), true);
 const order = await page.evaluate(() => { const r = document.querySelector('article.record'); return [...r.children].map(c => c.tagName + '.' + c.className); });
 assert.match(order.join('|'), /HEADER.*desc.*rating/); ok('header, description, then rating controls; none preselected; save disabled');
 assert.match(await page.textContent('.facts'), /NASDAQ/); assert.match(await page.textContent('.facts'), /as of 2026-10-01/);
@@ -148,7 +148,7 @@ assert.match(await page.textContent('.rating'), /combined interest 7 \(earlier s
 await page.click('#nav >> text=Add roles'); await page.fill('#batchjson', JSON.stringify([{ company: 'Testco Delta', title: 'Marketing Research Director', location: 'Chicago, IL', reqId: 'T-4', sourceUrl: 'https://example.test/jobs/4', roleFamily: ['Marketing Research'], desc: 'Own research programs.', companyData: { industry: 'Software', model: 'B2B', ownership: 'Private' } }]));
 await page.click('#runbatch'); await page.waitForSelector('#importout .card'); await page.click('#nav >> text=Roles'); await page.click('text=Review next 10'); await page.waitForSelector('#r-1');
 await page.click('#r-7'); await page.click('#c-9'); await page.click('#q-6'); await page.click('#save'); await page.waitForSelector('text=Original (');
-await page.click('#nav >> text=Analysis'); assert.match(await page.textContent('#main'), /Role interest vs company interest/); assert.match(await page.textContent('#main'), /Mean company interest by Industry/); ok('analysis reports role and company interest separately');
+await page.click('#nav >> text=Analysis'); assert.match(await page.textContent('#main'), /Company interest vs role interest/); assert.match(await page.textContent('#main'), /Mean company interest by Industry/); ok('analysis reports role and company interest separately');
 await page.click('#nav >> text=Settings'); await page.click('#x_csv'); await page.waitForTimeout(150);
 const csv2 = (await page.evaluate(() => window.__downloads)).filter(d => d.filename.endsWith('.csv')).pop().data; assert.match(csv2.split('\r\n')[0], /original_combined_interest_legacy/); assert.match(csv2, /latest_company_interest/); ok('CSV has role, company and legacy columns');
 

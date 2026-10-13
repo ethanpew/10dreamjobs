@@ -562,5 +562,302 @@
    "hq": "San Francisco, CA",
    "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
   }
+ },
+ {
+  "name": "Oscar Health",
+  "slug": "oscar",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Health insurance",
+   "model": "B2C",
+   "ownership": "Public",
+   "hq": "New York, NY",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "OSCR",
+   "exchange": "NYSE"
+  }
+ },
+ {
+  "name": "Zocdoc",
+  "slug": "zocdoc",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Healthcare marketplace",
+   "model": "Mixed",
+   "ownership": "Private",
+   "hq": "New York, NY",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "SeatGeek",
+  "slug": "seatgeek",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Ticketing / live events",
+   "model": "B2C",
+   "ownership": "Private",
+   "hq": "New York, NY",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Flatiron Health",
+  "slug": "flatironhealth",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Healthcare technology (oncology)",
+   "model": "B2B",
+   "ownership": "Private (subsidiary)",
+   "hq": "New York, NY",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "parent": {
+    "name": "Roche",
+    "ownership": "Public",
+    "ticker": "ROG",
+    "exchange": "SIX Swiss Exchange",
+    "source": "general knowledge, unverified"
+   }
+  }
+ },
+ {
+  "name": "Rent the Runway",
+  "slug": "renttherunway",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Fashion rental / retail",
+   "model": "B2C",
+   "ownership": "Public",
+   "hq": "New York, NY",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "RENT",
+   "exchange": "NASDAQ"
+  }
+ },
+ {
+  "name": "Glossier",
+  "slug": "glossier",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Beauty / consumer goods",
+   "model": "B2C",
+   "ownership": "Private",
+   "hq": "New York, NY",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "SoFi",
+  "slug": "sofi",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Fintech (consumer banking)",
+   "model": "B2C",
+   "ownership": "Public",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "SOFI",
+   "exchange": "NASDAQ"
+  }
+ },
+ {
+  "name": "Affirm",
+  "slug": "affirm",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Fintech (buy now, pay later)",
+   "model": "Mixed",
+   "ownership": "Public",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "AFRM",
+   "exchange": "NASDAQ"
+  }
+ },
+ {
+  "name": "Klaviyo",
+  "slug": "klaviyo",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Software (marketing automation)",
+   "model": "B2B",
+   "ownership": "Public",
+   "hq": "Boston, MA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "KVYO",
+   "exchange": "NYSE"
+  }
+ },
+ {
+  "name": "Braze",
+  "slug": "braze",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Software (customer engagement)",
+   "model": "B2B",
+   "ownership": "Public",
+   "hq": "New York, NY",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "BRZE",
+   "exchange": "NASDAQ"
+  }
+ },
+ {
+  "name": "Mixpanel",
+  "slug": "mixpanel",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Software (product analytics)",
+   "model": "B2B",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Webflow",
+  "slug": "webflow",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Software (web design)",
+   "model": "B2B",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Sweetgreen",
+  "slug": "sweetgreen",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Restaurants / food",
+   "model": "B2C",
+   "ownership": "Public",
+   "hq": "Los Angeles, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "SG",
+   "exchange": "NYSE"
+  }
+ },
+ {
+  "name": "Harry's",
+  "slug": "harrys",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Consumer packaged goods",
+   "model": "B2C",
+   "ownership": "Private",
+   "hq": "New York, NY",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "ThirdLove",
+  "slug": "thirdlove",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Apparel / consumer goods",
+   "model": "B2C",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Everlane",
+  "slug": "everlane",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Apparel / retail",
+   "model": "B2C",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Justworks",
+  "slug": "justworks",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Software (HR / PEO)",
+   "model": "B2B",
+   "ownership": "Private",
+   "hq": "New York, NY",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Code for America",
+  "slug": "codeforamerica",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Nonprofit (civic technology)",
+   "model": "B2C",
+   "ownership": "Nonprofit",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "DonorsChoose",
+  "slug": "donorschoose",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Nonprofit (education funding)",
+   "model": "B2C",
+   "ownership": "Nonprofit",
+   "hq": "New York, NY",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Benchling",
+  "slug": "benchling",
+  "ats": "ash",
+  "companyData": {
+   "industry": "Software (life sciences R&D)",
+   "model": "B2B",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "WHOOP",
+  "slug": "whoop",
+  "ats": "ash",
+  "companyData": {
+   "industry": "Consumer health wearables",
+   "model": "B2C",
+   "ownership": "Private",
+   "hq": "Boston, MA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Perplexity",
+  "slug": "perplexity",
+  "ats": "ash",
+  "companyData": {
+   "industry": "Artificial intelligence",
+   "model": "Mixed",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Cursor (Anysphere)",
+  "slug": "cursor",
+  "ats": "ash",
+  "companyData": {
+   "industry": "Software (AI coding)",
+   "model": "B2B",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
  }
 ]

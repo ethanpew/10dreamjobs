@@ -36,4 +36,4 @@ python3 tools/build_app.py           # inline CSS + JS into app/dist/10dreamjobs
 npm i -D playwright-core && node tests/e2e.mjs   # browser end-to-end test with a mocked database
 python3 tools/analyze.py data/backups/<backup>.json --mode latest
 ```
-Docs: `docs/data_model.md`, `docs/resume_profile.md`, `docs/sourcing_policy_v1.md`.
+Docs: `docs/data_model.md`, `docs/resume_profile.md`, `docs/sourcing_policy_v1.md`, `docs/sourcing_policy_v2.md` (current: New York or remote only).

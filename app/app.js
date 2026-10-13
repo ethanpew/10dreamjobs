@@ -119,7 +119,7 @@
       main.appendChild(h('div', { class: 'toolbar sub' },
         h('select', { id: 'fmode', 'aria-label': 'Rating version', onchange: function (e) { ui.mode = e.target.value; refreshRows(); } },
           [['latest', 'Latest ratings'], ['original', 'Original ratings']].map(function (o) { return h('option', { value: o[0], selected: ui.mode === o[0] }, o[1]); })),
-        inp('rmin', 'Role interest ≥'), inp('rmax', 'Role interest ≤'), inp('cmin', 'Company interest ≥'), inp('cmax', 'Company interest ≤'), inp('qmin', 'Qualification ≥'), inp('qmax', 'Qualification ≤')));
+        inp('cmin', 'Company interest ≥'), inp('cmax', 'Company interest ≤'), inp('rmin', 'Role interest ≥'), inp('rmax', 'Role interest ≤'), inp('qmin', 'Qualification ≥'), inp('qmax', 'Qualification ≤')));
     }
     if (!all.length) {
       main.appendChild(h('div', { class: 'empty' }, h('h2', { text: 'No roles yet' }),
@@ -269,7 +269,7 @@
   var describe = function (x) {
     var n = DJ.norm(x);
     return n.legacy ? 'combined interest ' + n.role + ' (earlier single-score scheme), qualification ' + n.qual
-      : 'role interest ' + n.role + ', company interest ' + n.company + ', qualification ' + n.qual + (x.qualificationCarried ? ' (carried forward)' : '');
+      : 'company interest ' + n.company + ', role interest ' + n.role + ', qualification ' + n.qual + (x.qualificationCarried ? ' (carried forward)' : '');
   };
   function startRevision(j) {
     var ln = latestNorm(j.id);
@@ -290,10 +290,10 @@
       return sec;
     }
     if (j.status === 'skipped') sec.appendChild(h('p', { class: 'muted', text: 'Skipped on ' + date(j.skippedAt) + '. A skip is not a low-interest rating.' }));
-    sec.appendChild(scale('r', 'Role Interest', ['1 = I would not want to do this work', '5 = Moderately interesting', '10 = I would be highly excited by this work'], function () { return cur.ratingR; }, function (n) { cur.ratingR = n; },
-      'The job itself: responsibilities, scope, seniority, day-to-day work.'));
     sec.appendChild(scale('c', 'Company Interest', ['1 = I would not want to work for this company', '5 = Moderately interesting', '10 = I would be highly excited to work here'], function () { return cur.ratingC; }, function (n) { cur.ratingC = n; },
       'The employer: mission, products, industry, culture, stage.'));
+    sec.appendChild(scale('r', 'Role Interest', ['1 = I would not want to do this work', '5 = Moderately interesting', '10 = I would be highly excited by this work'], function () { return cur.ratingR; }, function (n) { cur.ratingR = n; },
+      'The job itself: responsibilities, scope, seniority, day-to-day work.'));
     sec.appendChild(scale('q', 'Qualification Level', ['1 = I meet almost none of the requirements', '5 = I meet roughly half / could grow into it', '10 = I am exceptionally well qualified'], function () { return cur.ratingQ; }, function (n) { cur.ratingQ = n; cur.qCarried = false; var hnt = $('#qhint'); if (hnt) hnt.textContent = ''; }));
     sec.appendChild(h('p', { class: 'muted', id: 'qhint', text: cur.qCarried ? 'Carried forward from your earlier rating. Click a different number to change it.' : '' }));
     var note = h('textarea', { id: 'note', rows: 3, placeholder: 'Optional: why this reaction? (role, company, or both)' });
@@ -470,11 +470,11 @@
     if (d.n < 3) { main.appendChild(h('p', { class: 'muted', text: 'Rate a few roles to see patterns. Role interest and company interest are the primary outcomes; qualification is analyzed separately.' })); return; }
     var mx = Math.max.apply(null, d.dist.concat([1]));
     main.appendChild(h('section', { class: 'rep' }, h('h3', { text: 'Role interest distribution (1–10)' }), h('div', { class: 'dist' }, d.dist.map(function (c, i) { return h('div', { class: 'dcol' }, h('div', { class: 'dbar', style: 'height:' + (c / mx * 80) + 'px', title: c + ' roles' }), h('span', { text: String(i + 1) }), h('small', { text: String(c) })); }))));
-    Object.keys(d.groups).forEach(function (k) { main.appendChild(groupTable('Mean role interest by ' + k, d.groups[k])); });
     Object.keys(d.companyGroups).forEach(function (k) { main.appendChild(groupTable('Mean company interest by ' + k, d.companyGroups[k], 'Mean company interest')); });
+    Object.keys(d.groups).forEach(function (k) { main.appendChild(groupTable('Mean role interest by ' + k, d.groups[k])); });
     var q2 = d.quad2;
-    main.appendChild(h('section', { class: 'rep' }, h('h3', { text: 'Role interest vs company interest' }),
-      h('p', { text: 'Spearman correlation (role, company): ' + (d.corrRC == null ? 'n/a (need ≥ 5)' : d.corrRC.toFixed(2)) + '. Mean role minus company interest: ' + (d.gap == null ? 'n/a' : d.gap.toFixed(1)) + '. Cut points: ≥ 7. Company interest repeats for roles at the same employer, so treat company patterns as tentative until more employers are rated.' }),
+    main.appendChild(h('section', { class: 'rep' }, h('h3', { text: 'Company interest vs role interest' }),
+      h('p', { text: 'Spearman correlation (company, role): ' + (d.corrRC == null ? 'n/a (need ≥ 5)' : d.corrRC.toFixed(2)) + '. Mean role minus company interest: ' + (d.gap == null ? 'n/a' : d.gap.toFixed(1)) + '. Cut points: ≥ 7. Company interest repeats for roles at the same employer, so treat company patterns as tentative until more employers are rated.' }),
       h('div', { class: 'quads' }, ['High role / high company', 'High role / lower company', 'Lower role / high company', 'Lower role / lower company'].map(function (k) {
         var a = q2[k] || []; return h('div', { class: 'quad' }, h('b', { text: k }), h('div', { class: 'big', text: a.length }), h('small', { text: a.slice(0, 3).map(function (r) { return r.job.company + ': ' + r.job.title; }).join(' · ') || 'none' })); }))));
     var q = d.quad;
@@ -530,7 +530,7 @@
         location: j.location || 'Unknown', arrangement: j.arrangement || 'Unknown', salary_display: DJ.fmtSalary(j.salary), salary_min: s.min == null ? '' : s.min, salary_max: s.max == null ? '' : s.max, salary_currency: s.currency || '', salary_period: s.period || '', salary_basis: s.basis || '',
         industry: c.industry || 'Unknown', business_model: c.model || 'Unknown', ownership: c.ownership || 'Unknown', hq: c.hq || 'Unknown', ticker: c.ticker || '', exchange: c.exchange || '', market_cap: c.marketCap ? c.marketCap.value : '', market_cap_currency: c.marketCap ? c.marketCap.currency : '', market_cap_as_of: c.marketCap ? c.marketCap.asOf : '',
         source_url: j.sourceUrl || '', req_id: j.reqId || '', posted: j.postedDate || '', sourced: j.sourcedAt || '', verified: j.verifiedAt || '', posting_status: j.postingStatus || '', batch_id: j.batchId || '', policy_version: j.policyVersion || '',
-        status: j.status || 'unreviewed', date_reviewed: j.status === 'reviewed' ? date(j.reviewedAt) : '', original_role_interest: on && !on.legacy ? on.role : '', original_company_interest: on && !on.legacy ? on.company : '', original_combined_interest_legacy: on && on.legacy ? on.role : '', original_qualification: on ? on.qual : '', latest_role_interest: ln && !ln.legacy ? ln.role : '', latest_company_interest: ln && !ln.legacy ? ln.company : '', latest_combined_interest_legacy: ln && ln.legacy ? ln.role : '', latest_qualification: ln ? ln.qual : '', revisions: r && r.ratings ? Math.max(0, r.ratings.length - 1) : 0, initial_active_seconds: r ? r.active_s || 0 : '', extra_active_seconds: r ? r.extra_active_s || 0 : '' };
+        status: j.status || 'unreviewed', date_reviewed: j.status === 'reviewed' ? date(j.reviewedAt) : '', original_company_interest: on && !on.legacy ? on.company : '', original_role_interest: on && !on.legacy ? on.role : '', original_combined_interest_legacy: on && on.legacy ? on.role : '', original_qualification: on ? on.qual : '', latest_company_interest: ln && !ln.legacy ? ln.company : '', latest_role_interest: ln && !ln.legacy ? ln.role : '', latest_combined_interest_legacy: ln && ln.legacy ? ln.role : '', latest_qualification: ln ? ln.qual : '', revisions: r && r.ratings ? Math.max(0, r.ratings.length - 1) : 0, initial_active_seconds: r ? r.active_s || 0 : '', extra_active_seconds: r ? r.extra_active_s || 0 : '' };
     });
   }
   function saveFile(filename, text) {

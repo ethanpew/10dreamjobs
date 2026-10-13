@@ -1,0 +1,38 @@
+{
+  "batch": {
+    "id": "b002", "policyVersion": "v2",
+    "criteria": "Policy v2: geography rule (New York listed as a location option, OR remote with US-compatible eligibility; anything exclusively in another geography is excluded). Official Greenhouse/Ashby job-board APIs only; manager through VP/head-of; broad across role families and industries (CPG, healthcare marketplace, health insurance, nonprofit, fashion retail, HR software, health tech, observability software, social media, compliance software); strong-fit and stretch roles; at most 1 role per company; no company repeated from batch b001.",
+    "note": "Second batch. Salary shown only where the posting publishes it. Company facts are Claude-entered from general knowledge and marked unverified; size and market cap left Unknown."
+  },
+  "companies": {
+    "Harry's": { "data": { "parent": { "name": "Mammoth Brands", "ownership": "Private", "source": "Posting text: 'Harry's is part of Mammoth Brands'" } } }
+  },
+  "jobs": {
+    "7603778": { "arrangement": "Hybrid", "roleFamily": ["Consumer Insights"],
+      "salary": { "text": "$147,500-$160,000 (base salary hiring range)", "min": 147500, "max": 160000, "currency": "USD", "period": "year", "basis": "base salary", "periodNote": "annual implied by magnitude; period not stated in text" },
+      "extraction": { "completeness": "Full description from official ATS API; salary and arrangement from posting text", "missing": ["division"], "provenance": { "description": "Greenhouse API", "salary": "posting text", "arrangement": "posting text: 'in-office Tuesday, Wednesday, and Thursday' (Mammoth Brands working model)" } } },
+    "7967886": { "arrangement": "Mixed", "remoteEligibility": "Posting lists New York hybrid, Silicon Valley, and USA Remote options", "roleFamily": ["Marketing Analytics"],
+      "salary": { "text": "$220,000—$300,000 USD (base salary; same range published for NYC, Remote and Silicon Valley)", "min": 220000, "max": 300000, "currency": "USD", "period": "year", "basis": "base salary", "periodNote": "annual implied by magnitude; period not stated in text",
+        "byLocation": [ { "label": "NYC", "min": 220000, "max": 300000, "currency": "USD" }, { "label": "Remote", "min": 220000, "max": 300000, "currency": "USD" }, { "label": "Silicon Valley, CA", "min": 220000, "max": 300000, "currency": "USD" } ] } },
+    "7961377": { "arrangement": "Remote", "remoteEligibility": "Must reside in AZ, CA, CO, FL, GA, IL, MA, MI, NV, NJ, NY, NC, OH, PA, TX or VA (list subject to change, per posting)", "travel": "Willingness to travel up to 25% (per posting)", "roleFamily": ["Marketing Research"],
+      "salary": { "text": "$123,372-$161,925 per year (CA, CT, NJ, NY, WA); $111,034-$145,733 per year (all other locations)", "min": 111034, "max": 161925, "currency": "USD", "period": "year", "basis": "base pay",
+        "byLocation": [ { "label": "CA, CT, NJ, NY, WA", "min": 123372, "max": 161925, "currency": "USD" }, { "label": "All other locations", "min": 111034, "max": 145733, "currency": "USD" } ] } },
+    "8621613002": { "arrangement": "Mixed", "remoteEligibility": "Hybrid in the NYC office, or fully remote from CA, CO, CT, DC, FL, GA, IL, IN, MA, MD, MI, MN, NC, NJ, NY, OR, PA, TN, TX, VA, WA or WI (per posting text; list truncated in the stored summary, see the full text)", "travel": "About 4-6 trips per year to the NYC office for those outside the NYC area (per posting)", "roleFamily": ["Consumer Insights", "Marketing Research"],
+      "salary": { "text": "$140,000 - $155,000 hiring range; $150,000 - $170,000 for higher cost of labor locations (NYC, SF, LA, Seattle, Boston, DC)", "min": 140000, "max": 170000, "currency": "USD", "period": "year", "periodNote": "annual implied by magnitude; period not stated in text",
+        "byLocation": [ { "label": "Standard", "min": 140000, "max": 155000, "currency": "USD" }, { "label": "Higher cost of labor locations", "min": 150000, "max": 170000, "currency": "USD" } ] } },
+    "8156827": { "arrangement": "Unknown", "roleFamily": ["Brand", "Performance Marketing"],
+      "salary": { "text": "$250,000–$290,000 (anticipated base salary)", "min": 250000, "max": 290000, "currency": "USD", "period": "year", "basis": "base salary", "periodNote": "annual implied by magnitude; period not stated in text" } },
+    "8126917": { "arrangement": "Hybrid", "roleFamily": ["Marketing Operations"],
+      "salary": { "text": "$188,000.00 - $242,000.00 per year (base wage range, New York City office)", "min": 188000, "max": 242000, "currency": "USD", "period": "year", "basis": "base wage" },
+      "extraction": { "completeness": "Full description from official ATS API", "missing": ["division"], "provenance": { "description": "Greenhouse API", "salary": "posting text", "arrangement": "posting tag '#LI-Hybrid'" } } },
+    "8122317": { "arrangement": "Hybrid", "remoteEligibility": "Defined work location with work from home and 3 office days (per posting)", "roleFamily": ["Product Marketing"], "salary": null,
+      "extraction": { "completeness": "Full description from official ATS API", "missing": ["salary"], "provenance": { "description": "Greenhouse API", "arrangement": "posting text: 'hybrid role ... 3 office days'" } } },
+    "8144783": { "arrangement": "Hybrid", "roleFamily": ["Content/Communications"],
+      "salary": { "text": "$123,750—$165,000 USD (company's stated reasonably estimated yearly salary for this role)", "min": 123750, "max": 165000, "currency": "USD", "period": "year", "basis": "annual salary as published" },
+      "extraction": { "completeness": "Full description from official ATS API", "missing": ["division"], "provenance": { "description": "Greenhouse API", "salary": "Greenhouse pay field and posting text", "arrangement": "posting tag '#LI-Hybrid'" } } },
+    "8180811": { "arrangement": "Remote", "remoteEligibility": "United States, based in the Eastern Time Zone (per posting)", "roleFamily": ["Growth"],
+      "salary": { "text": "$223,600—$313,000 USD (base salary range)", "min": 223600, "max": 313000, "currency": "USD", "period": "year", "basis": "base salary", "periodNote": "annual implied by magnitude; period not stated in text" } },
+    "c27d1d10-9bab-484b-af98-1071c6834d77": { "arrangement": "Remote", "remoteEligibility": "Remote U.S. (location field)", "roleFamily": ["Partnerships"],
+      "salary": { "text": "$298K – $351K (offers equity)", "min": 298000, "max": 351000, "basis": "not stated; the listing notes equity is offered" } }
+  }
+}

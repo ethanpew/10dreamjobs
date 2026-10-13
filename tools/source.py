@@ -32,6 +32,26 @@ MKT = re.compile(r"market|brand|growth|insight|lifecycle|\bcrm\b|demand gen|comm
 EXCL = re.compile(r"intern\b|internship|\bcoordinator\b|assistant|recruit|account executive|sales development|software engineer|\bengineer\b|counsel|attorney|accountant|payroll|designer\b", re.I)
 
 
+# Geography rule (sourcing policy v2): keep a role only if New York is one of its location options, or it is remote with
+# US-compatible eligibility. Anything exclusively in another geography is dropped. Unknown location text is NOT assumed eligible.
+NY = re.compile(r"new york|\bnyc\b|\bny\b|brooklyn|manhattan", re.I)
+REMOTE = re.compile(r"remote|anywhere|distributed|work from home|\bwfh\b", re.I)
+US = re.compile(r"\b(us|usa|u\.s\.|united states|north america|americas)\b", re.I)
+FOREIGN = re.compile(r"\b(india|canada|uk|u\.k\.|united kingdom|england|ireland|germany|france|spain|italy|japan|singapore|australia|brazil|mexico|emea|apac|latam|europe|china|korea|poland|netherlands|israel|dublin|london|berlin|toronto|bangalore|bengaluru|sydney|tokyo|paris|madrid|amsterdam|argentina|colombia|philippines|portugal|sweden|denmark|switzerland|uae|dubai)\b", re.I)
+
+
+def geo_ok(loc, is_remote=False, country=None):
+    """Return (ok, reason). loc may contain several locations."""
+    t = loc or ""
+    if NY.search(t): return True, "New York is a listed location"
+    remote = is_remote or bool(REMOTE.search(t))
+    if remote:
+        if US.search(t) or (country or "").upper() in ("US", "USA", "UNITED STATES"): return True, "Remote, US-eligible"
+        if FOREIGN.search(t) or (country and (country or "").upper() not in ("US", "USA", "UNITED STATES")): return False, "Remote but tied to another geography"
+        return True, "Remote (region not specified)"
+    return False, "Not New York and not remote"
+
+
 def get(url, timeout=40):
     req = urllib.request.Request(url, headers=UA)
     with urllib.request.urlopen(req, timeout=timeout) as r:
@@ -107,9 +127,18 @@ def ash_list(slug):
     return json.loads(b).get("jobs", [])
 
 
+def already_sourced():
+    import glob
+    keys = set()
+    for f in glob.glob("data/batch_b*.json"):
+        for j in json.load(open(f)):
+            keys.add((j.get("sourceUrl") or "").rstrip("/"))
+    return keys
+
+
 def cmd_scan(a):
     boards = json.load(open(a.boards))
-    out = []
+    seen = already_sourced(); out = []
     for b in boards:
         try:
             jobs = gh_list(b["slug"]) if b["ats"] == "gh" else ash_list(b["slug"])
@@ -119,7 +148,16 @@ def cmd_scan(a):
             title = j.get("title", ""); loc = (j.get("location") or {}).get("name") if b["ats"] == "gh" else j.get("location")
             if not MKT.search(title) or EXCL.search(title): continue
             jid = str(j["id"])
-            out.append({"key": f"{b['ats']}:{b['slug']}:{jid}", "company": b["name"], "title": title, "location": loc, "family": family(title), "seniority": seniority(title)})
+            if b["ats"] == "gh": locs, rem, ctry = loc, False, None
+            else:
+                sec = " ; ".join(x.get("location", "") if isinstance(x, dict) else str(x) for x in (j.get("secondaryLocations") or []))
+                locs = " ; ".join(x for x in [loc, sec] if x); rem = bool(j.get("isRemote")) or (j.get("workplaceType") == "Remote")
+                ctry = ((j.get("address") or {}).get("postalAddress") or {}).get("addressCountry")
+            ok, why = geo_ok(locs, rem, ctry)
+            if a.geo and not ok: continue
+            url = f"https://job-boards.greenhouse.io/{b['slug']}/jobs/{jid}" if b["ats"] == "gh" else j.get("jobUrl", "")
+            if url.rstrip("/") in seen: continue
+            out.append({"key": f"{b['ats']}:{b['slug']}:{jid}", "company": b["name"], "title": title, "location": locs, "geo": why, "family": family(title), "seniority": seniority(title)})
     json.dump(out, open(a.out, "w"), indent=1)
     for o in out: print(f"{o['key']:40s} | {o['company'][:18]:18s} | {o['title'][:60]:60s} | {str(o['location'])[:28]:28s} | {','.join(o['family'])[:30]} | {o['seniority']}")
     print(f"\n{len(out)} candidate postings across {len(boards)} boards", file=sys.stderr)
@@ -127,7 +165,7 @@ def cmd_scan(a):
 
 def build_one(key, policy, batch):
     ats, slug, jid = key.split(":", 2)
-    now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    now = datetime.datetime.now(datetime.timezone.utc).isoformat(); wt = None
     if ats == "gh":
         s, b = get(f"https://boards-api.greenhouse.io/v1/boards/{slug}/jobs/{jid}?pay_transparency=true")
         j = json.loads(b); loc = (j.get("location") or {}).get("name")
@@ -142,7 +180,7 @@ def build_one(key, policy, batch):
         s, b = get(f"https://api.ashbyhq.com/posting-api/job-board/{slug}?includeCompensation=true")
         j = next((x for x in json.loads(b).get("jobs", []) if str(x["id"]) == jid), None)
         if not j: raise RuntimeError(f"{key} no longer listed")
-        loc = j.get("location"); desc = (j.get("descriptionPlain") or to_text(j.get("descriptionHtml", ""))).strip(); dept = j.get("department") or j.get("team")
+        loc = "; ".join(x for x in [j.get("location")] + [(y.get("location") if isinstance(y, dict) else str(y)) for y in (j.get("secondaryLocations") or [])] if x); wt = j.get("workplaceType"); desc = (j.get("descriptionPlain") or to_text(j.get("descriptionHtml", ""))).strip(); dept = j.get("department") or j.get("team")
         employer_url = j.get("jobUrl"); url = employer_url; req = None; posted = (j.get("publishedAt") or "")[:10] or None
         c = j.get("compensation") or {}
         sal = {"text": c.get("compensationTierSummary") or c.get("scrapeableCompensationSalarySummary"), "basis": "as published"} if (c.get("compensationTierSummary") or c.get("scrapeableCompensationSalarySummary")) else None
@@ -151,7 +189,7 @@ def build_one(key, policy, batch):
         raise RuntimeError(f"{key} description too short ({len(desc or '')} chars)")
     title = j.get("title") or j.get("name")
     # head-of-text provenance: location can be a list in some Ashby postings
-    return {"company": None, "title": title, "division": dept, "location": loc, "arrangement": arrangement(loc) if arrangement(loc) != "Unknown" else ("Remote" if j.get("isRemote") else "Unknown"),
+    return {"company": None, "title": title, "division": dept, "location": loc, "arrangement": {"Remote": "Remote", "Hybrid": "Hybrid", "OnSite": "On-site"}.get(wt) or arrangement(loc),
             "sourceUrl": url, "employerUrl": employer_url, "reqId": req, "postedDate": posted, "verifiedAt": now, "postingStatus": status, "desc": desc, "descComplete": True,
             "roleFamily": family(title), "seniority": seniority(title), "salary": sal, "atsPlatform": "Greenhouse" if ats == "gh" else "Ashby",
             "extraction": {"completeness": "Full description retrieved from official ATS API", "missing": [k for k, v in {"salary": sal, "division": dept, "reqId": req}.items() if not v], "provenance": {"description": "ATS API", "salary": "ATS API pay fields" if sal else "not published"}}}
@@ -172,6 +210,6 @@ def cmd_build(a):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(); sp = ap.add_subparsers(dest="c", required=True)
-    s = sp.add_parser("scan"); s.add_argument("--boards", default="data/boards.json"); s.add_argument("--out", default="/dev/null"); s.set_defaults(f=cmd_scan)
+    s = sp.add_parser("scan"); s.add_argument("--boards", default="data/boards.json"); s.add_argument("--out", default="/dev/null"); s.add_argument("--geo", action=argparse.BooleanOptionalAction, default=True, help="apply the New York-or-remote rule (policy v2)"); s.set_defaults(f=cmd_scan)
     b = sp.add_parser("build"); b.add_argument("--boards", default="data/boards.json"); b.add_argument("--pick", nargs="+", required=True); b.add_argument("--policy", default="v1"); b.add_argument("--batch", default=""); b.add_argument("--out", required=True); b.set_defaults(f=cmd_build)
     a = ap.parse_args(); a.f(a)
