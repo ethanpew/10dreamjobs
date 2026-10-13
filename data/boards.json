@@ -1,0 +1,566 @@
+[
+ {
+  "name": "Airbnb",
+  "slug": "airbnb",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Travel & hospitality",
+   "model": "Mixed",
+   "ownership": "Public",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "ABNB",
+   "exchange": "NASDAQ"
+  }
+ },
+ {
+  "name": "Stripe",
+  "slug": "stripe",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Fintech / payments",
+   "model": "B2B",
+   "ownership": "Private",
+   "hq": "San Francisco, CA and Dublin",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Figma",
+  "slug": "figma",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Software (design)",
+   "model": "Mixed",
+   "ownership": "Public",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "FIG",
+   "exchange": "NYSE"
+  }
+ },
+ {
+  "name": "Duolingo",
+  "slug": "duolingo",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Education technology",
+   "model": "B2C",
+   "ownership": "Public",
+   "hq": "Pittsburgh, PA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "DUOL",
+   "exchange": "NASDAQ"
+  }
+ },
+ {
+  "name": "Reddit",
+  "slug": "reddit",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Social media / advertising",
+   "model": "Mixed",
+   "ownership": "Public",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "RDDT",
+   "exchange": "NYSE"
+  }
+ },
+ {
+  "name": "Pinterest",
+  "slug": "pinterest",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Social media / advertising",
+   "model": "Mixed",
+   "ownership": "Public",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "PINS",
+   "exchange": "NYSE"
+  }
+ },
+ {
+  "name": "Instacart",
+  "slug": "instacart",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Grocery technology",
+   "model": "Mixed",
+   "ownership": "Public",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "CART",
+   "exchange": "NASDAQ"
+  }
+ },
+ {
+  "name": "Coinbase",
+  "slug": "coinbase",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Crypto / fintech",
+   "model": "Mixed",
+   "ownership": "Public",
+   "hq": "Remote-first (US)",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "COIN",
+   "exchange": "NASDAQ"
+  }
+ },
+ {
+  "name": "Robinhood",
+  "slug": "robinhood",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Fintech / investing",
+   "model": "B2C",
+   "ownership": "Public",
+   "hq": "Menlo Park, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "HOOD",
+   "exchange": "NASDAQ"
+  }
+ },
+ {
+  "name": "Datadog",
+  "slug": "datadog",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Software (observability)",
+   "model": "B2B",
+   "ownership": "Public",
+   "hq": "New York, NY",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "DDOG",
+   "exchange": "NASDAQ"
+  }
+ },
+ {
+  "name": "MongoDB",
+  "slug": "mongodb",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Software (database)",
+   "model": "B2B",
+   "ownership": "Public",
+   "hq": "New York, NY",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "MDB",
+   "exchange": "NASDAQ"
+  }
+ },
+ {
+  "name": "Asana",
+  "slug": "asana",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Software (work management)",
+   "model": "B2B",
+   "ownership": "Public",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "ASAN",
+   "exchange": "NYSE"
+  }
+ },
+ {
+  "name": "Cloudflare",
+  "slug": "cloudflare",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Software (network/security)",
+   "model": "B2B",
+   "ownership": "Public",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "NET",
+   "exchange": "NYSE"
+  }
+ },
+ {
+  "name": "Twilio",
+  "slug": "twilio",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Software (communications APIs)",
+   "model": "B2B",
+   "ownership": "Public",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "TWLO",
+   "exchange": "NYSE"
+  }
+ },
+ {
+  "name": "Okta",
+  "slug": "okta",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Software (identity)",
+   "model": "B2B",
+   "ownership": "Public",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "OKTA",
+   "exchange": "NASDAQ"
+  }
+ },
+ {
+  "name": "Peloton",
+  "slug": "peloton",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Consumer fitness",
+   "model": "B2C",
+   "ownership": "Public",
+   "hq": "New York, NY",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "PTON",
+   "exchange": "NASDAQ"
+  }
+ },
+ {
+  "name": "Warby Parker",
+  "slug": "warbyparker",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Retail (eyewear)",
+   "model": "B2C",
+   "ownership": "Public",
+   "hq": "New York, NY",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "WRBY",
+   "exchange": "NYSE"
+  }
+ },
+ {
+  "name": "Etsy",
+  "slug": "etsy",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Marketplace",
+   "model": "Mixed",
+   "ownership": "Public",
+   "hq": "Brooklyn, NY",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "ETSY",
+   "exchange": "NASDAQ"
+  }
+ },
+ {
+  "name": "Squarespace",
+  "slug": "squarespace",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Software (web presence)",
+   "model": "Mixed",
+   "ownership": "Private",
+   "hq": "New York, NY",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Gusto",
+  "slug": "gusto",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Software (payroll/HR)",
+   "model": "B2B",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Brex",
+  "slug": "brex",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Fintech (corporate cards)",
+   "model": "B2B",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Chime",
+  "slug": "chime",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Fintech (consumer banking)",
+   "model": "B2C",
+   "ownership": "Public",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "CHYM",
+   "exchange": "NASDAQ"
+  }
+ },
+ {
+  "name": "Betterment",
+  "slug": "betterment",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Fintech / wealth management",
+   "model": "Mixed",
+   "ownership": "Private",
+   "hq": "New York, NY",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Khan Academy",
+  "slug": "khanacademy",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Education",
+   "model": "B2C",
+   "ownership": "Nonprofit",
+   "hq": "Mountain View, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Mozilla",
+  "slug": "mozilla",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Technology (web browser)",
+   "model": "Mixed",
+   "ownership": "Nonprofit",
+   "hq": "Remote-first",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Wikimedia Foundation",
+  "slug": "wikimedia",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Nonprofit (knowledge)",
+   "model": "B2C",
+   "ownership": "Nonprofit",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Coursera",
+  "slug": "coursera",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Education technology",
+   "model": "Mixed",
+   "ownership": "Public",
+   "hq": "Mountain View, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "COUR",
+   "exchange": "NYSE"
+  }
+ },
+ {
+  "name": "Udemy",
+  "slug": "udemy",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Education technology",
+   "model": "Mixed",
+   "ownership": "Public",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "UDMY",
+   "exchange": "NASDAQ"
+  }
+ },
+ {
+  "name": "Headspace",
+  "slug": "headspace",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Digital health",
+   "model": "Mixed",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Hims & Hers",
+  "slug": "hims",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Digital health / consumer",
+   "model": "B2C",
+   "ownership": "Public",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "HIMS",
+   "exchange": "NYSE"
+  }
+ },
+ {
+  "name": "Samsara",
+  "slug": "samsara",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Software (IoT / operations)",
+   "model": "B2B",
+   "ownership": "Public",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "IOT",
+   "exchange": "NYSE"
+  }
+ },
+ {
+  "name": "Toast",
+  "slug": "toast",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Software (restaurant tech)",
+   "model": "B2B",
+   "ownership": "Public",
+   "hq": "Boston, MA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "TOST",
+   "exchange": "NYSE"
+  }
+ },
+ {
+  "name": "Carta",
+  "slug": "carta",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Software (equity management)",
+   "model": "B2B",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Lyft",
+  "slug": "lyft",
+  "ats": "gh",
+  "companyData": {
+   "industry": "Transportation",
+   "model": "Mixed",
+   "ownership": "Public",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown.",
+   "ticker": "LYFT",
+   "exchange": "NASDAQ"
+  }
+ },
+ {
+  "name": "Ramp",
+  "slug": "ramp",
+  "ats": "ash",
+  "companyData": {
+   "industry": "Fintech (corporate spend)",
+   "model": "B2B",
+   "ownership": "Private",
+   "hq": "New York, NY",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Notion",
+  "slug": "notion",
+  "ats": "ash",
+  "companyData": {
+   "industry": "Software (productivity)",
+   "model": "Mixed",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "OpenAI",
+  "slug": "openai",
+  "ats": "ash",
+  "companyData": {
+   "industry": "Artificial intelligence",
+   "model": "Mixed",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Linear",
+  "slug": "linear",
+  "ats": "ash",
+  "companyData": {
+   "industry": "Software (project management)",
+   "model": "B2B",
+   "ownership": "Private",
+   "hq": "Remote-first",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Watershed",
+  "slug": "watershed",
+  "ats": "ash",
+  "companyData": {
+   "industry": "Software (climate/sustainability)",
+   "model": "B2B",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Deel",
+  "slug": "deel",
+  "ats": "ash",
+  "companyData": {
+   "industry": "Software (global HR/payroll)",
+   "model": "B2B",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Vanta",
+  "slug": "vanta",
+  "ats": "ash",
+  "companyData": {
+   "industry": "Software (compliance)",
+   "model": "B2B",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Rippling",
+  "slug": "rippling",
+  "ats": "ash",
+  "companyData": {
+   "industry": "Software (HR/IT)",
+   "model": "B2B",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ },
+ {
+  "name": "Plaid",
+  "slug": "plaid",
+  "ats": "ash",
+  "companyData": {
+   "industry": "Fintech (APIs)",
+   "model": "B2B",
+   "ownership": "Private",
+   "hq": "San Francisco, CA",
+   "provenance": "Entered by Claude from general knowledge on 2026-10-13; not verified against a cited source. Size and market cap deliberately left Unknown."
+  }
+ }
+]

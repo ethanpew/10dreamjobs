@@ -1,0 +1,37 @@
+{
+  "batch": {
+    "id": "b001", "policyVersion": "v1",
+    "criteria": "Policy v1 (exploratory). Official Greenhouse/Ashby job-board APIs only; manager through VP/head-of; deliberately spans insights, analytics, product marketing, brand, lifecycle, strategy/growth, partnerships; fintech, crypto, transportation, edtech, SaaS, nonprofit; strong-fit and stretch roles; at most 1 role per company. Geography left open (no constraints given).",
+    "note": "First batch. Salary shown only where the posting publishes it. Company facts are Claude-entered from general knowledge and marked unverified; size and market cap left Unknown."
+  },
+  "companies": {
+    "Mozilla": { "name": "Mozilla Corporation", "data": { "ownership": "Private (for-profit subsidiary of a nonprofit)", "parent": { "name": "Mozilla Foundation", "ownership": "Nonprofit", "source": "Posting text: 'wholly owned by the non-profit 501(c) Mozilla Foundation'" }, "ticker": null, "exchange": null, "provenance": "Parent relationship from the posting text; other fields entered by Claude from general knowledge, unverified." } },
+    "Wikimedia Foundation": { "data": { "ownership": "Nonprofit" } }
+  },
+  "jobs": {
+    "8503985002": { "arrangement": "Hybrid", "roleFamily": ["Consumer Insights", "Marketing Analytics"],
+      "salary": { "text": "$118,000 - $147,500 (expected base pay, San Francisco area; excludes equity, bonus, benefits)", "min": 118000, "max": 147500, "currency": "USD", "period": "year", "basis": "base salary", "periodNote": "annual implied by magnitude; period not stated in text" },
+      "extraction": { "completeness": "Full description from official ATS API; salary and hybrid arrangement taken from the posting text", "missing": ["division"], "provenance": { "description": "Greenhouse API", "salary": "posting text", "arrangement": "posting text: 'in-office on a hybrid schedule'" } } },
+    "8759720002": { "arrangement": "On-site", "roleFamily": ["Marketing Analytics"],
+      "salary": { "text": "$154,700—$209,300 USD", "min": 154700, "max": 209300, "currency": "USD", "period": "year", "basis": "not stated (base vs total compensation)", "periodNote": "annual implied by magnitude; period not stated in text" },
+      "extraction": { "completeness": "Full description from official ATS API", "missing": [], "provenance": { "description": "Greenhouse API", "salary": "Greenhouse pay field and posting text", "arrangement": "posting text: 'Able to work in our New York office'" } } },
+    "9245bee1-0902-417f-968f-a174bf4bdf2c": { "arrangement": "Unknown", "remoteEligibility": "Not stated (Ashby remote flag is set; location listed as San Francisco HQ)", "roleFamily": ["Product Marketing"],
+      "salary": { "text": "$230K – $400K", "min": 230000, "max": 400000, "basis": "not stated; Plaid says equity and/or commission are additional" } },
+    "8242207": { "arrangement": "Remote", "remoteEligibility": "United States (location field: Remote - USA)", "roleFamily": ["Brand"],
+      "salary": { "text": "$205,785—$242,100 USD (annual base salary, excluding equity and bonus)", "min": 205785, "max": 242100, "currency": "USD", "period": "year", "basis": "base salary" } },
+    "576401b9-66e7-4407-a9e2-8aafaa590082": { "arrangement": "On-site", "salary": null, "roleFamily": ["Lifecycle/CRM"],
+      "extraction": { "completeness": "Full description from official ATS API", "missing": ["salary"], "provenance": { "description": "Ashby API", "arrangement": "posting tag '#LI-Onsite'; the Ashby remote flag also appeared, so confirm on the posting" } } },
+    "8189769": { "arrangement": "Remote", "remoteEligibility": "US remote, but the posting says it is not eligible to be hired in CA, CT, NJ, NY, PA, WA", "travel": "Approximately 15% (per posting)", "roleFamily": ["Marketing Analytics", "Strategy"],
+      "salary": { "text": "$128,560 - $188,900 depending on location (3 published tiers)", "min": 128560, "max": 188900, "currency": "USD", "period": "year", "periodNote": "annual implied by magnitude; period not stated in text",
+        "byLocation": [ { "label": "CO, HI, IL, MD, MA, MN, VT, DC", "min": 128560, "max": 160700, "currency": "USD" }, { "label": "NY, NJ, WA, CA outside SF Bay Area", "min": 136000, "max": 170000, "currency": "USD" }, { "label": "San Francisco Bay Area", "min": 151120, "max": 188900, "currency": "USD" } ] } },
+    "8174807": { "arrangement": "Unknown", "roleFamily": ["Growth", "Strategy"],
+      "salary": { "text": "$203,500 - $327,750 USD (cash compensation range)", "min": 203500, "max": 327750, "currency": "USD", "period": "year", "basis": "cash compensation (split of base vs variable not stated)", "periodNote": "annual implied by magnitude; period not stated in text" } },
+    "8127761": { "arrangement": "Remote", "remoteEligibility": "Open to candidates in UTC+2 to UTC-4 (per posting)", "salary": null, "roleFamily": ["Brand", "Strategy"],
+      "extraction": { "completeness": "Full description from official ATS API; role family classified by Claude from a generic title", "missing": ["salary"], "provenance": { "description": "Greenhouse API", "roleFamily": "Claude classification from title and description" } } },
+    "8175627": { "arrangement": "Mixed", "roleFamily": ["Partnerships", "Product Marketing"], "salary": null,
+      "extraction": { "completeness": "Full description from official ATS API", "missing": ["salary"], "provenance": { "description": "Greenhouse API", "arrangement": "posting lists several office cities plus 'Remote in the US'" } } },
+    "8139403": { "arrangement": "Remote", "remoteEligibility": "US remote (location field: Remote US)", "roleFamily": ["Marketing Analytics", "Consumer Insights"],
+      "salary": { "text": "US Tier 1: $195,000—$260,000; Tier 2: $179,000—$239,000; Tier 3: $166,000—$221,000 USD", "min": 166000, "max": 260000, "currency": "USD", "period": "year", "periodNote": "annual implied by magnitude; period not stated in text",
+        "byLocation": [ { "label": "US Tier 1", "min": 195000, "max": 260000, "currency": "USD" }, { "label": "US Tier 2", "min": 179000, "max": 239000, "currency": "USD" }, { "label": "US Tier 3", "min": 166000, "max": 221000, "currency": "USD" } ] } }
+  }
+}
